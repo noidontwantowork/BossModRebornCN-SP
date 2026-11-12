@@ -13,8 +13,6 @@
 | `DefaultRotationPresets.json` | 自动循环默认预设 |
 | `RebornPresets.json` | 附加预设 |
 
-安装：卫月 → 设置 → 实验性功能 → 添加本地插件目录，指向这 6 个文件所在目录，然后重启游戏即可在插件列表看到「BossMod Reborn」。
-
 ## 合并内容
 
 ### 1. 斗兽奇弈模块（来自 7.5.6.17 斗兽版）
