@@ -10,7 +10,8 @@ BossmodReborn is a community-driven fork of the original Bossmod plugin for Fina
 
 # BossModReborn 合并版（国服本地化 + 斗兽奇弈）
 
-基于 **7.5.8.1 国服本地化版**的功能基线，合入 **7.5.6.17 斗兽版**独有的「斗兽奇弈（Crucible of the Unbroken / Beastmaster）」副本支持，产出一个可直接被卫月（Dalamud）加载的插件。仓库链接： https://raw.githubusercontent.com/noidontwantowork/BossModRebornCN-SP/main/pluginmaster.json
+基于 **7.5.8.1 国服本地化版**的功能基线，合入 **7.5.6.17 斗兽版**独有的「斗兽奇弈（Crucible of the Unbroken / Beastmaster）」副本支持，成为一个合并的卫月插件。
+仓库链接： https://raw.githubusercontent.com/noidontwantowork/BossModRebornCN-SP/main/pluginmaster.json
 
 ## 产物
 
