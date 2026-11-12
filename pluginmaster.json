@@ -1,31 +1,31 @@
 [
      {
-	"Author": "Ottermandias",
-	"Name": "Glamourer SP",
-	"Punchline": "¸Ä±äºÍ±£´æÍæ¼ÒÍâ¹Û¡£",
-	"Description": "ÎªÍæ¼ÒÌá¹©¸ü¸Ä±£´æ×Ô¶¨ÒåÍâÃ²ºÍ×°±¸Íâ¹ÛµÄ¹¦ÄÜ¡£\n½«Ô¤ÀÀÑ¡ÏîÌí¼Óµ½ÁËPenumbraµÄ¡°Ä£×é-¸ü¸ÄÏîÄ¿¡±Ñ¡Ïî¿¨ÖĞ¡£\nSP°æ±¾Ôö¼ÓÁË¶Ô×øÆï/³èÎï/ÕÙ»½ÎïµÄÓ¦ÓÃÉè¼ÆºÍ×Ô¶¯Ö´ĞĞÖ§³Ö¡£\nĞèÒª°²×°²¢ÆôÓÃPenumbra²ÅÄÜ¹¤×÷¡£",
-	"Tags": ["Appearance", "Glamour", "Race", "Outfit", "Armor", "Clothes", "Skins", "Customization", "Design", "Character"],
-    "InternalName": "Glamourer",
-    "MinimumDalamudVersion": "15.0.0.2",
-    "AssemblyVersion": "1.7.1.4",
-    "TestingAssemblyVersion": "1.7.1.4",
-    "RepoUrl": "https://github.com/noidontwantowork/Glamourer-SP",
-    "ApplicableVersion": "any",
-    "ChangeLog": "ĞÂÔöÁË¶Ô×øÆï/³èÎï/ÕÙ»½ÎïµÄ×Ô¶¯Ö´ĞĞ¼¯µÄÖ§³Ö¡£ÄãÏÖÔÚ¿ÉÒÔÈÃËüÃÇ×Ô¶¯Ó¦ÓÃÉè¼ÆÁË¡£",		 
-    "DalamudApiLevel": 15,
-    "TestingDalamudApiLevel": 15,
-    "IsHide": "False",
-    "IsTestingExclusive": "False",
-    "DownloadLinkInstall": "https://github.com/noidontwantowork/Glamourer-SP/releases/download/Glamourer.SP.1.7.1.4/Glamourer.SP.1.7.1.4.zip",
-    "DownloadLinkUpdate": "https://github.com/noidontwantowork/Glamourer-SP/releases/download/Glamourer.SP.1.7.1.4/Glamourer.SP.1.7.1.4.zip",
-    "DownloadLinkTesting": "https://github.com/noidontwantowork/Glamourer-SP/releases/download/Glamourer.SP.1.7.1.4/Glamourer.SP.1.7.1.4.zip",
-    "IconUrl": "https://raw.githubusercontent.com/Ottermandias/Glamourer/main/images/icon.png"
-  },
-  {
-        "Author": "The Combat Reborn Team / NiGuangOwO£¨±¾µØ»¯&ÊÊÅä£© / KanoNoUta£¨¶·ÊŞÆæŞÄÖ§³Ö£©",
+        "Author": "Ottermandias",
+        "Name": "Glamourer SP",
+        "Punchline": "æ”¹å˜å’Œä¿å­˜ç©å®¶å¤–è§‚ã€‚",
+        "Description": "ä¸ºç©å®¶æä¾›æ›´æ”¹ä¿å­˜è‡ªå®šä¹‰å¤–è²Œå’Œè£…å¤‡å¤–è§‚çš„åŠŸèƒ½ã€‚\nå°†é¢„è§ˆé€‰é¡¹æ·»åŠ åˆ°äº†Penumbraçš„â€œæ¨¡ç»„-æ›´æ”¹é¡¹ç›®â€é€‰é¡¹å¡ä¸­ã€‚\nSPç‰ˆæœ¬å¢åŠ äº†å¯¹åéª‘/å® ç‰©/å¬å”¤ç‰©çš„åº”ç”¨è®¾è®¡å’Œè‡ªåŠ¨æ‰§è¡Œæ”¯æŒã€‚\néœ€è¦å®‰è£…å¹¶å¯ç”¨Penumbraæ‰èƒ½å·¥ä½œã€‚",
+        "Tags": ["Appearance", "Glamour", "Race", "Outfit", "Armor", "Clothes", "Skins", "Customization", "Design", "Character"],
+        "InternalName": "Glamourer",
+        "MinimumDalamudVersion": "15.0.0.2",
+        "AssemblyVersion": "1.7.1.4",
+        "TestingAssemblyVersion": "1.7.1.4",
+        "RepoUrl": "https://github.com/noidontwantowork/Glamourer-SP",
+        "ApplicableVersion": "any",
+        "ChangeLog": "æ–°å¢äº†å¯¹åéª‘/å® ç‰©/å¬å”¤ç‰©çš„è‡ªåŠ¨æ‰§è¡Œé›†çš„æ”¯æŒã€‚ä½ ç°åœ¨å¯ä»¥è®©å®ƒä»¬è‡ªåŠ¨åº”ç”¨è®¾è®¡äº†ã€‚",		 
+        "DalamudApiLevel": 15,
+        "TestingDalamudApiLevel": 15,
+        "IsHide": "False",
+        "IsTestingExclusive": "False",
+        "DownloadLinkInstall": "https://github.com/noidontwantowork/Glamourer-SP/releases/download/Glamourer.SP.1.7.1.4/Glamourer.SP.1.7.1.4.zip",
+        "DownloadLinkUpdate": "https://github.com/noidontwantowork/Glamourer-SP/releases/download/Glamourer.SP.1.7.1.4/Glamourer.SP.1.7.1.4.zip",
+        "DownloadLinkTesting": "https://github.com/noidontwantowork/Glamourer-SP/releases/download/Glamourer.SP.1.7.1.4/Glamourer.SP.1.7.1.4.zip",
+        "IconUrl": "https://raw.githubusercontent.com/Ottermandias/Glamourer/main/images/icon.png"
+    },
+    {
+        "Author": "The Combat Reborn Team / NiGuangOwOï¼ˆæœ¬åœ°åŒ–&é€‚é…ï¼‰ / KanoNoUtaï¼ˆæ–—å…½å¥‡å¼ˆæ”¯æŒï¼‰",
         "Name": "BossMod Reborn",
-        "Punchline": "¹ú·ş±¾µØ»¯ + ¶·ÊŞÆæŞÄ£¨Ñ±ÊŞÊ¦£©Ö§³Ö",
-        "Description": "¹ú·ş±¾µØ»¯°æÓë¶·ÊŞ°æµÄºÏ²¢¹¹½¨£¬±£Áô¹ú·şÖĞÎÄ»¯ÓëÈ«²¿¶ÀÓĞ¹¦ÄÜ£¨AEAssist Áª¶¯¡¢AOE ¹ã²¥ IPC¡¢PalacePalÏİÚåË¢ĞÂµÈ£©£¬²¢°üº¬¡¸¶·ÊŞÆæŞÄ£¨Ñ±ÊŞÊ¦ / Beastmaster£©¡¹µÄÏà¹Ø¸±±¾Ö§³Ö¡£",
+        "Punchline": "å›½æœæœ¬åœ°åŒ– + æ–—å…½å¥‡å¼ˆï¼ˆé©¯å…½å¸ˆï¼‰æ”¯æŒ",
+        "Description": "å›½æœæœ¬åœ°åŒ–ç‰ˆä¸æ–—å…½ç‰ˆçš„åˆå¹¶æ„å»ºï¼Œä¿ç•™å›½æœä¸­æ–‡åŒ–ä¸å…¨éƒ¨ç‹¬æœ‰åŠŸèƒ½ï¼ˆAEAssist è”åŠ¨ã€AOE å¹¿æ’­ IPCã€PalacePalé™·é˜±åˆ·æ–°ç­‰ï¼‰ï¼Œå¹¶åŒ…å«ã€Œæ–—å…½å¥‡å¼ˆï¼ˆé©¯å…½å¸ˆ / Beastmasterï¼‰ã€çš„ç›¸å…³å‰¯æœ¬æ”¯æŒã€‚",
         "Tags": [
             "combat",
             "boss",
@@ -46,9 +46,8 @@
             "https://raw.githubusercontent.com/FFXIV-CombatReborn/BossmodReborn/master/Data/image2.png",
             "https://raw.githubusercontent.com/FFXIV-CombatReborn/BossmodReborn/master/Data/image3.png"
         ],
-        "DownloadLinkInstall": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/BossModReborn/latest.zip",
-        "DownloadLinkUpdate": "https://github.com/NiGuangOwO/DalamudPlugins/raw/main/plugins/BossModReborn/latest.zip",
-        "DownloadCount": 0,
-        "LastUpdate": "1794395704"
-  }
+        "DownloadLinkInstall": "https://github.com/noidontwantowork/BossModRebornCN-SP/releases/download/BossModRebornCN-SP-7.5.8.1/BossModRebornCN-SP-7.5.8.1.zip",
+        "DownloadLinkUpdate": "https://github.com/noidontwantowork/BossModRebornCN-SP/releases/download/BossModRebornCN-SP-7.5.8.1/BossModRebornCN-SP-7.5.8.1.zip",
+        "DownloadLinkTesting": "https://github.com/noidontwantowork/BossModRebornCN-SP/releases/download/BossModRebornCN-SP-7.5.8.1/BossModRebornCN-SP-7.5.8.1.zip",
+    }
 ]
