@@ -1,0 +1,85 @@
+namespace BossMod.AI;
+
+[ConfigDisplay(Name = "自动移动", Order = 7)]
+sealed class AIConfig : ConfigNode
+{
+    [PropertyDisplay("在服务器信息栏中显示AI状态")]
+    public bool ShowDTR = false;
+
+    [PropertyDisplay("显示AI界面")]
+    public bool DrawUI = false;
+
+    [PropertyDisplay("将队长设为焦点目标")]
+    public bool FocusTargetMaster = false;
+
+    [PropertyDisplay("将按键广播到其他窗口", tooltip: "在某些电脑上可能会导致卡顿。仅在确实需要时启用！它仅适用于多开玩家。")]
+    public bool BroadcastToSlaves = false;
+
+    [PropertyDisplay("跟随第几位队友")]
+    public int FollowSlot = 0;
+
+    [PropertyDisplay("禁止使用技能")]
+    public bool ForbidActions = false;
+
+    [PropertyDisplay("手动选择目标")]
+    public bool ManualTarget = false;
+
+    [PropertyDisplay("禁止移动")]
+    public bool ForbidMovement = false;
+
+    [PropertyDisplay("战斗中跟随")]
+    public bool FollowDuringCombat = true;
+
+    [PropertyDisplay("Boss 模块激活时跟随")]
+    public bool FollowDuringActiveBossModule = true;
+
+    [PropertyDisplay("脱战时跟随")]
+    public bool FollowOutOfCombat = false;
+
+    [PropertyDisplay("跟随目标")]
+    public bool FollowTarget = true;
+
+    [PropertyDisplay("跟随目标时期望的身位")]
+    [PropertyCombo(["Any", "Flank", "Rear", "Front"])]
+    public Positional DesiredPositional = Positional.Any;
+
+    [PropertyDisplay("到队友的最大距离")]
+    public float MaxDistanceToSlot = 1f;
+
+    [PropertyDisplay("近战到目标的最大距离")]
+    public float MaxDistanceToTargetMelee = 1f;
+
+    [PropertyDisplay("远程到目标的最大距离")]
+    public float MaxDistanceToTargetRanged = 15f;
+
+    [PropertyDisplay("到目标圈的最小距离")]
+    public float MinDistance = 0f;
+
+    [PropertyDisplay("距禁区的优选距离", tooltip: "内部会限制为最大 3 码，以保留可用的寻路功能。")]
+    public float PreferredDistance = 0f;
+
+    [PropertyDisplay("启用自动挂机", tooltip: "脱离战斗时启用自动挂机。挂机期间，AI不会使用自动循环或瞄准任何目标")]
+    public bool AutoAFK = false;
+
+    [PropertyDisplay("自动挂机时间", tooltip: "离开战斗直至启用挂机模式的时间（秒）。任何移动都将重置计时器或禁用已激活的挂机模式")]
+    public float AFKModeTimer = 10f;
+
+    [PropertyDisplay("禁用加载障碍物地图", tooltip: "对于某些内容（例如深层迷宫），可能需要启用此项")]
+    public bool DisableObstacleMaps = false;
+
+    [PropertyDisplay("移动决策延迟", tooltip: "更改此值需您自担风险，并保持此值较低！太高则无法及时适应某些机制。请确保针对不同内容重新调整此值")]
+    public double MoveDelay = default;
+
+    [PropertyDisplay("骑乘时空闲")]
+    public bool ForbidAIMovementMounted = false;
+
+    [PropertyDisplay("输出斜杠命令到聊天")]
+    public bool EchoToChat = true;
+
+    [PropertyDisplay("跟随 RotationSolverReborn 期望的身位", tooltip: "启用后，自动移动将通过 IPC 使用 RotationSolverReborn 当前请求的身位")]
+    public bool FollowRSRDesiredPositional = true;
+
+    public string? AIAutorotPresetName;
+
+    public float GetMaxDistanceToTarget(Role role) => role is Role.Tank or Role.Melee ? MaxDistanceToTargetMelee : MaxDistanceToTargetRanged;
+}

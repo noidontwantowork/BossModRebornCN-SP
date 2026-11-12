@@ -1,0 +1,22 @@
+﻿namespace BossMod.Shadowbringers.Foray.Duel.Duel5Menenius;
+
+sealed class BlueHiddenMines(BossModule module) : Components.GenericTowers(module)
+{
+    public override void OnEventCast(Actor caster, ActorCastEvent spell)
+    {
+        if (spell.Action.ID is var id && id == (uint)AID.ActivateBlueMine)
+        {
+            Towers.Add(new(caster.Position, 3.6f));
+        }
+        else if (id is (uint)AID.DetonateBlueMine)
+        {
+            Towers.RemoveAll(t => t.Position.AlmostEqual(caster.Position, 1f));
+        }
+    }
+
+    public override void AddHints(int slot, Actor actor, TextHints hints)
+    {
+        if (Towers.Count > 0)
+            hints.Add("Soak the mine!");
+    }
+}
