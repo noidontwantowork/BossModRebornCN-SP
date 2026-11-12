@@ -24,7 +24,7 @@ BossmodReborn is a community-driven fork of the original Bossmod plugin for Fina
 | `DefaultRotationPresets.json` | 自动循环默认预设 |
 | `RebornPresets.json` | 附加预设 |
 
-安装：卫月 → 设置 → 实验性功能 → 添加本地插件目录，指向这 6 个文件所在目录，然后重启游戏即可在插件列表看到「BossMod Reborn」。
+安装：卫月 → 设置 → 插件 → 第三方插件/本地插件，填入仓库链接或指向本地插件所在目录，即可在插件列表看到「BossMod Reborn」。
 
 ## 合并内容
 
