@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE11ShadowOfDeathHand;
+namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE11ShadowOfDeathHand;
 
 public enum OID : uint
 {

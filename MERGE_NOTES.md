@@ -123,7 +123,47 @@
 | `Util\ShapeDistance\KnockbackInAABBSquare.cs` 新增类、`ManualActionQueueTweak` 的 `Clear()`/`IsRSREnabled()` | 全库无调用点，纯死代码 |
 | `Debug\DebugCollision.cs` 的按楼层导出碰撞 | 调试工具，不影响游戏内行为 |
 
-### 6. 与上游 7.5.8.2 的同步
+### 6. 与 7.5.6.21 博兹雅版的同步
+
+来源：[duyaxxx/BossmodRebornCN](https://github.com/duyaxxx/BossmodRebornCN) 的分支 `codex/bzy-ce-fate-updates`（提交 `005e2847`，「Improve Bozja CE and FATE drawing and AI avoidance」，19 个文件）。该分支的模块清单与 7.5.8.1/7.5.8.2 完全一致（`Shadowbringers.Foray` 下 61 vs 60，唯一差异是内部测试类 `CE61LeanMeanMagitekMachinesInProgress`），因此**没有新增模块**，全部是已有模块的机制绘制与 AI 避让增强，已用该版实现覆盖：
+
+`Modules\Shadowbringers\Foray\CriticalEngagement\` 下 `CE11ShadowOfDeathHand`、`CE12BayingOfHounds`、`CE13KillItWithFire`、`CE21FinalFurlong`、`CE22TheHuntForRedChoctober`、`CE23FiresOfWar`、`CE24PatriotGames`、`CE32RiseOfTheRobots`、`CE34TrampledUnderHoof`、`CE42FromBeyondTheGrave`、`CE43OnSerpentsWings`、`CE51ThereWouldBeBlood`、`CE53HereComesTheCavalry`、`CE54NeverCryWolf`、`CE61LeanMeanMagitekMachines`、`CE62LooksToDieFor`、`CE64FeelingTheBurn`，以及 `...\Foray\Skirmish\` 下 `ImAMechanicalMan`、`OfSteelAndFlame`。
+
+其中相对 7.5.6.17 斗兽版再增强的部分：
+
+| 模块 | 增强内容 |
+| --- | --- |
+| `CE12BayingOfHounds` | `TailBlow` 用 `Arena.Bounds.ClipCone(...)` 把扇形裁剪到场地边界后以 `Arena.AddComplexPolygon(clipped, Colors.Danger, 2f)` 描边，贴着场地边缘的小块残留区域也能看清 |
+| `CE24PatriotGames` | `LightningRod` 新增 `CanSoak(actor)`（坦克且 HP ≥ 90% 才可踩塔），非可踩时用 `hints.AddForbiddenZone(new SDCircle(tower.Position, 8f))` 禁止 AI 靠近 |
+| `CE51ThereWouldBeBlood` | 新增 `ElectricFence` 组件（`OID.ElectricFence = 0x1EB176`）绘制带电地板甜甜圈；场地半径由 25 m 扩为 `ArenaRadius = 30f`（`SafeRadius = 25f` 仍用于开怪判定） |
+| `CE62LooksToDieFor` | 同款 `ElectricFence`（`OID.ElectricFence = 0x1EB180`，`SafeRadius = 20f` / `ArenaRadius = 30f`），场地由 20 m 扩为 30 m |
+
+为支撑上述绘制，`BossModule\ArenaBounds.cs` 新增了形状裁剪 API（与 7.5.6.21 同名同语义，实现基于本版已有的 `Shape` / `PolygonClipper`）：
+
+```csharp
+public readonly PolygonClipper Clipper = new();
+public RelSimplifiedComplexPolygon Clip(ReadOnlySpan<WDir> poly);
+public RelSimplifiedComplexPolygon Clip(RelSimplifiedComplexPolygon poly);
+public WDir[] CircleVertices(WDir centerOffset, float radius);
+public WDir[] ConeVertices(WDir centerOffset, float innerRadius, float outerRadius, Angle centerDirection, Angle halfAngle);
+public RelSimplifiedComplexPolygon ClipCircle(WDir centerOffset, float radius);
+public RelSimplifiedComplexPolygon ClipCone(WDir centerOffset, float innerRadius, float outerRadius, Angle centerDirection, Angle halfAngle);
+```
+
+**「支持的战斗」里的分组名**（`Config\ModuleViewer.cs`）按对照关系统一为：
+
+| 7.5.6.21 博兹雅版 | 本版 |
+| --- | --- |
+| 女王古殿 / 零式女王古殿 | 女王古殿 / 零式女王古殿（走 `ContentFinderCondition` 中文层，无需硬编码） |
+| Castrum Lacus Litore | 帝国湖岸堡攻城战 |
+| The Dalriada | 旗舰达尔里阿达号 |
+| 南方博兹雅战线 FATE / 扎杜诺尔高原 FATE | 南方博兹雅战线危命任务 / 扎杜诺尔高原危命任务 |
+| 南方博兹雅战线 CE / 扎杜诺尔高原 CE | 南方博兹雅战线紧急遭遇战 / 扎杜诺尔高原紧急遭遇战 |
+| 南方博兹雅战线 Duel / 扎杜诺尔高原 Duel | 南方博兹雅战线单挑 / 扎杜诺尔高原单挑 |
+
+内容类型 `Quantum` 由英文改为「深想战」（`Customize(BossModuleInfo.Category.Quantum, …, "深想战")`）。
+
+### 7. 与上游 7.5.8.2 的同步
 
 上游 7.5.8.2 只包含一个修复（[PR #1395](https://github.com/FFXIV-CombatReborn/BossmodReborn/pull/1395)「Fix for null hooking」）：`BossMod\Util\Hook.cs` 的 `HookAddress(nint address, T detour, bool autoEnable)` 构造函数在解析出的地址为 `0` 时直接抛 `InvalidOperationException`，而不是继续 `HookFromAddress(0, ...)` 造成难以定位的静默失效。本版已同步（异常文本 `Cannot hook {typeof(T).Name}: resolved address is null. CS may need updating.`），签名扫描失败时会以明确异常暴露。
 

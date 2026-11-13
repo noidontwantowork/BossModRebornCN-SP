@@ -133,7 +133,7 @@ public sealed partial class ModuleViewer(PlanDatabase? planDB, WorldState ws) : 
         Customize(BossModuleInfo.Category.TreasureHunt, contentType.GetRow(9u));
         Customize(BossModuleInfo.Category.GoldSaucer, contentType.GetRow(19u));
         Customize(BossModuleInfo.Category.DeepDungeon, contentType.GetRow(21u));
-        Customize(BossModuleInfo.Category.Quantum, contentType.GetRow(21u), "Quantum");
+        Customize(BossModuleInfo.Category.Quantum, contentType.GetRow(21u), "深想战");
         Customize(BossModuleInfo.Category.Ultimate, contentType.GetRow(28u));
         Customize(BossModuleInfo.Category.VariantCriterion, contentType.GetRow(30u));
         Customize(BossModuleInfo.Category.HallOfTheNovice, contentType.GetRow(20u), "初学者学堂");
@@ -633,7 +633,7 @@ public sealed partial class ModuleViewer(PlanDatabase? planDB, WorldState ws) : 
                 return new("两歧塔 超魔之塔", groupId, groupId);
             case BossModuleInfo.GroupType.ForayFATE:
                 groupId |= module.GroupID;
-                return new($"{FixCase(Service.LuminaRow<ContentFinderCondition>(module.GroupID)!.Value.Name)} 危命任务", groupId, groupId);
+                return new($"{FixCase(Service.LuminaRow<ContentFinderCondition>(module.GroupID)!.Value.Name)}危命任务", groupId, groupId);
             case BossModuleInfo.GroupType.Quest:
                 var questRow = Service.LuminaRow<Quest>(module.GroupID)!.Value;
                 groupId |= questRow.JournalGenre.RowId;
@@ -645,10 +645,10 @@ public sealed partial class ModuleViewer(PlanDatabase? planDB, WorldState ws) : 
                 return new($"{module.Expansion.ShortName()} 狩猎 {(BossModuleInfo.HuntRank)module.GroupID}", groupId, groupId, _iconHunt);
             case BossModuleInfo.GroupType.CriticalEngagement:
                 groupId |= module.GroupID;
-                return new($"{FixCase(Service.LuminaRow<ContentFinderCondition>(module.GroupID)!.Value.Name)} 紧急遭遇战", groupId, groupId);
+                return new($"{FixCase(Service.LuminaRow<ContentFinderCondition>(module.GroupID)!.Value.Name)}紧急遭遇战", groupId, groupId);
             case BossModuleInfo.GroupType.BozjaDuel:
                 groupId |= module.GroupID;
-                return new($"{FixCase(Service.LuminaRow<ContentFinderCondition>(module.GroupID)!.Value.Name)} 单挑", groupId, groupId);
+                return new($"{FixCase(Service.LuminaRow<ContentFinderCondition>(module.GroupID)!.Value.Name)}单挑", groupId, groupId);
             case BossModuleInfo.GroupType.EurekaNM:
                 groupId |= module.GroupID;
                 return new(FixCase(Service.LuminaRow<ContentFinderCondition>(module.GroupID)!.Value.Name), groupId, groupId);

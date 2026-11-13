@@ -52,9 +52,8 @@ sealed class ArenaChange(BossModule module) : Components.GenericAOEs(module)
     {
         if (actor.OID == (uint)OID.Deathwall)
         {
-            Arena.Bounds = new ArenaBoundsCircle(20f); // default arena got no extra collision, just a donut aoe
-            Arena.Center = Arena.Center.Quantized();
-            _aoe = [];
+            // The damaging ring persists without changing the arena boundary.
+            _aoe = [new(donut, Arena.Center)];
         }
     }
 }
@@ -113,8 +112,7 @@ sealed class DemonEye(BossModule module) : Components.GenericGaze(module)
         var id = spell.Action.ID;
         if (id == (uint)AID.FalseDemonEye)
         {
-            var loc = spell.LocXZ;
-            _eyes.Add(new(loc, Module.CastFinishAt(spell), inverted: inverted, eyeCenter: IndicatorWorldPos(loc)));
+            _eyes.Add(new(spell.LocXZ, Module.CastFinishAt(spell), inverted: inverted));
         }
         else if (id == (uint)AID.DemonEye)
         {
@@ -123,11 +121,8 @@ sealed class DemonEye(BossModule module) : Components.GenericGaze(module)
             var eyes = CollectionsMarshal.AsSpan(_eyes);
             for (var i = 0; i < count; ++i)
             {
-                ref readonly var eye = ref eyes[i];
-                if (!eye.Inverted)
-                {
-                    eyes[i] = new(eye.Position, eye.Activation, inverted: true, eyeCenter: eye.EyeCenter);
-                }
+                ref var eye = ref eyes[i];
+                eye = new(eye.Position, eye.Activation, inverted: true);
             }
         }
     }

@@ -41,7 +41,8 @@ public enum IconID : uint
 sealed class ElectricFence(BossModule module) : Components.GenericAOEs(module)
 {
     // Keep the full square visible, as in CE64, and draw its electrified border separately.
-    private static readonly AOEShapeCustom fence = new(CE61LeanMeanMagitekMachines.ArenaCenter,
+    private static readonly AOEShapeCustom fence = new(
+        CE61LeanMeanMagitekMachines.ArenaCenter,
         [new Rectangle(CE61LeanMeanMagitekMachines.ArenaCenter, CE61LeanMeanMagitekMachines.ArenaHalfSize, CE61LeanMeanMagitekMachines.ArenaHalfSize)],
         [new Rectangle(CE61LeanMeanMagitekMachines.ArenaCenter, CE61LeanMeanMagitekMachines.SafeHalfSize, CE61LeanMeanMagitekMachines.SafeHalfSize)]);
     private readonly List<Actor> _fences = module.Enemies((uint)OID.ElectricFence);

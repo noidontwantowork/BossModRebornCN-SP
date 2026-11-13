@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE13KillItWithFire;
+namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE13KillItWithFire;
 
 public enum OID : uint
 {

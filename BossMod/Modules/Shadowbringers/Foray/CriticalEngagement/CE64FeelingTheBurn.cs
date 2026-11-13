@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE64FeelingTheBurn;
+namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE64FeelingTheBurn;
 
 public enum OID : uint
 {
@@ -47,7 +47,8 @@ public enum IconID : uint
 sealed class ElectricFence(BossModule module) : Components.GenericAOEs(module)
 {
     // b2260yuka6_d.avfx: square electric floor from 20y to 25y on each axis.
-    private static readonly AOEShapeCustom fence = new(CE64FeelingTheBurn.ArenaCenter,
+    private static readonly AOEShapeCustom fence = new(
+        CE64FeelingTheBurn.ArenaCenter,
         [new Rectangle(CE64FeelingTheBurn.ArenaCenter, CE64FeelingTheBurn.ArenaHalfSize, CE64FeelingTheBurn.ArenaHalfSize)],
         [new Rectangle(CE64FeelingTheBurn.ArenaCenter, CE64FeelingTheBurn.SafeHalfSize, CE64FeelingTheBurn.SafeHalfSize)]);
     private readonly List<Actor> _fences = module.Enemies((uint)OID.ElectricFence);

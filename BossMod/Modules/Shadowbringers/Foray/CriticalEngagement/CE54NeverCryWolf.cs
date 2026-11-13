@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE54NeverCryWolf;
+namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE54NeverCryWolf;
 
 public enum OID : uint
 {
@@ -49,7 +49,8 @@ public enum AID : uint
 sealed class ElectricFence(BossModule module) : Components.GenericAOEs(module)
 {
     // b2261yuka7_d.avfx: square ice floor between the 24y safe edge and the 30y outer edge.
-    private static readonly AOEShapeCustom fence = new(CE54NeverCryWolf.ArenaCenter,
+    private static readonly AOEShapeCustom fence = new(
+        CE54NeverCryWolf.ArenaCenter,
         [new Rectangle(CE54NeverCryWolf.ArenaCenter, CE54NeverCryWolf.ArenaHalfSize, CE54NeverCryWolf.ArenaHalfSize)],
         [new Rectangle(CE54NeverCryWolf.ArenaCenter, CE54NeverCryWolf.SafeHalfSize, CE54NeverCryWolf.SafeHalfSize)]);
     private readonly List<Actor> _fences = module.Enemies((uint)OID.ElectricFence);

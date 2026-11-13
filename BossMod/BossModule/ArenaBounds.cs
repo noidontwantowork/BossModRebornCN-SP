@@ -52,6 +52,40 @@ public abstract class ArenaBounds(float radius, float mapResolution, float scale
     public abstract float IntersectRay(in WDir originOffset, in WDir dir);
     public abstract WDir ClampToBounds(in WDir offset);
 
+    // shape clipping helpers, used to draw shapes trimmed to the arena border
+    public readonly PolygonClipper Clipper = new();
+
+    public RelSimplifiedComplexPolygon Clip(ReadOnlySpan<WDir> poly)
+        => poly.Length < 3 ? new RelSimplifiedComplexPolygon() : Clipper.Intersect(new PolygonClipper.Operand(poly), new PolygonClipper.Operand(Shape));
+
+    public RelSimplifiedComplexPolygon Clip(RelSimplifiedComplexPolygon poly)
+        => Clipper.Intersect(new PolygonClipper.Operand(poly), new PolygonClipper.Operand(Shape));
+
+    public WDir[] CircleVertices(WDir centerOffset, float radius)
+        => CurveApprox.Circle(centerOffset, radius, CurveApprox.ScreenError);
+
+    public WDir[] ConeVertices(WDir centerOffset, float innerRadius, float outerRadius, Angle centerDirection, Angle halfAngle)
+    {
+        if (innerRadius >= outerRadius || innerRadius < 0f || halfAngle.Rad <= 0f)
+        {
+            return [];
+        }
+
+        var fullCircle = halfAngle.Rad >= MathF.PI;
+        var start = centerDirection - halfAngle;
+        var end = centerDirection + halfAngle;
+        const float maxError = CurveApprox.ScreenError;
+        return innerRadius == 0f
+            ? fullCircle ? CurveApprox.Circle(centerOffset, outerRadius, maxError) : CurveApprox.CircleSector(centerOffset, outerRadius, start, end, maxError)
+            : fullCircle ? CurveApprox.Donut(centerOffset, innerRadius, outerRadius, maxError) : CurveApprox.DonutSector(centerOffset, innerRadius, outerRadius, start, end, maxError);
+    }
+
+    public RelSimplifiedComplexPolygon ClipCircle(WDir centerOffset, float radius)
+        => Clip(CircleVertices(centerOffset, radius));
+
+    public RelSimplifiedComplexPolygon ClipCone(WDir centerOffset, float innerRadius, float outerRadius, Angle centerDirection, Angle halfAngle)
+        => Clip(ConeVertices(centerOffset, innerRadius, outerRadius, centerDirection, halfAngle));
+
     public int GetVerticeCount()
     {
         var parts = Shape.Parts;

@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE21FinalFurlong;
+namespace BossMod.Shadowbringers.Foray.CriticalEngagement.CE21FinalFurlong;
 
 public enum OID : uint
 {
