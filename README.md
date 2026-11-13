@@ -17,6 +17,8 @@
 
 安装：卫月 → 设置 → 插件 → 第三方插件，填入仓库链接 `https://raw.githubusercontent.com/noidontwantowork/BossModRebornCN-SP/main/pluginmaster.json` ，即可在插件列表看到「BossMod Reborn」。
 
+打包好的插件 zip（21,386,435 B，与 `dist/` 内文件一致）：`https://raw.githubusercontent.com/noidontwantowork/BossModRebornCN-SP/main/dist/BossModRebornCN-SP-7.5.8.2.zip`
+
 ## 合并内容
 
 ### 1. 斗兽奇弈模块（来自 7.5.6.17 斗兽版）
