@@ -2,7 +2,8 @@
   <PropertyGroup>
     <Authors>The Combat Reborn Team / NiGuangOwO / KanoNoUta</Authors>
     <Company>The Combat Reborn Team</Company>
-    <Version>7.5.8.1</Version>
+    <Version>7.5.8.2</Version>
+    <AssemblyVersion>7.5.8.2</AssemblyVersion>
     <Description>国服本地化版与斗兽版的合并构建，保留国服中文化与全部独有功能，并包含「斗兽奇弈（驯兽师 / Beastmaster）」的相关副本支持。</Description>
     <Copyright></Copyright>
     <PackageProjectUrl></PackageProjectUrl>

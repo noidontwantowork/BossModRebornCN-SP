@@ -622,7 +622,7 @@ public sealed partial class ModuleViewer(PlanDatabase? planDB, WorldState ws) : 
             case BossModuleInfo.GroupType.BaldesionArsenal:
                 return new("兵武塔", groupId, groupId);
             case BossModuleInfo.GroupType.CastrumLacusLitore:
-                return new("Castrum Lacus Litore", groupId, groupId);
+                return new("帝国湖岸堡攻城战", groupId, groupId);
             case BossModuleInfo.GroupType.TheDalriada:
                 return new("旗舰达尔里阿达号", groupId, groupId);
             case BossModuleInfo.GroupType.TheForkedTowerBlood:

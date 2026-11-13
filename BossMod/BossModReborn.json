@@ -2,8 +2,8 @@
   "Author": "The Combat Reborn Team / NiGuangOwO（本地化&适配） / KanoNoUta（斗兽奇弈支持）",
   "Name": "BossMod Reborn",
   "InternalName": "BossModReborn",
-  "AssemblyVersion": "7.5.8.1",
-  "Description": "国服本地化版与斗兽版的合并构建，保留国服中文化与全部独有功能（AEAssist 联动、AOE 广播 IPC、PalacePal陷阱刷新等），并包含「斗兽奇弈（驯兽师 / Beastmaster）」的相关副本支持。",
+  "AssemblyVersion": "7.5.8.2",
+  "Description": "国服本地化版与斗兽版的合并构建，保留国服中文化与全部独有功能（AEAssist 联动、AOE 广播 IPC、PalacePal陷阱刷新等），并包含「斗兽奇弈（驯兽师 / Beastmaster）」的相关副本支持，以及斗兽版对博兹雅南方战线 CE/遭遇战的机制绘制与 AI 避让增强。",
   "ApplicableVersion": "any",
   "RepoUrl": "https://github.com/FFXIV-CombatReborn/BossmodReborn",
   "Tags": [
