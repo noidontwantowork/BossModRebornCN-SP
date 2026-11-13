@@ -1,5 +1,7 @@
 # BossModReborn 合并版（国服本地化 + 斗兽奇弈）
 
+上游项目：[FFXIV-CombatReborn/BossmodReborn](https://github.com/FFXIV-CombatReborn/BossmodReborn) —— 本版本在其 7.5.8.1 源码基线之上构建（并已合入上游 7.5.8.2 的 `HookAddress` 空地址保护修复），再合并国服本地化与斗兽奇弈支持。上游的一切功劳归 The Combat Reborn Team 及其贡献者。
+
 基于 **7.5.8.1 国服本地化版**的功能基线，合入 **7.5.6.17 斗兽版**独有的「斗兽奇弈（Crucible of the Unbroken / Beastmaster）」副本支持，产出一个可直接被卫月（Dalamud）加载的插件。
 
 ## 产物
@@ -7,11 +9,13 @@
 | 文件 | 说明 |
 | --- | --- |
 | `BossModReborn.dll` | 主插件（约 105 MB，内嵌 456 个资源：字体、着色器、寻路障碍图） |
-| `BossModReborn.json` | 插件清单（`InternalName` = `BossModReborn`，`AssemblyVersion` = `7.5.8.1`） |
+| `BossModReborn.json` | 插件清单（`InternalName` = `BossModReborn`，`AssemblyVersion` = `7.5.8.2`） |
 | `BossModReborn.pdb` | 调试符号（可选，便于异常栈定位） |
 | `RebornMaterial.dll` | UI 材质依赖（RebornMaterial 7.5.8.1） |
 | `DefaultRotationPresets.json` | 自动循环默认预设 |
 | `RebornPresets.json` | 附加预设 |
+
+安装：卫月 → 设置 → 插件 → 第三方插件，填入仓库链接 `https://raw.githubusercontent.com/noidontwantowork/BossModRebornCN-SP/main/pluginmaster.json` ，即可在插件列表看到「BossMod Reborn」。
 
 ## 合并内容
 
@@ -62,6 +66,8 @@
 
 剩余 6 条全部是有意保留或 difflib 错配：`ConfigUI::.cctor` 的 3 条是合并版新增的「近战 / 远程最大距离」帮助文本（国服对应位置是别的条目，属错配）；`UIPresetDatabaseEditor` 的预设说明里国服二进制带字面反斜杠转义（实际 UI 会多显示 `\`），保留裸引号；`AboutTab::Draw` 一条为错配。
 
+另修一处国服版自身遗漏的分组名：`ModuleViewer.ClassifyGroup` 的 `GroupType.CastrumLacusLitore` 分支在国服二进制里仍是英文 `"Castrum Lacus Litore"`，本版改为游戏内官方译名「帝国湖岸堡攻城战」。
+
 ### 4. 国服版相对上游 7.5.8.1 的独有功能（按国服二进制逐项复刻）
 
 国服版与上游同源但并非同一快照，以下功能只存在于国服版（及 7.5.6.17 斗兽版），上游 7.5.8.1 缺失，已全部补齐：
@@ -76,6 +82,56 @@
 | 回放记忆 | `Replay\ReplayMemory.cs`、`Replay\ReplayManagementConfig.cs` | 新增 `RememberReplays` / `RememberReplayTimes` / `ReplayHistory` 配置项（国服版中为半成品：仅存在配置节点，无运行时消费点，此处如实保留） |
 | Lumina 中文语言层 | `Framework\Service.cs` | `LuminaSheet<T>()` 由 `Language.English` 改为 `Language.ChineseSimplified`，否则国服客户端取不到副本名/技能名 |
 | 最低成熟度默认值 | `BossModule\BossModuleConfig.cs` | `MinMaturity` 默认值由 `Contributed` 改为 `WIP`，与国服版一致（否则大量开发中模块不会自动加载） |
+
+### 5. 斗兽版里「斗兽之外」的内容（博兹雅等区域的增强）
+
+斗兽版自身 `manifest.json` 的 `Changelog` 写明：`完善博兹雅南方战线 CE 与遭遇战的机制绘制和 AI 避让，新增 2 个 CE 与 2 个遭遇战模块（感谢 duyaxxx）`。这部分与斗兽无关，但确实只存在于斗兽版，已逐项移植：
+
+**新增 4 个模块**（`Modules\Shadowbringers\Foray\`）
+
+| 文件 | 类型 | GroupType / GroupID / NameID | 内容 |
+| --- | --- | --- | --- |
+| `CriticalEngagement\CE43OnSerpentsWings.cs` | CE | `CriticalEngagement` / 778 / 17 | 以 `OID.ElectricFence` 为主目标的机制绘制与 AI 避让 |
+| `CriticalEngagement\CE61LeanMeanMagitekMachines.cs` | CE | `CriticalEngagement` / 778 / 27 | 以 `OID.MagitekInfantry` 为主目标 |
+| `Skirmish\ImAMechanicalMan.cs` | 遭遇战 | `ForayFATE` / 735 / 1620 | 南方战线遭遇战 |
+| `Skirmish\OfSteelAndFlame.cs` | 遭遇战 | `ForayFATE` / 735 / 1626 | 含子模块 `OfSteelAndFlameSartauvoir`（`OID.Sartauvoir`） |
+
+移植前已核验这 4 个 `(GroupType, GroupID, NameID)` 在 7.5.8.1 中均未被占用，且模块只依赖主线 API（`Components.BaitAwayCast` / `GenericAOEs` / `SimpleAOEs` / `SimpleKnockbacks` / `GenericRotatingAOE` / `StackWithCastTargets` / `StatusDrivenForcedMarch` / `ProximityAOEs`）。
+
+**10 个 CE 的机制与 AI 增强**（用斗兽版实现覆盖主线的简化版）
+
+`CE11ShadowOfDeathHand` / `CE13KillItWithFire` / `CE21FinalFurlong` / `CE22TheHuntForRedChoctober` / `CE23FiresOfWar` / `CE32RiseOfTheRobots` / `CE42FromBeyondTheGrave` / `CE53HereComesTheCavalry` / `CE54NeverCryWolf` / `CE64FeelingTheBurn`。
+
+以 `CE42FromBeyondTheGrave` 为例，斗兽版比主线多出：`ElectricFence` 的保留外边界甜甜圈与致命地板绘制、完整的 `GallowsMarch` 行进 AI（6 m/s、5° 步进搜索 72 次、`SDInvertedCircle`/`SDCapsule` 禁区、`DesiredFacing`/`ForcedMarchImminent` 驱动）、带分散评分的 `Aethertide`、`PurifyingLight` 的事件清理，以及冲刺技能的临时屏蔽与恢复。
+
+**4 个黎明之途 FATE 增强**
+
+`Modules\Dawntrail\Foray\FATE\` 下的 `InconstantGardener`、`Thunderregnum`、`GaleForceEncounter`、`AllureOfTheOccult`。
+
+**开放世界 FATE 动态场地**（`BossModule\SimpleBossModule.cs`）
+
+`OpenWorldFate` 改为按 `ClientState.ActiveFate` 实时追踪 FATE 中心与半径，`Arena` 跟随 FATE 移动；并根据障碍图 `PixelSize` 自动选择 `ArenaBoundsCircle` 分辨率（>60 m 取 2、>30 m 取 1、否则 0.5），避免大地图 FATE 的场地判定失真。
+
+**明确不移植的斗兽版差异**
+
+| 差异 | 理由 |
+| --- | --- |
+| 15 个黎明之途 CE 的斗兽版实现（CE201FamiliarTactics 等新命名） | 与主线是同一批 CE 的两种实现，`NameID` 49–63 与 OID 一一对应；主线为 `Verified`/上游作者版本，斗兽版为 `Contributed` 自测版，保留主线 |
+| 4 个黎明之途 FATE（CrescentFan / CrescentGremlin / NH110 / NH111） | 其 `NameID` 是复制模板未改（与主线已有 FATE 冲突，NH111 与主线 `ShorelineShowdown` 同 OID 同 NameID） |
+| `ForkedTowerMagic` 的 FTMN4Index / FTMN2SwordDancer | 斗兽版是带「继续测试」注释的自测版，主线为 `Verified` 正式版且体量更大 |
+| `Pathfinding\NavigationDecision.cs` 的 `IncrementalBuilder` + `MinSafeGoalFraction` | 属寻路引擎改动，需同步修改 `AIBehaviour` / `NormalMovement` 的调用方式，风险高于收益，暂不并入 |
+| `Util\ShapeDistance\KnockbackInAABBSquare.cs` 新增类、`ManualActionQueueTweak` 的 `Clear()`/`IsRSREnabled()` | 全库无调用点，纯死代码 |
+| `Debug\DebugCollision.cs` 的按楼层导出碰撞 | 调试工具，不影响游戏内行为 |
+
+### 6. 与上游 7.5.8.2 的同步
+
+上游 7.5.8.2 只包含一个修复（[PR #1395](https://github.com/FFXIV-CombatReborn/BossmodReborn/pull/1395)「Fix for null hooking」）：`BossMod\Util\Hook.cs` 的 `HookAddress(nint address, T detour, bool autoEnable)` 构造函数在解析出的地址为 `0` 时直接抛 `InvalidOperationException`，而不是继续 `HookFromAddress(0, ...)` 造成难以定位的静默失效。本版已同步（异常文本 `Cannot hook {typeof(T).Name}: resolved address is null. CS may need updating.`），签名扫描失败时会以明确异常暴露。
+
+## 版本号说明
+
+插件版本为 **7.5.8.2**（在国服原版 7.5.8.1 基础上递增修订号，用于与本合并构建区分），`BossModReborn.json` 的 `AssemblyVersion` 与 DLL 的 `AssemblyVersion` / `FileVersion` / `ProductVersion` 全部为 `7.5.8.2`。
+
+卫月的 `PluginManifest.AssemblyVersion` 是 `System.Version` 类型，最多 4 段，因此不能使用 `7.5.8.1.1` 这类五段版本号（清单反序列化阶段会抛异常导致插件无法加载；MSBuild 的 `<Version>` 同样只接受 4 段，写成 5 段会让 NuGet 还原静默失败）。
 
 ## 斗兽模块在「支持的战斗」里的归类
 
