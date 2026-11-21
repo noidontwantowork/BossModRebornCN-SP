@@ -46,9 +46,9 @@
             "https://raw.githubusercontent.com/FFXIV-CombatReborn/BossmodReborn/master/Data/image2.png",
             "https://raw.githubusercontent.com/FFXIV-CombatReborn/BossmodReborn/master/Data/image3.png"
         ],
-        "DownloadLinkInstall": "https://raw.githubusercontent.com/noidontwantowork/BossModRebornCN-SP/main/dist/BossModRebornCN-SP-7.5.8.6.zip",
-        "DownloadLinkUpdate": "https://raw.githubusercontent.com/noidontwantowork/BossModRebornCN-SP/main/dist/BossModRebornCN-SP-7.5.8.6.zip",
-        "DownloadLinkTesting": "https://raw.githubusercontent.com/noidontwantowork/BossModRebornCN-SP/main/dist/BossModRebornCN-SP-7.5.8.6.zip"
+        "DownloadLinkInstall": "https://github.com/noidontwantowork/BossModRebornCN-SP/releases/download/BossModRebornCN-SP-7.5.8.6/BossModRebornCN-SP-7.5.8.6.zip",
+        "DownloadLinkUpdate": "https://github.com/noidontwantowork/BossModRebornCN-SP/releases/download/BossModRebornCN-SP-7.5.8.6/BossModRebornCN-SP-7.5.8.6.zip",
+        "DownloadLinkTesting": "https://github.com/noidontwantowork/BossModRebornCN-SP/releases/download/BossModRebornCN-SP-7.5.8.6/BossModRebornCN-SP-7.5.8.6.zip"
     },
      {
         "Author": "Noidontwantowork",
