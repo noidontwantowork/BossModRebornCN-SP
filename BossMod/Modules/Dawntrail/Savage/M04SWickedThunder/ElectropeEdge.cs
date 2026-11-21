@@ -110,7 +110,7 @@ sealed class LightningCage(BossModule module) : Components.GenericAOEs(module, (
                 }
             }
 
-            hints.Add($"Order: {Order[slot]}, position: {_gleams[slot] + Order[slot] - 1}", isActive && !safeExists);
+            hints.Add($"顺序：{Order[slot]}, position: {_gleams[slot] + Order[slot] - 1}", isActive && !safeExists);
         }
         base.AddHints(slot, actor, hints);
     }

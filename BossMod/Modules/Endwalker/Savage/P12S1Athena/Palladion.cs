@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P12S1Athena;
+namespace BossMod.Endwalker.Savage.P12S1Athena;
 
 // general mechanic tracking
 sealed class Palladion(BossModule module) : BossComponent(module)
@@ -14,7 +14,7 @@ sealed class Palladion(BossModule module) : BossComponent(module)
     {
         var order = Array.IndexOf(JumpTargets, actor);
         if (order >= 0)
-            hints.Add($"Order: {order + 1}", false);
+            hints.Add($"顺序：{order + 1}", false);
     }
 
     public override void OnEventIcon(Actor actor, uint iconID, ulong targetID)

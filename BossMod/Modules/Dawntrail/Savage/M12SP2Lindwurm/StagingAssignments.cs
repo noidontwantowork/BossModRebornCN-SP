@@ -337,7 +337,7 @@ abstract class StagingAssignment<TRole>(
             hints.Add("Grab correct tether!");
 
         if (wrongGrab)
-            hints.Add("Pass tether!");
+            hints.Add("传出连线！");
     }
 
     public override void DrawArenaForeground(int pcSlot, Actor pc)

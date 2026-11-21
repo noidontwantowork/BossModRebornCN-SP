@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.VariantCriterion.C01ASS.C012Gladiator;
+namespace BossMod.Endwalker.VariantCriterion.C01ASS.C012Gladiator;
 
 abstract class C012GladiatorStates : StateMachineBuilder
 {
@@ -165,8 +165,8 @@ abstract class C012GladiatorStates : StateMachineBuilder
         // note: spread explosions happen ~0.8s before tower explosions...
         Cast(id + 0x100u, _savage ? AID.SColossalWreck : AID.NColossalWreck, 4.9f, 6)
             .ActivateOnEnter<ScreamOfTheFallen>();
-        ComponentCondition<ScreamOfTheFallen>(id + 0x110u, 0.5f, static comp => comp.NumCasts > 0, "Towers 1");
-        ComponentCondition<ScreamOfTheFallen>(id + 0x120u, 4f, static comp => comp.NumCasts > 2, "Towers 2")
+        ComponentCondition<ScreamOfTheFallen>(id + 0x110u, 0.5f, static comp => comp.NumCasts > 0, "踩塔 1");
+        ComponentCondition<ScreamOfTheFallen>(id + 0x120u, 4f, static comp => comp.NumCasts > 2, "踩塔 2")
             .DeactivateOnExit<ScreamOfTheFallen>();
     }
 }

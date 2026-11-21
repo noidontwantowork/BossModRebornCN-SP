@@ -1,4 +1,4 @@
-﻿namespace BossMod.Components;
+namespace BossMod.Components;
 
 // generic component for mechanics that require baiting some aoe (by proximity, by tether, etc) away from raid
 // some players can be marked as 'forbidden' - if any of them is baiting, they are warned
@@ -211,7 +211,7 @@ public class GenericBaitAway(BossModule module, uint aid = default, bool alwaysD
 
                 if (IsClippedBy(actor, ref bait))
                 {
-                    hints.Add("GTFO from baited aoe!");
+                    hints.Add("离开诱导出的范围！");
                     break;
                 }
             }

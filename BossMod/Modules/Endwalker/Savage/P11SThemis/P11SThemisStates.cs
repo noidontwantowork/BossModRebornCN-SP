@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P11SThemis;
+namespace BossMod.Endwalker.Savage.P11SThemis;
 
 sealed class P11SThemisStates : StateMachineBuilder
 {
@@ -195,7 +195,7 @@ sealed class P11SThemisStates : StateMachineBuilder
             .DeactivateOnExit<ArcaneRevelation>();
         JuryOverruling(id + 0x2000u, 0.5f);
         DivisiveOverruling(id + 0x3000u, 6.2f);
-        Cast(id + 0x4000u, AID.EmissarysWill, 3.2f, 4, "Tethers resolve")
+        Cast(id + 0x4000u, AID.EmissarysWill, 3.2f, 4, "连线结算")
             .DeactivateOnExit<DarkAndLight>();
     }
 

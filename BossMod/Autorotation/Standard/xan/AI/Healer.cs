@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
+using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.Autorotation.TrackPartyHealth;
 
 namespace BossMod.Autorotation.xan;
@@ -64,7 +64,7 @@ public sealed class HealerAI(RotationModuleManager manager, Actor player) : AIBa
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("Healer AI", "Auto-healer", "AI (xan)", "xan", RotationModuleQuality.WIP, BitMask.Build(Class.CNJ, Class.WHM, Class.SCH, Class.SGE, Class.AST), 100).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("Healer AI", "Auto-healer", "AI（xan）", "xan", RotationModuleQuality.WIP, BitMask.Build(Class.CNJ, Class.WHM, Class.SCH, Class.SGE, Class.AST), 100).WithStrategies<Strategy>();
     }
 
     private void HealSingleSoon(in Strategy strategy, Action<Actor, float> healFun)

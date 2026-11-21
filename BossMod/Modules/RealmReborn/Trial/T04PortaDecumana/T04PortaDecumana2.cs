@@ -1,4 +1,4 @@
-﻿namespace BossMod.RealmReborn.Trial.T04PortaDecumana.Phase2;
+namespace BossMod.RealmReborn.Trial.T04PortaDecumana.Phase2;
 
 public enum OID : uint
 {
@@ -92,7 +92,7 @@ sealed class Aetheroplasm(BossModule module) : BossComponent(module)
     public override void AddGlobalHints(Actor actor, GlobalHints hints)
     {
         if (GetOrbs(Module).Count != 0)
-            hints.Add("Soak the orbs!");
+            hints.Add("去踩球！");
     }
 
     public override void AddAIHints(int slot, Actor actor, PartyRolesConfig.Assignment assignment, AIHints hints)

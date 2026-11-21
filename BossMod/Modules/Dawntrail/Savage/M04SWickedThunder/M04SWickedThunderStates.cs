@@ -158,7 +158,7 @@ sealed class M04SWickedThunderStates : StateMachineBuilder
         CastStart(id, AID.WickedBolt, delay)
             .ActivateOnEnter<WickedBolt>(); // icon appears ~0.1s before cast start
         CastEnd(id + 1u, 4f);
-        ComponentCondition<WickedBolt>(id + 0x10u, 1.1f, static comp => comp.NumFinishedStacks >= 1, "Stack 1");
+        ComponentCondition<WickedBolt>(id + 0x10u, 1.1f, static comp => comp.NumFinishedStacks >= 1, "分摊 1");
         ComponentCondition<WickedBolt>(id + 0x11u, 1f, static comp => comp.NumFinishedStacks >= 2);
         ComponentCondition<WickedBolt>(id + 0x12u, 1f, static comp => comp.NumFinishedStacks >= 3);
         ComponentCondition<WickedBolt>(id + 0x13u, 1f, static comp => comp.NumFinishedStacks >= 4);
@@ -241,8 +241,8 @@ sealed class M04SWickedThunderStates : StateMachineBuilder
             .DeactivateOnExit<Cannonbolt>()
             .SetHint(StateMachine.StateHint.Raidwide);
 
-        Targetable(id + 0x10u, false, 0.1f, "Boss disappears");
-        ActorTargetable(id + 0x20u, _module.BossP2, true, 11.9f, "Boss reappears")
+        Targetable(id + 0x10u, false, 0.1f, "首领消失");
+        ActorTargetable(id + 0x20u, _module.BossP2, true, 11.9f, "首领再现")
             .DeactivateOnEnter<CannonboltKB>()
             .OnEnter(() => Module.Arena.Bounds = new ArenaBoundsRect(20f, 15f))
             .OnEnter(() => Module.Arena.Center = new(100f, 165f))
@@ -333,7 +333,7 @@ sealed class M04SWickedThunderStates : StateMachineBuilder
         ComponentCondition<TwilightSabbath>(id + 2u, 3.2f, static comp => comp.AOEs.Count > 0)
             .ActivateOnEnter<TwilightSabbath>();
         ActorCast(id + 0x10u, _module.BossP2, AID.WickedFire, 1.0f, 4f, true);
-        ComponentCondition<WickedFire>(id + 0x12u, 0.1f, static comp => comp.Casters.Count > 0, "Puddle bait")
+        ComponentCondition<WickedFire>(id + 0x12u, 0.1f, static comp => comp.Casters.Count > 0, "诱导地面范围")
             .ActivateOnEnter<WickedFire>();
         ComponentCondition<TwilightSabbath>(id + 0x20u, 3.0f, static comp => comp.NumCasts > 0, "Cleaves 1");
         ComponentCondition<WickedFire>(id + 0x30u, 1.0f, static comp => comp.NumCasts > 0)
@@ -408,13 +408,13 @@ sealed class M04SWickedThunderStates : StateMachineBuilder
             .ActivateOnEnter<SunriseSabbathSoaringSoulpress>();
         ComponentCondition<SunriseSabbathElectronStream>(id + 0x41u, 3.1f, static comp => comp.Cannons.Count > 0)
             .ActivateOnEnter<SunriseSabbathElectronStream>();
-        ComponentCondition<SunriseSabbathSoaringSoulpress>(id + 0x50u, 7.1f, static comp => comp.NumCasts > 0, "Towers 1");
-        ComponentCondition<SunriseSabbathElectronStream>(id + 0x51u, 0.5f, static comp => comp.NumCasts > 0, "Baits 1");
+        ComponentCondition<SunriseSabbathSoaringSoulpress>(id + 0x50u, 7.1f, static comp => comp.NumCasts > 0, "踩塔 1");
+        ComponentCondition<SunriseSabbathElectronStream>(id + 0x51u, 0.5f, static comp => comp.NumCasts > 0, "诱导 1");
         WickedSpecial(id + 0x60, 1.4f);
         ComponentCondition<SunriseSabbathElectronStream>(id + 0x70u, 1.7f, static comp => comp.Cannons.Count > 0);
-        ComponentCondition<SunriseSabbathSoaringSoulpress>(id + 0x80u, 7.1f, static comp => comp.NumCasts > 2, "Towers 2")
+        ComponentCondition<SunriseSabbathSoaringSoulpress>(id + 0x80u, 7.1f, static comp => comp.NumCasts > 2, "踩塔 2")
             .DeactivateOnExit<SunriseSabbathSoaringSoulpress>();
-        ComponentCondition<SunriseSabbathElectronStream>(id + 0x81u, 0.5f, static comp => comp.NumCasts > 4, "Baits 2")
+        ComponentCondition<SunriseSabbathElectronStream>(id + 0x81u, 0.5f, static comp => comp.NumCasts > 4, "诱导 2")
             .DeactivateOnExit<SunriseSabbathElectronStream>()
             .DeactivateOnExit<SunriseSabbath>()
             .OnExit(() => Module.Arena.Bounds = new ArenaBoundsRect(20f, 15f)); // restore bounds (set to circle by azure thunder)

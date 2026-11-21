@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.VariantCriterion.C03AAI.C033Statice;
+namespace BossMod.Endwalker.VariantCriterion.C03AAI.C033Statice;
 
 abstract class C033StaticeStates : StateMachineBuilder
 {
@@ -92,7 +92,7 @@ abstract class C033StaticeStates : StateMachineBuilder
 
         Cast(id + 0x130u, _savage ? AID.STrapshooting2 : AID.NTrapshooting2, 0.7f, 4)
             .ActivateOnEnter<BeguilingGlitter>();
-        ComponentCondition<BeguilingGlitter>(id + 0x132u, 1.2f, static comp => comp.NumActiveForcedMarches > 0, "Forced march");
+        ComponentCondition<BeguilingGlitter>(id + 0x132u, 1.2f, static comp => comp.NumActiveForcedMarches > 0, "强制移动");
         ComponentCondition<Trapshooting>(id + 0x133u, 2.9f, static comp => comp.NumResolves > 1, "Spread/stack")
             .DeactivateOnExit<BeguilingGlitter>() // forced marches end ~0.9s before resolve
             .DeactivateOnExit<Trapshooting>()
@@ -101,7 +101,7 @@ abstract class C033StaticeStates : StateMachineBuilder
 
     private void Intermission(uint id, float delay)
     {
-        Targetable(id, false, delay, "Boss disappears");
+        Targetable(id, false, delay, "首领消失");
         Cast(id + 0x10u, _savage ? AID.SRingARingOExplosions : AID.NRingARingOExplosions, 1.5f, 3f)
             .ActivateOnEnter<RingARingOExplosions>();
         Cast(id + 0x20u, _savage ? AID.SPresentBox : AID.NPresentBox, 2.1f, 3f)
@@ -123,7 +123,7 @@ abstract class C033StaticeStates : StateMachineBuilder
             .DeactivateOnExit<RingARingOExplosions>();
         ComponentCondition<FaerieRing>(id + 0x53u, 0.2f, static comp => comp.NumCasts > 0)
             .DeactivateOnExit<FaerieRing>();
-        Targetable(id + 0x60u, true, 2.0f, "Boss reappears");
+        Targetable(id + 0x60u, true, 2.0f, "首领再现");
     }
 
     private void PinwheelingDartboard(uint id, float delay)

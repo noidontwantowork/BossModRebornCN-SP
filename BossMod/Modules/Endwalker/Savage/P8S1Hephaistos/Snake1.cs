@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P8S1Hephaistos;
+namespace BossMod.Endwalker.Savage.P8S1Hephaistos;
 
 // TODO: add various hints for gaze/explode
 sealed class Snake1(BossModule module) : PetrifactionCommon(module)
@@ -18,7 +18,7 @@ sealed class Snake1(BossModule module) : PetrifactionCommon(module)
 
         if (_players[slot].Order >= 0)
         {
-            hints.Add($"Order: {(_players[slot].IsExplode ? "explode" : "petrify")} {_players[slot].Order + 1}", false);
+            hints.Add($"顺序：{(_players[slot].IsExplode ? "explode" : "petrify")} {_players[slot].Order + 1}", false);
         }
     }
 

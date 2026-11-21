@@ -220,7 +220,7 @@ sealed class Ex4ZeleniaStates : StateMachineBuilder
         ComponentCondition<AlexandrianThunderIIIAOE>(id + 0x40u, 0.1f, static comp => comp.NumCasts != 0, "Circle AOEs")
             .DeactivateOnExit<ActiveTiles>()
             .DeactivateOnExit<AlexandrianThunderIIIAOE>();
-        ComponentCondition<ThornyVine>(id + 0x50u, 7.8f, static comp => comp.TethersAssigned, "Chains appear")
+        ComponentCondition<ThornyVine>(id + 0x50u, 7.8f, static comp => comp.TethersAssigned, "锁链出现")
             .DeactivateOnExit<Emblazon>()
             .ActivateOnEnter<ThornyVine>();
         ComponentCondition<AlexandrianBanishIII>(id + 0x60u, 0.3f, static comp => comp.CurrentBaits.Count != 0, "Stack appears")

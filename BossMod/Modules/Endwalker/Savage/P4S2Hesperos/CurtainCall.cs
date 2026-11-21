@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P4S2Hesperos;
+namespace BossMod.Endwalker.Savage.P4S2Hesperos;
 
 // state related to curtain call mechanic
 sealed class CurtainCall(BossModule module) : BossComponent(module)
@@ -24,7 +24,7 @@ sealed class CurtainCall(BossModule module) : BossComponent(module)
     public override void AddGlobalHints(Actor actor, GlobalHints hints)
     {
         if (_playersInBreakOrder != null)
-            hints.Add($"Order: {string.Join(" -> ", _playersInBreakOrder.Skip(_numCasts).Select(OrderTextForPlayer))}");
+            hints.Add($"顺序：{string.Join(" -> ", _playersInBreakOrder.Skip(_numCasts).Select(OrderTextForPlayer))}");
     }
 
     public override void DrawArenaForeground(int pcSlot, Actor pc)

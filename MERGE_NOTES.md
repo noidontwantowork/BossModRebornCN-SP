@@ -1,15 +1,15 @@
-# BossModReborn 合并版（国服本地化 + 斗兽奇弈）
+# BossModReborn 合并版（国服本地化 + 斗兽奇弈 + 博兹雅）
 
-上游项目：[FFXIV-CombatReborn/BossmodReborn](https://github.com/FFXIV-CombatReborn/BossmodReborn) —— 本版本在其 7.5.8.1 源码基线之上构建（并已合入上游 7.5.8.2 的 `HookAddress` 空地址保护修复），再合并国服本地化与斗兽奇弈支持。上游的一切功劳归 The Combat Reborn Team 及其贡献者。
+上游项目：[FFXIV-CombatReborn/BossmodReborn](https://github.com/FFXIV-CombatReborn/BossmodReborn) —— 本版本在其 **7.5.8.6** 源码基线之上构建，再合并国服本地化、斗兽奇弈支持与博兹雅增强。上游的一切功劳归 The Combat Reborn Team 及其贡献者。
 
-基于 **7.5.8.1 国服本地化版**的功能基线，合入 **7.5.6.17 斗兽版**独有的「斗兽奇弈（Crucible of the Unbroken / Beastmaster）」副本支持，产出一个可直接被卫月（Dalamud）加载的插件。
+以 **7.5.8.6 国服本地化版**（[NiGuangOwO/DalamudPlugins](https://github.com/NiGuangOwO/DalamudPlugins/tree/main/plugins/BossModReborn)）为本地化与独有功能基线，合入 **7.5.6.17 斗兽版**独有的「斗兽奇弈（Crucible of the Unbroken / Beastmaster）」副本支持，以及 **7.5.6.21 博兹雅版**（[duyaxxx/BossmodRebornCN](https://github.com/duyaxxx/BossmodRebornCN)，分支 `codex/bzy-ce-fate-updates`）对南方博兹雅战线 / 扎杜诺尔高原的机制绘制与 AI 避让增强，产出一个可直接被卫月（Dalamud）加载的插件。
 
 ## 产物
 
 | 文件 | 说明 |
 | --- | --- |
 | `BossModReborn.dll` | 主插件（约 105 MB，内嵌 456 个资源：字体、着色器、寻路障碍图） |
-| `BossModReborn.json` | 插件清单（`InternalName` = `BossModReborn`，`AssemblyVersion` = `7.5.8.2`） |
+| `BossModReborn.json` | 插件清单（`InternalName` = `BossModReborn`，`AssemblyVersion` = `7.5.8.6`） |
 | `BossModReborn.pdb` | 调试符号（可选，便于异常栈定位） |
 | `RebornMaterial.dll` | UI 材质依赖（RebornMaterial 7.5.8.1） |
 | `DefaultRotationPresets.json` | 自动循环默认预设 |
@@ -169,9 +169,36 @@ public RelSimplifiedComplexPolygon ClipCone(WDir centerOffset, float innerRadius
 
 上游 7.5.8.2 只包含一个修复（[PR #1395](https://github.com/FFXIV-CombatReborn/BossmodReborn/pull/1395)「Fix for null hooking」）：`BossMod\Util\Hook.cs` 的 `HookAddress(nint address, T detour, bool autoEnable)` 构造函数在解析出的地址为 `0` 时直接抛 `InvalidOperationException`，而不是继续 `HookFromAddress(0, ...)` 造成难以定位的静默失效。本版已同步（异常文本 `Cannot hook {typeof(T).Name}: resolved address is null. CS may need updating.`），签名扫描失败时会以明确异常暴露。
 
+### 8. 升级到上游 7.5.8.6
+
+以上游 `FFXIV-CombatReborn/BossmodReborn` 标签 `7.5.8.6` 为新基线，做三方合并（基线 7.5.8.1、新上游 7.5.8.6、本合并树），共处理：
+
+- 上游新增 **31** 个文件（`Autorotation/MiscAI/PassiveAggressive.cs`、`Autorotation/Standard/StateTimeline.cs`、`Autorotation/Standard/kage/` 的 12 个 `Kage*` 策略、`Autorotation/Utility/ClassWHMUtilityEx.cs`、`Data/CrucibleID.cs`、`Framework/ContentsFinderIndicator.cs`、`C012LoneSwordmaster` 4 个文件、7 个 QuestBattle）；
+- 上游修改 **119** 个文件、删除 **1** 个（`Data/PullDistance.cs`，全库无引用）；
+- 冲突 **9** 个，逐一按「取上游新逻辑 + 回填本合并树增强」处理：
+  - `Autorotation/MiscAI/AutoTarget.cs` —— 取上游（`MinPriorityDistance` 改方法、`Closest` 计算），保留 `if (Hints.PreserveTarget) return;`；
+  - `Autorotation/Standard/xan/Casters/RDM.cs` —— 取上游（`Unlocked(AID.Verflare/Verholy)` 守卫），仅保留 3 条国服确有中文的 `[PropertyDisplay]`；
+  - `Autorotation/Utility/ClassSCHUtilityEx.cs` —— 取上游（本树差异仅为 BOM）；
+  - `BossModule/BossModuleConfig.cs` —— 保留中文文案，合入上游新增 `ShowDutyFinderIndicator`；
+  - `Framework/Plugin.cs` —— 取上游（新增 `ContentsFinderIndicator` 生命周期），回填 `AEAssistModule` 字段/初始化/释放与 `ClearTargetID` 清目标逻辑；
+  - `RebornUI/Settings/SettingsLayout.cs` —— 保留中文分组，合入上游 `ShowDutyFinderIndicator` 字段；
+  - `Replay/Analysis/ClassDefinitions.cs` —— 保留中文，合入上游 `Mean` 类与「生效延迟」统计；
+  - `Replay/Visualization/EventList.cs` —— 保留中文，合入上游 Shift 相对时间轴；
+  - `Util/Hook.cs` —— 取上游（7.5.8.6 已自带空地址保护）。
+
+本地化回灌：三方合并后上游英文覆盖了 **780 条**国服中文文案，按国服 7.5.8.6 二进制的 LDSTR 序列逐条回灌（首轮 767 处、次轮 118 处、三轮 19 处），收敛到：
+
+| 类别 | 合并前 | 合并后 | 说明 |
+| --- | --- | --- | --- |
+| `ENleftZH`（国服中文、本版英文） | 780 | **4** | 余 4 条为 `PassiveAggressive` 的 track 显示名（上游 7.5.8.6 的 `Define().As<T>()` 已无 displayName 参数）与 2 条 QuestBattle 目标名 |
+| `ZHdiffZH`（双方中文、译法不同） | 11 | **9** | 3 条为本版刻意去掉空格的博兹雅分组名、3 条为本版新增功能的帮助文案、2 条尾随空格、1 条 diff 错配 |
+| `ZHoverEN`（国服英文、本版中文） | 2 | 345 | 本版比国服多中文化的纯显示文本（策略 track 名、调试/回放表头），不影响功能 |
+
+`ContentsFinderIndicator` 的中文配置项文案（「在任务搜索器中标记已支持的副本」）随上游新功能一并落地。
+
 ## 版本号说明
 
-插件版本为 **7.5.8.2**（在国服原版 7.5.8.1 基础上递增修订号，用于与本合并构建区分），`BossModReborn.json` 的 `AssemblyVersion` 与 DLL 的 `AssemblyVersion` / `FileVersion` / `ProductVersion` 全部为 `7.5.8.2`。
+插件版本为 **7.5.8.6**（与国服本地化版号保持一致），`BossModReborn.json` 的 `AssemblyVersion` 与 DLL 的 `AssemblyVersion` / `FileVersion` / `ProductVersion` 全部为 `7.5.8.6`。
 
 卫月的 `PluginManifest.AssemblyVersion` 是 `System.Version` 类型，最多 4 段，因此不能使用 `7.5.8.1.1` 这类五段版本号（清单反序列化阶段会抛异常导致插件无法加载；MSBuild 的 `<Version>` 同样只接受 4 段，写成 5 段会让 NuGet 还原静默失败）。
 
@@ -206,7 +233,7 @@ public RelSimplifiedComplexPolygon ClipCone(WDir centerOffset, float innerRadius
 ## 已知行为
 
 - XBMB01–45 与 `Global\CrucibleOfTheUnbroken`（棋子棋盘）共用 `PrimaryActorOID`。`BossModuleRegistry` 采用先注册者胜，生成注册表的顺序为 `Dawntrail` 先于 `Global`，**运行时由 XBMB 模块接管**，与 7.5.6.17 斗兽版行为一致。编译期会因此产生 32 对 `BMSG005` 警告，属预期。
-- `RebornMaterial.dll` 与上游 7.5.8.1 NuGet 包一致（363 520 B），与国服版随附文件同源。
+- `RebornMaterial.dll` 与上游 7.5.8.6 的 `csproj` 引用一致（上游仍用 `RebornMaterial 7.5.8.1`，363 520 B），与国服版随附文件同源。
 
 ## 复现构建
 

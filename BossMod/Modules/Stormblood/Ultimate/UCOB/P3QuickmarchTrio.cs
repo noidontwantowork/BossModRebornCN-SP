@@ -1,4 +1,4 @@
-﻿namespace BossMod.Stormblood.Ultimate.UCOB;
+namespace BossMod.Stormblood.Ultimate.UCOB;
 
 sealed class P3QuickmarchTrio(UCOB module) : BossComponent(module)
 {
@@ -229,7 +229,7 @@ sealed class P3TempestWing(BossModule module) : Components.TankbusterTether(modu
         {
             if (!_tetheredPlayers[slot])
             {
-                hints.Add("Grab the tether!");
+                hints.Add("接走连线！");
                 return;
             }
             if (!EnableRaidHints)

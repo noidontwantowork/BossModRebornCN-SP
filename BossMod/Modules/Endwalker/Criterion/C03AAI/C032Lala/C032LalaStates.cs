@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.VariantCriterion.C03AAI.C032Lala;
+namespace BossMod.Endwalker.VariantCriterion.C03AAI.C032Lala;
 
 abstract class C032LalaStates : StateMachineBuilder
 {
@@ -91,7 +91,7 @@ abstract class C032LalaStates : StateMachineBuilder
             .ActivateOnEnter<PlanarTactics>(); // debuffs appear ~0.9s after cast end
         Cast(id + 0x10u, _savage ? AID.SArcaneMine : AID.NArcaneMine, 2.1f, 13.1f)
             .ActivateOnEnter<PlanarTacticsForcedMarch>(); // icons appear ~4.8s into cast
-        ComponentCondition<PlanarTacticsForcedMarch>(id + 0x20u, 1.7f, static comp => comp.NumActiveForcedMarches > 0, "Forced march")
+        ComponentCondition<PlanarTacticsForcedMarch>(id + 0x20u, 1.7f, static comp => comp.NumActiveForcedMarches > 0, "强制移动")
             .DeactivateOnExit<PlanarTactics>();
         CastStart(id + 0x30u, _savage ? AID.SInfernoTheorem : AID.NInfernoTheorem, 5.4f)
             .ActivateOnEnter<SymmetricSurge>();

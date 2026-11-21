@@ -93,7 +93,7 @@ sealed class T07DoomtrainStates : StateMachineBuilder
     // move to circle arena with ghost train
     void Intermission(uint id, float delay)
     {
-        Timeout(id, delay, "Boss reappears")
+        Timeout(id, delay, "首领再现")
             .SetHint(StateMachine.StateHint.DowntimeEnd)
             .OnEnter(() =>
             {

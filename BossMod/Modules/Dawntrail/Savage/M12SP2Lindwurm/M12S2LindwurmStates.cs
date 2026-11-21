@@ -199,7 +199,7 @@ class M12S2LindwurmStates : StateMachineBuilder
 
         CastStart(id + 0x150u, AID.LindwurmsMeteor, 3.5f)
             .ActivateOnEnter<LindwurmsMeteor>();
-        ComponentCondition<IdyllicDreamPowerGusherSnakingKick>(id + 0x151u, 0.9f, static comp => comp.NumCasts > 0, "Stored AOEs")
+        ComponentCondition<IdyllicDreamPowerGusherSnakingKick>(id + 0x151u, 0.9f, static comp => comp.NumCasts > 0, "储存的范围攻击")
             .ExecOnExit<IdyllicDreamArena>(static comp => comp.Predict(7.8d));
         CastEnd(id + 0x152u, 4.1f, "Raidwide")
             .SetHint(StateMachine.StateHint.Raidwide)

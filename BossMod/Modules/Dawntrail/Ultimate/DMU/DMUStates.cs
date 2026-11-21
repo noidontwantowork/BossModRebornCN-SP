@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Ultimate.DMU;
+namespace BossMod.Dawntrail.Ultimate.DMU;
 
 sealed class DMUStates : StateMachineBuilder {
     private readonly DMU _module;
@@ -176,7 +176,7 @@ sealed class DMUStates : StateMachineBuilder {
         ComponentCondition<FlagrantFire>(id + 0x100, 0.6f, static o => !o.Active, "Stack / Spread")
             .DeactivateOnExit<GravenImage3FlagrantFire>();
 
-        Targetable(id + 0x1000u, false, 10.4f, "Boss disappears");
+        Targetable(id + 0x1000u, false, 10.4f, "首领消失");
     }
 
     private void Phase5(uint id)
@@ -767,7 +767,7 @@ sealed class DMUStates : StateMachineBuilder {
             .ActivateOnEnter<UltimateEmbrace>()
             .DeactivateOnExit<UltimateEmbrace>();
 
-        ActorTargetable(id + 0x30000u, _module.BossP2, false, 4.1f, "Boss disappears")
+        ActorTargetable(id + 0x30000u, _module.BossP2, false, 4.1f, "首领消失")
             .SetHint(StateMachine.StateHint.DowntimeStart);
     }
 }

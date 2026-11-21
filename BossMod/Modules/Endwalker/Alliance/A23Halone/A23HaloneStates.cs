@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Alliance.A23Halone;
+namespace BossMod.Endwalker.Alliance.A23Halone;
 
 sealed class A23HaloneStates : StateMachineBuilder
 {
@@ -20,7 +20,7 @@ sealed class A23HaloneStates : StateMachineBuilder
         ThousandfoldThrust(id + 0x60000u, 6.3f);
         Lochos(id + 0x70000u, 7.2f);
         WillOfTheFury(id + 0x80000u, 4.4f);
-        Targetable(id + 0x90000u, false, 17.3f, "Boss disappears");
+        Targetable(id + 0x90000u, false, 17.3f, "首领消失");
     }
 
     private void Phase2(uint id)
@@ -204,6 +204,6 @@ sealed class A23HaloneStates : StateMachineBuilder
         ComponentCondition<FurysAegis>(id + 0x220u, 6.3f, static comp => comp.NumCasts > 6, "Multi raidwide resolve")
             .DeactivateOnExit<FurysAegis>()
             .SetHint(StateMachine.StateHint.Raidwide);
-        Targetable(id + 0x300u, true, 8.0f, "Boss reappears");
+        Targetable(id + 0x300u, true, 8.0f, "首领再现");
     }
 }

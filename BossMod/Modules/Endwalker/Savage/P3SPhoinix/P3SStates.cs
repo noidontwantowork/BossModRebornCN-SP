@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P3SPhoinix;
+namespace BossMod.Endwalker.Savage.P3SPhoinix;
 
 sealed class P3SStates : StateMachineBuilder
 {
@@ -228,20 +228,20 @@ sealed class P3SStates : StateMachineBuilder
     private void FlyAwayBirds(uint id, float delay)
     {
         Fireplume(id, delay); // pos-start
-        Targetable(id + 0x10000u, false, 4.6f, "Boss disappears");
+        Targetable(id + 0x10000u, false, 4.6f, "首领消失");
         TrailOfCondemnation(id + 0x20000u, 3.8f)
             .DeactivateOnExit<Fireplume>();
         SmallBirdsPhase(id + 0x30000u, 7.3f);
         LargeBirdsPhase(id + 0x40000u, 4.3f);
-        Targetable(id + 0x50000u, true, 5.2f, "Boss reappears")
+        Targetable(id + 0x50000u, true, 5.2f, "首领再现")
             .SetHint(StateMachine.StateHint.PositioningEnd);
     }
 
     private void FlyAwayNoBirds(uint id, float delay)
     {
-        Targetable(id, false, delay, "Boss disappears");
+        Targetable(id, false, delay, "首领消失");
         TrailOfCondemnation(id + 0x1000u, 3.8f);
-        Targetable(id + 0x2000u, true, 3.1f, "Boss reappears");
+        Targetable(id + 0x2000u, true, 3.1f, "首领再现");
     }
 
     private void FledglingFlight(uint id, float delay)

@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.DSW2;
+namespace BossMod.Endwalker.Ultimate.DSW2;
 
 // leap (icons spread) + rage (rest stack)
 // note: we currently don't show stack hints, that happens automatically if mechanic is resolved properly
@@ -123,7 +123,7 @@ sealed class P2StrengthOfTheWard2Charges(DSW2 module) : Components.CastCounter(m
         else
         {
             if (tetherSource != null)
-                hints.Add("Pass tether!");
+                hints.Add("传出连线！");
             else if (IsInChargeAOE(actor))
                 hints.Add("GTFO from tanks!");
         }

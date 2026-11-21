@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Ultimate.FRU;
+namespace BossMod.Dawntrail.Ultimate.FRU;
 
 // TODO: more positioning options?..
 sealed class P1FallOfFaith(BossModule module) : Components.CastCounter(module, default)
@@ -30,10 +30,10 @@ sealed class P1FallOfFaith(BossModule module) : Components.CastCounter(module, d
         if (order > 4)
             hints.Add($"Help group {(order < 7 ? 1 : 2)}", false);
         else if (order > 0)
-            hints.Add($"Order: {order}", false);
+            hints.Add($"顺序：{order}", false);
 
         if (ActiveBaits(slot, actor, true).Any(bait => bait.shape.Check(actor.Position, bait.origin, bait.dir)))
-            hints.Add("GTFO from baited aoe!");
+            hints.Add("离开诱导出的范围！");
         // TODO: hint if actor is baiter while it's not his turn?
         // TODO: hint if actor is clipping others?
     }

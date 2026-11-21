@@ -1,4 +1,4 @@
-﻿using BossMod.PLD;
+using BossMod.PLD;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -43,7 +43,7 @@ public sealed class AkechiPLD(RotationModuleManager manager, Actor player) : Ake
             .AddOption(BladeComboStrategy.Delay, "Do not use Confiteor or any Blades", 0, 0, ActionTargets.None, 80)
             .AddAssociatedActions(AID.Confiteor, AID.BladeOfFaith, AID.BladeOfTruth, AID.BladeOfValor);
 
-        res.Define(Track.FightOrFlight).As<BuffsStrategy>("FoF", "Fight or Flight", 170)
+        res.Define(Track.FightOrFlight).As<BuffsStrategy>("FoF", "战逃反应", 170)
             .AddOption(BuffsStrategy.Automatic, "Automatically use Fight or Flight on cooldown")
             .AddOption(BuffsStrategy.Together, "Automatically use Fight or Flight only with Requiescat - will delay in attempt to align itself with Requiescat if misaligned", 60, 20, ActionTargets.Self, 2)
             .AddOption(BuffsStrategy.Force, "Force Fight or Flight (if available)", 60, 20, ActionTargets.Self, 2)
@@ -59,7 +59,7 @@ public sealed class AkechiPLD(RotationModuleManager manager, Actor player) : Ake
             .AddOption(BuffsStrategy.Delay, "Do not use Requiescat", 0, 0, ActionTargets.None, 68)
             .AddAssociatedActions(AID.Requiescat, AID.Imperator);
 
-        res.Define(Track.GoringBlade).As<GoringBladeStrategy>("GB", "Goring Blade", 135)
+        res.Define(Track.GoringBlade).As<GoringBladeStrategy>("GB", "沥血剑", 135)
             .AddOption(GoringBladeStrategy.Automatic, "Automatically use Goring Blade as soon as possible when in burst")
             .AddOption(GoringBladeStrategy.Late, "Automatically use Goring Blade after spending Requiescat stacks in burst (or if status is expiring)", 0, 0, ActionTargets.Hostile, 68)
             .AddOption(GoringBladeStrategy.Force, "Force Goring Blade (if available)", 0, 0, ActionTargets.Hostile, 54)

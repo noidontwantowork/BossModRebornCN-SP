@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Alliance.A14Naldthal;
+namespace BossMod.Endwalker.Alliance.A14Naldthal;
 
 sealed class FortuneFluxOrder(BossModule module) : BossComponent(module)
 {
@@ -26,7 +26,7 @@ sealed class FortuneFluxOrder(BossModule module) : BossComponent(module)
         var order = orderBuilder.ToString();
         if (order.Length != 0)
         {
-            hints.Add($"Order: {order}");
+            hints.Add($"顺序：{order}");
         }
     }
 

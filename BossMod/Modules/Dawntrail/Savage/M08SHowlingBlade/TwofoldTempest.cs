@@ -37,7 +37,7 @@ sealed class TwofoldTempestTetherAOE(BossModule module) : Components.InterceptTe
         }
         if (Tethers[0].Player == actor && vulnerability[slot])
         {
-            hints.Add("Pass tether!");
+            hints.Add("传出连线！");
         }
     }
 

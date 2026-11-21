@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.TOP;
+namespace BossMod.Endwalker.Ultimate.TOP;
 
 sealed class TOPStates : StateMachineBuilder
 {
@@ -237,7 +237,7 @@ sealed class TOPStates : StateMachineBuilder
         ComponentCondition<P3ColossalBlow>(id + 0x52u, 0.2f, static comp => comp.NumCasts > 3, "Arms 2")
             .DeactivateOnExit<P3ColossalBlow>();
 
-        ActorTargetable(id + 0x100u, _module.BossP3, true, 3.5f, "Boss reappears")
+        ActorTargetable(id + 0x100u, _module.BossP3, true, 3.5f, "首领再现")
             .SetHint(StateMachine.StateHint.DowntimeEnd)
             .DeactivateOnExit<P3IntermissionVoidzone>(); // voidzone disappears ~1.6s before boss appears
     }
@@ -250,12 +250,12 @@ sealed class TOPStates : StateMachineBuilder
         // +3.0s: initial smells -> bugs
 
         ActorCast(id + 0x10u, _module.BossP3, AID.LatentDefect, 14.2f, 9f, true); // ~0.1s before this cast ends first tethers are activated
-        ComponentCondition<P3HelloWorld>(id + 0x12u, 1f, static comp => comp.NumCasts > 0, "Towers 1");
+        ComponentCondition<P3HelloWorld>(id + 0x12u, 1f, static comp => comp.NumCasts > 0, "踩塔 1");
         ComponentCondition<P3HelloWorld>(id + 0x13u, 6f, static comp => comp.NumRotExplodes > 0);
         // +3.0s: tether break deadline
 
         ActorCast(id + 0x20u, _module.BossP3, AID.LatentDefect, 5.1f, 9f, true);
-        ComponentCondition<P3HelloWorld>(id + 0x22, 1f, static comp => comp.NumCasts > 4, "Towers 2");
+        ComponentCondition<P3HelloWorld>(id + 0x22, 1f, static comp => comp.NumCasts > 4, "踩塔 2");
         //ComponentCondition<P3HelloWorld>(id + 0x23, 6, static comp => comp.NumRotExplodes > 4, "Rots 2"); // note: rot 2+ explosion depends on how fast people pick it up
 
         ActorCast(id + 0x30u, _module.BossP3, AID.LatentDefect, 11.1f, 9f, true);
@@ -317,7 +317,7 @@ sealed class TOPStates : StateMachineBuilder
             .ExecOnEnter<P4WaveCannonStack>(static comp => comp.Imminent = true);
         ComponentCondition<P4WaveCannonProteanAOE>(id + 0x62u, 0.3f, static comp => comp.NumCasts > 0)
             .DeactivateOnExit<P4WaveCannonProteanAOE>();
-        ComponentCondition<P4WaveCannonStack>(id + 0x63u, 0.2f, static comp => !comp.Active, "Stack 3")
+        ComponentCondition<P4WaveCannonStack>(id + 0x63u, 0.2f, static comp => !comp.Active, "分摊 3")
             .DeactivateOnExit<P4WaveCannonStack>();
         ComponentCondition<P3WaveRepeater>(id + 0x64u, 1.7f, static comp => comp.NumCasts > 5);
         ComponentCondition<P3WaveRepeater>(id + 0x65u, 2.1f, static comp => comp.NumCasts > 6);
@@ -347,7 +347,7 @@ sealed class TOPStates : StateMachineBuilder
     {
         ActorCast(id, _module.BossP5, AID.RunMiDeltaVersion, delay, 5f, true, "Trio 1 raidwide")
             .SetHint(StateMachine.StateHint.Raidwide);
-        ActorTargetable(id + 0x10u, _module.BossP5, false, 3.1f, "Boss disappears")
+        ActorTargetable(id + 0x10u, _module.BossP5, false, 3.1f, "首领消失")
             .ActivateOnEnter<P5DeltaOpticalLaser>()
             .ActivateOnEnter<P5Delta>()
             .SetHint(StateMachine.StateHint.DowntimeStart);
@@ -388,7 +388,7 @@ sealed class TOPStates : StateMachineBuilder
         ComponentCondition<P5NearDistantWorld>(id + 0x84u, 1.0f, static comp => comp.NumNearJumpsDone > 1, "Near/far 2");
         ComponentCondition<P5NearDistantWorld>(id + 0x85u, 1.0f, static comp => comp.NumNearJumpsDone > 2, "Near/far 3")
             .DeactivateOnExit<P5NearDistantWorld>();
-        ActorTargetable(id + 0x90u, _module.BossP5, true, 2.2f, "Boss reappears")
+        ActorTargetable(id + 0x90u, _module.BossP5, true, 2.2f, "首领再现")
             .DeactivateOnExit<P5Delta>()
             .SetHint(StateMachine.StateHint.DowntimeEnd);
         // fourth tether break happens somewhere here, after mechanic ends
@@ -398,7 +398,7 @@ sealed class TOPStates : StateMachineBuilder
     {
         ActorCast(id, _module.BossP5, AID.RunMiSigmaVersion, delay, 5f, true, "Trio 2 raidwide")
             .SetHint(StateMachine.StateHint.Raidwide);
-        ActorTargetable(id + 0x10u, _module.BossP5, false, 3.1f, "Boss disappears")
+        ActorTargetable(id + 0x10u, _module.BossP5, false, 3.1f, "首领消失")
             .ActivateOnEnter<P5Sigma>() // icons/tethers/statuses appear right as boss disappears
             .SetHint(StateMachine.StateHint.DowntimeStart);
 
@@ -436,7 +436,7 @@ sealed class TOPStates : StateMachineBuilder
             .DeactivateOnExit<P5SigmaNearDistantWorld>()
             .DeactivateOnExit<P5SigmaHyperPulse>(); // note: this resolves soon after first near/far
 
-        ActorTargetable(id + 0x150u, _module.BossP5, true, 2.6f, "Boss reappears")
+        ActorTargetable(id + 0x150u, _module.BossP5, true, 2.6f, "首领再现")
             .SetHint(StateMachine.StateHint.DowntimeEnd);
     }
 
@@ -454,7 +454,7 @@ sealed class TOPStates : StateMachineBuilder
         ComponentCondition<P5OmegaDoubleAOEs>(id + 0x40u, 4f, static comp => comp.NumCasts > 3, "AOEs 2")
             .DeactivateOnExit<P5OmegaDoubleAOEs>()
             .DeactivateOnExit<P5OmegaDiffuseWaveCannon>(); // this resolves right after
-        ActorTargetable(id + 0x50u, _module.BossP5, false, 3.1f, "Boss disappears")
+        ActorTargetable(id + 0x50u, _module.BossP5, false, 3.1f, "首领消失")
             .SetHint(StateMachine.StateHint.DowntimeStart);
 
         ComponentCondition<P5OmegaOversampledWaveCannon>(id + 0x100u, 0.2f, static comp => comp.IsActive)
@@ -475,7 +475,7 @@ sealed class TOPStates : StateMachineBuilder
         ComponentCondition<P5OmegaNearDistantWorld>(id + 0x222u, 1.0f, static comp => comp.NumNearJumpsDone > 2, "Near/far 6")
             .DeactivateOnExit<P5OmegaNearDistantWorld>();
 
-        ActorTargetable(id + 0x300u, _module.BossP5, true, 2.3f, "Boss reappears")
+        ActorTargetable(id + 0x300u, _module.BossP5, true, 2.3f, "首领再现")
             .SetHint(StateMachine.StateHint.DowntimeEnd);
     }
 

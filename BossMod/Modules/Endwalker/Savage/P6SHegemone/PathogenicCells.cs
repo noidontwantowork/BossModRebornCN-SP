@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P6SHegemone;
+namespace BossMod.Endwalker.Savage.P6SHegemone;
 
 // TODO: improve...
 sealed class PathogenicCells(BossModule module) : Components.CastCounter(module, (uint)AID.PathogenicCellsAOE)
@@ -8,7 +8,7 @@ sealed class PathogenicCells(BossModule module) : Components.CastCounter(module,
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (_order[slot] != 0)
-            hints.Add($"Order: {_order[slot]}", false);
+            hints.Add($"顺序：{_order[slot]}", false);
     }
 
     public override void OnEventIcon(Actor actor, uint iconID, ulong targetID)

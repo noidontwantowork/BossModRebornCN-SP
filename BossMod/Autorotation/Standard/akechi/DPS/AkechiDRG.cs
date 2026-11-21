@@ -1,4 +1,4 @@
-﻿using BossMod.DRG;
+using BossMod.DRG;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -63,7 +63,7 @@ public sealed class AkechiDRG(RotationModuleManager manager, Actor player) : Ake
             .AddOption(ElusiveDirection.CameraBackward, "Jump into the direction backward of the camera", 30, 15, ActionTargets.Self, 35)
             .AddAssociatedActions(AID.ElusiveJump);
 
-        res.Define(Track.LanceCharge).As<BuffsStrategy>("L.Charge", "Lance Charge", 198)
+        res.Define(Track.LanceCharge).As<BuffsStrategy>("L.Charge", "猛枪", 198)
             .AddOption(BuffsStrategy.Automatic, "Automatically use Lance Charge")
             .AddOption(BuffsStrategy.Together, "Automatically use Lance Charge with Battle Litany - will delay if necessary (up to 30s)")
             .AddOption(BuffsStrategy.Force, "Force Lance Charge ASAP", 60, 20, ActionTargets.Self, 30)
@@ -71,7 +71,7 @@ public sealed class AkechiDRG(RotationModuleManager manager, Actor player) : Ake
             .AddOption(BuffsStrategy.Delay, "Delay Lance Charge", 0, 0, ActionTargets.None, 30)
             .AddAssociatedActions(AID.LanceCharge);
 
-        res.Define(Track.BattleLitany).As<BuffsStrategy>("B.Litany", "Battle Litany", 198)
+        res.Define(Track.BattleLitany).As<BuffsStrategy>("B.Litany", "战斗连祷", 198)
             .AddOption(BuffsStrategy.Automatic, "Automatically use Battle Litany")
             .AddOption(BuffsStrategy.Together, "Automatically use Battle Litany with Lance Charge - will delay if necessary")
             .AddOption(BuffsStrategy.Force, "Force Battle Litany ASAP", 120, 20, ActionTargets.Self, 52)
@@ -79,7 +79,7 @@ public sealed class AkechiDRG(RotationModuleManager manager, Actor player) : Ake
             .AddOption(BuffsStrategy.Delay, "Delay Battle Litany", 0, 0, ActionTargets.None, 52)
             .AddAssociatedActions(AID.BattleLitany);
 
-        res.Define(Track.LifeSurge).As<SurgeStrategy>("L.Surge", "Life Surge", 197)
+        res.Define(Track.LifeSurge).As<SurgeStrategy>("L.Surge", "龙剑", 197)
             .AddOption(SurgeStrategy.Automatic, "Automatically use Life Surge")
             .AddOption(SurgeStrategy.WhenBuffed, "Automatically use Life Surge - will clip GCD if needed")
             .AddOption(SurgeStrategy.Force, "Force Life Surge ASAP", 40, 5, ActionTargets.Self, 6)
@@ -96,14 +96,14 @@ public sealed class AkechiDRG(RotationModuleManager manager, Actor player) : Ake
             .AddOption(FlexStrategy.Delay, "Delay Mirage Dive", 0, 0, ActionTargets.None, 68)
             .AddAssociatedActions(AID.MirageDive);
 
-        res.Define(Track.WyrmwindThrust).As<FlexStrategy>("W.Thrust", "Wyrmwind Thrust", 192)
+        res.Define(Track.WyrmwindThrust).As<FlexStrategy>("W.Thrust", "天龙点睛", 192)
             .AddOption(FlexStrategy.ASAP, "Automatically use Wyrmwind Thrust ASAP", 0, 0, ActionTargets.Hostile, 90)
             .AddOption(FlexStrategy.Late, "Automatically use Wyrmwind Thrust as late as possible - will clip GCD if needed to avoid waste", 0, 0, ActionTargets.Hostile, 90)
             .AddOption(FlexStrategy.LateOrBuffed, "Automatically use Wyrmwind Thrust as late as possible or when under any buffs - will clip GCD if needed to avoid waste", 0, 0, ActionTargets.Hostile, 90)
             .AddOption(FlexStrategy.Delay, "Delay Wyrmwind Thrust", 0, 0, ActionTargets.None, 90)
             .AddAssociatedActions(AID.WyrmwindThrust);
 
-        res.Define(Track.PiercingTalon).As<PiercingTalonStrategy>("P.Talon", "Piercing Talon", 100)
+        res.Define(Track.PiercingTalon).As<PiercingTalonStrategy>("P.Talon", "贯穿尖", 100)
             .AddOption(PiercingTalonStrategy.AllowEX, "Automatically use Enhanced Piercing Talon if in combat & outside melee range of target")
             .AddOption(PiercingTalonStrategy.Allow, "Automatically use normal Piercing Talon if in combat & outside melee range of target")
             .AddOption(PiercingTalonStrategy.Allow5, "Automatically use normal Piercing Talon if in combat & 5+ yalms of target")
@@ -113,7 +113,7 @@ public sealed class AkechiDRG(RotationModuleManager manager, Actor player) : Ake
             .AddOption(PiercingTalonStrategy.Forbid, "Forbid Piercing Talon")
             .AddAssociatedActions(AID.PiercingTalon);
 
-        res.Define(Track.TrueNorth).As<TrueNorthStrategy>("T.North", "True North", 95)
+        res.Define(Track.TrueNorth).As<TrueNorthStrategy>("T.North", "真北", 95)
             .AddOption(TrueNorthStrategy.Automatic, "Automatically late-weaves True North when out of positional")
             .AddOption(TrueNorthStrategy.Send, "Automatically late-weaves True North when out of positional - will clip GCD if needed")
             .AddOption(TrueNorthStrategy.ASAP, "Automatically use True North as soon as possible when out of positional", 45, 10, ActionTargets.Self, 50)
@@ -123,7 +123,7 @@ public sealed class AkechiDRG(RotationModuleManager manager, Actor player) : Ake
             .AddOption(TrueNorthStrategy.Delay, "Delay True North", 0, 0, ActionTargets.None, 50)
             .AddAssociatedActions(ClassShared.AID.TrueNorth);
 
-        res.Define(Track.DragonfireDive).As<CommonStrategy>("D.Dive", "Dragonfire Dive", 195)
+        res.Define(Track.DragonfireDive).As<CommonStrategy>("D.Dive", "破碎冲", 195)
             .AddOption(CommonStrategy.Automatic, "Automatically use Dragonfire Dive")
             .AddOption(CommonStrategy.HasLC, "Automatically use Dragonfire Dive if Lance Charge buff is currently active", 120, 0, ActionTargets.Hostile)
             .AddOption(CommonStrategy.HasBL, "Automatically use Dragonfire Dive if Battle Litany buff is currently active", 120, 0, ActionTargets.Hostile)

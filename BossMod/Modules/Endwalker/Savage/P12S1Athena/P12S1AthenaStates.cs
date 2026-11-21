@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P12S1Athena;
+namespace BossMod.Endwalker.Savage.P12S1Athena;
 
 sealed class P12S1AthenaStates : StateMachineBuilder
 {
@@ -84,9 +84,9 @@ sealed class P12S1AthenaStates : StateMachineBuilder
             .ActivateOnEnter<WhiteFlame>()
             .ExecOnEnter<WhiteFlame>(static comp => comp.Enable()); // enable asap
         TrinityOfSoulsCast(id + 0x10u, 5.6f);
-        ComponentCondition<WhiteFlame>(id + 0x20u, 0.8f, static comp => comp.NumCasts > 0, "Baits 1");
+        ComponentCondition<WhiteFlame>(id + 0x20u, 0.8f, static comp => comp.NumCasts > 0, "诱导 1");
         TrinityOfSoulsResolve(id + 0x30u, 1.8f);
-        ComponentCondition<WhiteFlame>(id + 0x40u, 0.7f, static comp => comp.NumCasts > 4, "Baits 2")
+        ComponentCondition<WhiteFlame>(id + 0x40u, 0.7f, static comp => comp.NumCasts > 4, "诱导 2")
             .DeactivateOnExit<WhiteFlame>();
     }
 

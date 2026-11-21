@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Savage.M02SHoneyBLovely;
+namespace BossMod.Dawntrail.Savage.M02SHoneyBLovely;
 
 sealed class M02SHoneyBLovelyStates : StateMachineBuilder
 {
@@ -223,13 +223,13 @@ sealed class M02SHoneyBLovelyStates : StateMachineBuilder
         ComponentCondition<HoneyBLiveBeat3BigBurst>(id + 0x110u, 4.6f, static comp => comp.NumCasts > 0, "Defamations 1")
             .ActivateOnEnter<Fracture3>();
         CastStartMulti(id + 0x120u, [AID.CenterstageCombo, AID.OuterstageCombo], 2.6f);
-        ComponentCondition<Fracture>(id + 0x121u, 0.8f, static comp => comp.NumCasts > 0, "Towers 1")
+        ComponentCondition<Fracture>(id + 0x121u, 0.8f, static comp => comp.NumCasts > 0, "踩塔 1")
             .ActivateOnEnter<StageCombo>()
             .DeactivateOnExit<Fracture>();
         CenterOuterStageComboResolve(id + 0x122u, 4.2f, false);
         ComponentCondition<HoneyBLiveBeat3BigBurst>(id + 0x130u, 5.0f, static comp => comp.NumCasts > 4, "Defamations 2")
             .ActivateOnEnter<Fracture3>();
-        ComponentCondition<Fracture>(id + 0x140u, 3.0f, static comp => comp.NumCasts > 0, "Towers 2")
+        ComponentCondition<Fracture>(id + 0x140u, 3.0f, static comp => comp.NumCasts > 0, "踩塔 2")
             .DeactivateOnExit<Fracture>()
             .DeactivateOnExit<HoneyBLiveBeat3BigBurst>();
 

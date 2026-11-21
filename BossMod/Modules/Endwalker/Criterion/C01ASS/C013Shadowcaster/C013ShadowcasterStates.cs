@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.VariantCriterion.C01ASS.C013Shadowcaster;
+namespace BossMod.Endwalker.VariantCriterion.C01ASS.C013Shadowcaster;
 
 abstract class C013ShadowcasterStates : StateMachineBuilder
 {
@@ -146,7 +146,7 @@ abstract class C013ShadowcasterStates : StateMachineBuilder
         CastStart(id + 0x40u, AID.PureFire, 8f);
         ComponentCondition<InfernWave>(id + 0x41, 2f, static comp => comp.NumCasts > 2, "Wave 2");
         CastEnd(id + 0x42u, 1f);
-        ComponentCondition<PureFire>(id + 0x50u, 0.8f, static comp => comp.Casters.Count > 0, "Puddle bait")
+        ComponentCondition<PureFire>(id + 0x50u, 0.8f, static comp => comp.Casters.Count > 0, "诱导地面范围")
             .ActivateOnEnter<NPureFire>(!_savage)
             .ActivateOnEnter<SPureFire>(_savage);
         ComponentCondition<PureFire>(id + 0x51u, 3f, static comp => comp.Casters.Count == 0)

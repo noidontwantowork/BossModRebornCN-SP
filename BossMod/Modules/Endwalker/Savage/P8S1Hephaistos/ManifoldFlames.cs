@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P8S1Hephaistos;
+namespace BossMod.Endwalker.Savage.P8S1Hephaistos;
 
 sealed class ManifoldFlames : Components.UniformStackSpread
 {
@@ -17,7 +17,7 @@ abstract class NestOfFlamevipersCommon(BossModule module) : Components.CastCount
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (Raid.WithSlot(false, true, true).IncludedInMask(BaitingPlayers).WhereActor(p => p != actor && _shape.Check(actor.Position, Module.PrimaryActor.Position, Angle.FromDirection(p.Position - Module.PrimaryActor.Position))).Any())
-            hints.Add("GTFO from baited aoe!");
+            hints.Add("离开诱导出的范围！");
     }
 
     public override void DrawArenaForeground(int pcSlot, Actor pc)

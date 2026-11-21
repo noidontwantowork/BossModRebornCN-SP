@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Quest.Role.TheHardenedHeart;
+namespace BossMod.Shadowbringers.Quest.Role.TheHardenedHeart;
 
 public enum OID : uint
 {
@@ -85,7 +85,7 @@ class TankbusterTether(BossModule module) : BossComponent(module)
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (Danger)
-            hints.Add("Take tether!");
+            hints.Add("接走连线！");
     }
 
     public override void DrawArenaBackground(int pcSlot, Actor pc)

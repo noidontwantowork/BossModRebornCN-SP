@@ -90,9 +90,9 @@ sealed class Ex3QueenEternalStates : StateMachineBuilder
 
     private void P1LegitimateForce(uint id, float delay)
     {
-        CastMulti(id, [AID.LegitimateForceFirstR, AID.LegitimateForceFirstL], delay, 8f, "Side 1")
+        CastMulti(id, [AID.LegitimateForceFirstR, AID.LegitimateForceFirstL], delay, 8f, "侧面攻击 1")
             .ActivateOnEnter<LegitimateForce>();
-        ComponentCondition<LegitimateForce>(id + 0x10u, 3.1f, static comp => comp.NumCasts > 1, "Side 2")
+        ComponentCondition<LegitimateForce>(id + 0x10u, 3.1f, static comp => comp.NumCasts > 1, "侧面攻击 2")
             .DeactivateOnExit<LegitimateForce>();
     }
 
@@ -142,8 +142,8 @@ sealed class Ex3QueenEternalStates : StateMachineBuilder
         ComponentCondition<MissingLink>(id + 0x101u, 0.8f, static comp => comp.TethersAssigned, "Chains")
             .ActivateOnEnter<LegitimateForce>()
             .ActivateOnEnter<MissingLink>();
-        CastEnd(id + 0x102u, 7.2f, "Side 1");
-        ComponentCondition<LegitimateForce>(id + 0x103u, 3.1f, static comp => comp.NumCasts > 1, "Side 2")
+        CastEnd(id + 0x102u, 7.2f, "侧面攻击 1");
+        ComponentCondition<LegitimateForce>(id + 0x103u, 3.1f, static comp => comp.NumCasts > 1, "侧面攻击 2")
             .DeactivateOnExit<LegitimateForce>();
 
         ComponentCondition<WindOfChange>(id + 0x200u, 3.2f, static comp => comp.NumCasts > 0, "Knockback")
@@ -217,9 +217,9 @@ sealed class Ex3QueenEternalStates : StateMachineBuilder
         CastStartMulti(id + 0x101u, [AID.LegitimateForceFirstR, AID.LegitimateForceFirstL], 11.9f);
         ComponentCondition<Rush>(id + 0x102u, 0.3f, static comp => comp.NumCasts > 0, "Stretch tethers")
             .DeactivateOnExit<Rush>();
-        CastEnd(id + 0x103u, 7.7f, "Side 1")
+        CastEnd(id + 0x103u, 7.7f, "侧面攻击 1")
             .ActivateOnEnter<LegitimateForce>();
-        ComponentCondition<LegitimateForce>(id + 0x104u, 3.1f, static comp => comp.NumCasts > 1, "Side 2")
+        ComponentCondition<LegitimateForce>(id + 0x104u, 3.1f, static comp => comp.NumCasts > 1, "侧面攻击 2")
             .DeactivateOnExit<LegitimateForce>();
 
         Cast(id + 0x200u, AID.LawsOfIce, 6.1f, 4f)

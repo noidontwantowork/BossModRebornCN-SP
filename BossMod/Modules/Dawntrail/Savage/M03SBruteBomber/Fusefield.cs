@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Savage.M03SBruteBomber;
+namespace BossMod.Dawntrail.Savage.M03SBruteBomber;
 
 sealed class Fusefield(BossModule module) : BossComponent(module)
 {
@@ -8,7 +8,7 @@ sealed class Fusefield(BossModule module) : BossComponent(module)
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (_orders[slot] > 0)
-            hints.Add($"Order: {_orders[slot]}", false);
+            hints.Add($"顺序：{_orders[slot]}", false);
     }
 
     public override void DrawArenaForeground(int pcSlot, Actor pc)

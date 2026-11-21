@@ -1,4 +1,4 @@
-﻿namespace BossMod.Stormblood.Ultimate.UCOB;
+namespace BossMod.Stormblood.Ultimate.UCOB;
 
 sealed class P2BlockTransition(BossModule module) : BossComponent(module);
 
@@ -548,7 +548,7 @@ sealed class UCOBStates : StateMachineBuilder
             .ExecOnEnter<P3MegaflarePuddle>(static comp => comp.Risky = false);
         ComponentCondition<P3MegaflareSpreadStack>(id + 0x51u, 1, static comp => comp.Spreads.Count == 0, "Spread")
             .ExecOnExit<P3MegaflarePuddle>(static comp => comp.Risky = true);
-        ActorTargetable(id + 0x52u, _module.BahamutPrime, true, 1.2f, "Boss reappears")
+        ActorTargetable(id + 0x52u, _module.BahamutPrime, true, 1.2f, "首领再现")
             .ExecOnEnter<P3MegaflarePuddle>(static comp => comp.Risky = true)
             .ExecOnEnter<P3QuickmarchTrio>(static comp => comp.PuddleDodgeHint = true)
             .ExecOnEnter<Hatch>(static comp => comp.Active = true)
@@ -612,7 +612,7 @@ sealed class UCOBStates : StateMachineBuilder
         ComponentCondition<P3MegaflareTower>(id + 0x120u, 1.9f, static comp => comp.NumCasts > 0, "Towers")
             .DeactivateOnExit<P3MegaflareTower>();
 
-        ActorTargetable(id + 0x200u, _module.BahamutPrime, true, 0.3f, "Boss reappears")
+        ActorTargetable(id + 0x200u, _module.BahamutPrime, true, 0.3f, "首领再现")
             .ExecOnEnter<Hatch>(static comp => comp.Active = true)
             .SetHint(StateMachine.StateHint.DowntimeEnd);
         // +0.8s: hypernova 4
@@ -651,7 +651,7 @@ sealed class UCOBStates : StateMachineBuilder
             .DeactivateOnExit<P3TempestWing>()
             .DeactivateOnExit<P3DynamoTetherHelper>();
 
-        ActorTargetable(id + 0x100u, _module.BahamutPrime, true, 2.2f, "Boss reappears")
+        ActorTargetable(id + 0x100u, _module.BahamutPrime, true, 2.2f, "首领再现")
             .ExecOnEnter<Hatch>(static comp => comp.Active = true)
             .ActivateOnEnter<QuoteMeteorStream>()
             .ExecOnEnter<QuoteMeteorStream>(static comp => comp.Fixed = true)
@@ -720,7 +720,7 @@ sealed class UCOBStates : StateMachineBuilder
         ComponentCondition<P3ThermionicBurst>(id + 0x160u, 2.5f, static comp => comp.Casters.Count == 0, "Pizza end")
             .DeactivateOnExit<P3ThermionicBurst>();
 
-        ActorTargetable(id + 0x170u, _module.BahamutPrime, true, 1.4f, "Boss reappears")
+        ActorTargetable(id + 0x170u, _module.BahamutPrime, true, 1.4f, "首领再现")
             .ExecOnEnter<Hatch>(static comp => comp.Active = true)
             .SetHint(StateMachine.StateHint.DowntimeEnd);
         ActorCastStart(id + 0x171u, _module.BahamutPrime, AID.Gigaflare, 0.1f, true);
@@ -763,7 +763,7 @@ sealed class UCOBStates : StateMachineBuilder
 
         ComponentCondition<P3EarthShaker>(id + 0x100u, 0.9f, static comp => comp.CurrentBaits.Count > 0)
             .ActivateOnEnter<P3EarthShaker>();
-        ActorTargetable(id + 0x110u, _module.BahamutPrime, true, 5.2f, "Boss reappears") // second set of earthshaker icons appear at the same time
+        ActorTargetable(id + 0x110u, _module.BahamutPrime, true, 5.2f, "首领再现") // second set of earthshaker icons appear at the same time
             .ActivateOnEnter<P3EarthShakerVoidzone>()
             .SetHint(StateMachine.StateHint.DowntimeEnd);
         ComponentCondition<P3EarthShaker>(id + 0x111u, 0.1f, static comp => comp.NumCasts > 0, "Baited cones 1");

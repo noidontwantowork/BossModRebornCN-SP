@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Ultimate.TEA;
+namespace BossMod.Shadowbringers.Ultimate.TEA;
 
 abstract class LimitCut(BossModule module, double alphaDelay) : Components.GenericBaitAway(module)
 {
@@ -27,7 +27,7 @@ abstract class LimitCut(BossModule module, double alphaDelay) : Components.Gener
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (PlayerOrder[slot] > 0)
-            hints.Add($"Order: {PlayerOrder[slot]}", false);
+            hints.Add($"顺序：{PlayerOrder[slot]}", false);
         base.AddHints(slot, actor, hints);
     }
 

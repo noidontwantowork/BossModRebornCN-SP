@@ -1,4 +1,4 @@
-﻿using BossMod.Data;
+using BossMod.Data;
 using BossMod.DRG;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
@@ -23,7 +23,7 @@ public sealed class DRG(RotationModuleManager manager, Actor player) : Attackxan
         [Track("Phantom Samurai: Use Zeninage under raid buffs (coffer required)", UiPriority = -10, MinLevel = 100, Action = PhantomID.Zeninage)]
         public Track<EnabledByDefault> Zeninage;
 
-        [Track("Lance Charge", InternalName = "LC", Action = AID.LanceCharge)]
+        [Track("猛枪", InternalName = "LC", Action = AID.LanceCharge)]
         public Track<LanceChargeStrategy> LanceCharge;
 
         [Track("High Jump/Mirage Dive", Actions = [AID.Jump, AID.HighJump, AID.MirageDive])]
@@ -55,7 +55,7 @@ public sealed class DRG(RotationModuleManager manager, Actor player) : Attackxan
         Automatic,
         [Option("Don't use", Cooldown = 20)] // so plan UI shows how long it will last if we use it at the end of the window
         Delay,
-        [Option("Use ASAP", Effect = 20, Cooldown = 60)]
+        [Option("尽快使用", Effect = 20, Cooldown = 60)]
         Force
     }
 
@@ -67,7 +67,7 @@ public sealed class DRG(RotationModuleManager manager, Actor player) : Attackxan
         HoldMD,
         [Option("Do not use either")]
         Delay,
-        [Option("Use ASAP", Effect = 15, Cooldown = 30, Targets = ActionTargets.Hostile)]
+        [Option("尽快使用", Effect = 15, Cooldown = 30, Targets = ActionTargets.Hostile)]
         Force
     }
 
@@ -89,7 +89,7 @@ public sealed class DRG(RotationModuleManager manager, Actor player) : Attackxan
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("xan DRG", "Dragoon", "Standard rotation (xan)|Melee", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.DRG, Class.LNC), 100).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("xan DRG", "龙骑士", "Standard rotation (xan)|Melee", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.DRG, Class.LNC), 100).WithStrategies<Strategy>();
     }
 
     public int Eyes;

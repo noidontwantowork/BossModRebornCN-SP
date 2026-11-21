@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P8S2;
+namespace BossMod.Endwalker.Savage.P8S2;
 
 sealed class P8S2States : StateMachineBuilder
 {
@@ -61,7 +61,7 @@ sealed class P8S2States : StateMachineBuilder
         Cast(id + 0x10u, AID.TwistNature, 6.2f, 3f);
 
         // ~0.1s before next cast start, NA progress bars start filling (1E1/1E3 replaced with 1E0/1E2)
-        Cast(id + 0x20u, AID.TyrantsFlare, 3.2f, 3f, "Puddle bait");
+        Cast(id + 0x20u, AID.TyrantsFlare, 3.2f, 3f, "诱导地面范围");
 
         ComponentCondition<NaturalAlignment>(id + 0x30u, 3f, static comp => comp.CurMechanicProgress > 0, "Stack/spread")
             .ActivateOnEnter<TyrantsFlare>() // AOE casts start right after visual cast end
@@ -144,7 +144,7 @@ sealed class P8S2States : StateMachineBuilder
         // +1.0s: perfection status gains
         // +1.1s: first towers appear
 
-        CastMulti(id + 0x30u, [AID.AshingBlazeL, AID.AshingBlazeR], 6.2f, 6f, "Towers 1") // tower explosions happen at the same time as cast-end
+        CastMulti(id + 0x30u, [AID.AshingBlazeL, AID.AshingBlazeR], 6.2f, 6f, "踩塔 1") // tower explosions happen at the same time as cast-end
             .ActivateOnEnter<AshingBlaze>()
             .DeactivateOnExit<AshingBlaze>();
 
@@ -153,7 +153,7 @@ sealed class P8S2States : StateMachineBuilder
         // +0.7s: perfection status gains
         // +1.1s: second towers appear
 
-        CastMulti(id + 0x120u, [AID.AshingBlazeL, AID.AshingBlazeR], 6.2f, 6f, "Towers 2") // tower explosions happen at the same time as cast-end
+        CastMulti(id + 0x120u, [AID.AshingBlazeL, AID.AshingBlazeR], 6.2f, 6f, "踩塔 2") // tower explosions happen at the same time as cast-end
             .ActivateOnEnter<AshingBlaze>()
             .DeactivateOnExit<AshingBlaze>();
 
@@ -176,7 +176,7 @@ sealed class P8S2States : StateMachineBuilder
         // +1.0s: perfection status gains
         // +1.1s: first towers appear (always blue or purple)
 
-        CastMulti(id + 0x30u, [AID.AshingBlazeL, AID.AshingBlazeR], 6.2f, 6f, "Towers 1") // tower explosions happen at the same time as cast-end
+        CastMulti(id + 0x30u, [AID.AshingBlazeL, AID.AshingBlazeR], 6.2f, 6f, "踩塔 1") // tower explosions happen at the same time as cast-end
             .ActivateOnEnter<AshingBlaze>()
             .DeactivateOnExit<AshingBlaze>();
 
@@ -188,7 +188,7 @@ sealed class P8S2States : StateMachineBuilder
 
         ComponentCondition<EndOfDaysTethered>(id + 0x110u, 7.1f, static comp => comp.Active, "Tethers")
             .ActivateOnEnter<EndOfDaysTethered>();
-        ComponentCondition<EndOfDaysTethered>(id + 0x111u, 5.1f, static comp => !comp.Active, "Towers 2") // tower explosions happen at the same time as end-of-days
+        ComponentCondition<EndOfDaysTethered>(id + 0x111u, 5.1f, static comp => !comp.Active, "踩塔 2") // tower explosions happen at the same time as end-of-days
             .DeactivateOnExit<EndOfDaysTethered>();
 
         Targetable(id + 0x200u, true, 3.9f, "Reappear")
@@ -244,10 +244,10 @@ sealed class P8S2States : StateMachineBuilder
 
         ComponentCondition<Dominion>(id + 0x10u, 1.1f, static comp => comp.NumDeformations > 0, "Spread");
         // +6.0s: cast-start for second set of shifts
-        ComponentCondition<Dominion>(id + 0x20u, 7.0f, static comp => comp.NumShifts > 0, "Towers 1");
+        ComponentCondition<Dominion>(id + 0x20u, 7.0f, static comp => comp.NumShifts > 0, "踩塔 1");
 
         CastStart(id + 0x30u, AID.Aionagonia, 3.1f);
-        ComponentCondition<Dominion>(id + 0x31u, 2.9f, static comp => comp.NumShifts > 4, "Towers 2")
+        ComponentCondition<Dominion>(id + 0x31u, 2.9f, static comp => comp.NumShifts > 4, "踩塔 2")
             .DeactivateOnExit<Dominion>();
         CastEnd(id + 0x32u, 5.1f, "Raidwide")
             .SetHint(StateMachine.StateHint.Raidwide);

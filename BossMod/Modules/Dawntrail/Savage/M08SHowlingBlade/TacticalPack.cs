@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Savage.M08SHowlingBlade;
+namespace BossMod.Dawntrail.Savage.M08SHowlingBlade;
 
 sealed class Adds(BossModule module) : BossComponent(module)
 {
@@ -110,7 +110,7 @@ sealed class EarthWindborneEnd(BossModule module) : BossComponent(module)
         ref readonly var player = ref expirationBySlot[slot];
         if (player != default)
         {
-            hints.Add($"Order: {player.Order} - {(player.wind ? "wind" : "earth")}", Math.Max(0d, (player.Expiration - WorldState.CurrentTime).TotalSeconds) < 9d);
+            hints.Add($"顺序：{player.Order} - {(player.wind ? "wind" : "earth")}", Math.Max(0d, (player.Expiration - WorldState.CurrentTime).TotalSeconds) < 9d);
         }
     }
 

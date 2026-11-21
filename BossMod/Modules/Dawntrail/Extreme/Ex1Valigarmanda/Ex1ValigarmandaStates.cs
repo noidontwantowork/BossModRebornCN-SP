@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Extreme.Ex1Valigarmanda;
+namespace BossMod.Dawntrail.Extreme.Ex1Valigarmanda;
 
 sealed class Ex1ValigarmandaStates : StateMachineBuilder
 {
@@ -403,7 +403,7 @@ sealed class Ex1ValigarmandaStates : StateMachineBuilder
     {
         Cast(id, AID.RuinForetold, delay, 5f, "Raidwide")
             .SetHint(StateMachine.StateHint.Raidwide);
-        Targetable(id + 0x10u, false, 0.9f, "Boss disappears");
+        Targetable(id + 0x10u, false, 0.9f, "首领消失");
         ComponentCondition<Beacons>(id + 0x11, 1.0f, static comp => comp.ActiveActors.Any(), "Adds appear")
             .ActivateOnEnter<Beacons>()
             .SetHint(StateMachine.StateHint.DowntimeEnd);

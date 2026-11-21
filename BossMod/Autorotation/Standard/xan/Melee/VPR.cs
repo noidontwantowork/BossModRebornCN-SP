@@ -1,4 +1,4 @@
-﻿using BossMod.VPR;
+using BossMod.VPR;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -10,10 +10,10 @@ public sealed class VPR(RotationModuleManager manager, Actor player) : Attackxan
     {
         public Track<Targeting> Targeting;
         public Track<AOEStrategy> AOE;
-        [Track("Reawaken", Action = AID.Reawaken, MinLevel = 90)]
+        [Track("祖灵降临", Action = AID.Reawaken, MinLevel = 90)]
         public Track<OffensiveStrategy> Buffs;
 
-        [Track("Writhing Snap", InternalName = "WrithingSnap", Action = AID.WrithingSnap)]
+        [Track("蛇矛", InternalName = "WrithingSnap", Action = AID.WrithingSnap)]
         public Track<SnapStrategy> Snap;
 
         readonly Targeting IStrategyCommon.Targeting => Targeting.Value;
@@ -30,7 +30,7 @@ public sealed class VPR(RotationModuleManager manager, Actor player) : Attackxan
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("xan VPR", "Viper", "Standard rotation (xan)|Melee", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.VPR), 100).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("xan VPR", "蝰蛇剑士", "Standard rotation (xan)|Melee", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.VPR), 100).WithStrategies<Strategy>();
     }
 
     public enum TwinType

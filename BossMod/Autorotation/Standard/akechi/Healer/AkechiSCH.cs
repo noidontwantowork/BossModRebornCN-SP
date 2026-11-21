@@ -1,4 +1,4 @@
-﻿using BossMod.SCH;
+using BossMod.SCH;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -46,7 +46,7 @@ public sealed class AkechiSCH(RotationModuleManager manager, Actor player) : Ake
             .AddOption(EnergyStrategy.Delay, "Delay use of Energy Drain", 0, 0, ActionTargets.None, 45)
             .AddAssociatedActions(AID.EnergyDrain);
 
-        res.DefineOGCD(Track.ChainStratagem, AID.ChainStratagem, "C.Strat", "Chain Stratagem", 170, 120, 20, ActionTargets.Hostile, 66);
+        res.DefineOGCD(Track.ChainStratagem, AID.ChainStratagem, "C.Strat", "连环计", 170, 120, 20, ActionTargets.Hostile, 66);
         res.DefineOGCD(Track.Aetherflow, AID.Aetherflow, "A.flow", "Aetherflow", 160, 60, 10, ActionTargets.Self, 45);
 
         return res;

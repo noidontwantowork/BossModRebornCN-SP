@@ -1,4 +1,4 @@
-﻿namespace BossMod.Autorotation.Utility;
+namespace BossMod.Autorotation.Utility;
 
 public sealed class ClassSCHUtilityEx(RotationModuleManager manager, Actor player) : TypedRotationModule<ClassSCHUtilityEx.Strategy>(manager, player)
 {
@@ -33,7 +33,7 @@ public sealed class ClassSCHUtilityEx(RotationModuleManager manager, Actor playe
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("Utility: SCH (extra)", "Extra stuff for SCH", "Utility for planner", "xan", RotationModuleQuality.Ok, BitMask.Build(Class.SCH), 100).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("Utility: SCH (extra)", "Extra stuff for SCH", "时间轴辅助", "xan", RotationModuleQuality.Ok, BitMask.Build(Class.SCH), 100).WithStrategies<Strategy>();
     }
 
     bool HaveSwift;
@@ -48,7 +48,7 @@ public sealed class ClassSCHUtilityEx(RotationModuleManager manager, Actor playe
 
     void Shield(in Strategy strategy, ref Actor? primaryTarget)
     {
-        if (strategy.Shield.Value == ShieldStrategy.Disabled || strategy.Shield.TrackRaw.Target == StrategyTarget.Automatic)
+        if (strategy.Shield.Value == ShieldStrategy.Disabled)
             return;
 
         // gcd shield lasts 30 seconds, if the entry is longer than that, just wait it out
@@ -57,7 +57,10 @@ public sealed class ClassSCHUtilityEx(RotationModuleManager manager, Actor playe
 
         var entryEnd = World.FutureTime(strategy.Shield.TrackRaw.ExpireIn);
 
-        var shieldPlayers = Manager.ResolvePartyMembers(strategy.Shield.TrackRaw.Target, strategy.Shield.TrackRaw.TargetParam).Where(p => !(p.FindStatus(SCH.SID.Galvanize, World.FutureTime(30))?.ExpireAt > entryEnd)).ToList();
+        var playersEnum = strategy.Shield.TrackRaw.Target == StrategyTarget.Automatic ? World.Party.WithoutSlot() : Manager.ResolvePartyMembers(strategy.Shield.TrackRaw.Target, strategy.Shield.TrackRaw.TargetParam);
+
+        // TODO: ignore players that have an existing shield that will expire before the entry end, succor/adlo does not reapply
+        var shieldPlayers = playersEnum.Where(p => p.IsTargetable && !(p.FindStatus(SCH.SID.Galvanize, World.FutureTime(30))?.ExpireAt > entryEnd)).ToList();
 
         // use succor to hit multiple allies
         // TODO: option to force adlo? not sure if it would ever be practical though

@@ -1,4 +1,4 @@
-﻿using BossMod.RPR;
+using BossMod.RPR;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -11,7 +11,7 @@ public sealed class RPR(RotationModuleManager manager, Actor player) : Attackxan
         public Track<Targeting> Targeting;
         public Track<AOEStrategy> AOE;
 
-        [Track("Arcane Circle", MinLevel = 72, Action = AID.ArcaneCircle, OGCDPriority = OGCDPriority.Default)]
+        [Track("神秘环", MinLevel = 72, Action = AID.ArcaneCircle, OGCDPriority = OGCDPriority.Default)]
         public Track<OffensiveStrategy> Buffs;
 
         [Track(Action = AID.Enshroud, MinLevel = 80, OGCDPriority = OGCDPriority.Default)]
@@ -29,10 +29,10 @@ public sealed class RPR(RotationModuleManager manager, Actor player) : Attackxan
         [Track("Soul Reaver", Actions = [AID.Gallows, AID.Guillotine, AID.ExecutionersGallows, AID.ExecutionersGuillotine, AID.Gibbet, AID.ExecutionersGibbet], MinLevel = 70)]
         public Track<SoulReaverStrategy> Reaver;
 
-        [Track("Plentiful Harvest", Action = AID.PlentifulHarvest, MinLevel = 88, Targets = ActionTargets.Hostile)]
+        [Track("大丰收", Action = AID.PlentifulHarvest, MinLevel = 88, Targets = ActionTargets.Hostile)]
         public Track<EnabledByDefault> PH;
 
-        [Track("Harvest Moon", Action = AID.HarvestMoon, MinLevel = 82, Targets = ActionTargets.Hostile)]
+        [Track("收获月", Action = AID.HarvestMoon, MinLevel = 82, Targets = ActionTargets.Hostile)]
         public Track<OffensiveStrategy> HM;
 
         [Track("Perfectio", Action = AID.Perfectio, MinLevel = 100, Targets = ActionTargets.Hostile)]
@@ -69,7 +69,7 @@ public sealed class RPR(RotationModuleManager manager, Actor player) : Attackxan
         ReserveGluttony,
         [Option("Use Stalk/Gluttony ASAP, ignoring timers", Targets = ActionTargets.Hostile, MinLevel = 76)]
         Force,
-        [Option("Do not use")]
+        [Option("不使用")]
         Delay
     }
 
@@ -103,7 +103,7 @@ public sealed class RPR(RotationModuleManager manager, Actor player) : Attackxan
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("xan RPR", "Reaper", "Standard rotation (xan)|Melee", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.RPR), 100).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("xan RPR", "钐镰客", "Standard rotation (xan)|Melee", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.RPR), 100).WithStrategies<Strategy>();
     }
 
     public int RedGauge;

@@ -15,7 +15,7 @@ sealed class WavelengthAlphaBeta(BossModule module) : BossComponent(module)
             var inRisk = false;
             if (player != default)
             {
-                hints.Add($"Order: {player.Order} -", false);
+                hints.Add($"顺序：{player.Order} -", false);
             }
             for (var i = 0; i < 8; ++i)
             {

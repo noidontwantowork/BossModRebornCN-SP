@@ -1,4 +1,4 @@
-﻿namespace BossMod.Autorotation.xan;
+namespace BossMod.Autorotation.xan;
 
 public sealed class EurekaAI(RotationModuleManager manager, Actor player) : AIBase<EurekaAI.Strategy>(manager, player)
 {
@@ -31,7 +31,7 @@ public sealed class EurekaAI(RotationModuleManager manager, Actor player) : AIBa
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("Eureka AI", "Eureka utilities", "AI (xan)", "xan", RotationModuleQuality.WIP, new(~0ul), MaxLevel: 70).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("Eureka AI", "Eureka utilities", "AI（xan）", "xan", RotationModuleQuality.WIP, new(~0ul), MaxLevel: 70).WithStrategies<Strategy>();
     }
 
     public override void Execute(in Strategy strategy, Actor? primaryTarget, float estimatedAnimLockDelay, bool isMoving)

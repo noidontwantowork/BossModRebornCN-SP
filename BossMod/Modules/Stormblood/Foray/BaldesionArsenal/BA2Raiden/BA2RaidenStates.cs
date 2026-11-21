@@ -117,7 +117,7 @@ sealed class BA2RaidenStates : StateMachineBuilder
         ComponentCondition<LancingBlowSpread>(id + 0x10u, 3.3f, static comp => comp.Spreads.Count != 0, "Spread markers appear");
         ComponentCondition<Shock>(id + 0x20u, 1.1f, static comp => comp.Casters.Count != 0, "Baited circles");
         ComponentCondition<Shock>(id + 0x30u, 3f, static comp => comp.Casters.Count == 0, "Circles resolve");
-        ComponentCondition<LancingBlowSpread>(id + 0x40u, 1.1f, static comp => comp.Spreads.Count == 0, "Adds spawn");
+        ComponentCondition<LancingBlowSpread>(id + 0x40u, 1.1f, static comp => comp.Spreads.Count == 0, "小怪出现");
         CastStartMulti(id + 0x50u, [AID.LateralZantetsuken1, AID.LateralZantetsuken2], 0.1f, "Half room cleave starts");
         ComponentCondition<LancingBlowAOE>(id + 0x60u, 1f, static comp => comp.NumCasts != 0, "AOEs around adds");
         ComponentCondition<SilentLevin>(id + 0x70u, 0.3f, static comp => comp.Casters.Count != 0, "Baited circles 1");
@@ -133,7 +133,7 @@ sealed class BA2RaidenStates : StateMachineBuilder
     private void UltimateZantetsuken(uint id, float delay)
     {
         ComponentCondition<LancingBlowSpread>(id, delay, static comp => comp.Spreads.Count != 0, "Spread markers appear");
-        ComponentCondition<LancingBlowSpread>(id + 0x10u, 4.7f, static comp => comp.Spreads.Count == 0, "Adds spawn");
+        ComponentCondition<LancingBlowSpread>(id + 0x10u, 4.7f, static comp => comp.Spreads.Count == 0, "小怪出现");
         ComponentCondition<LancingBlowAOE>(id + 0x20u, 1, static comp => comp.NumCasts != 0, "AOEs around adds");
         Targetable(id + 0x30u, false, 2);
         Targetable(id + 0x40u, true, 4);

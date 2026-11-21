@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Alliance.A14ShadowLord;
+namespace BossMod.Dawntrail.Alliance.A14ShadowLord;
 
 sealed class A14ShadowLordStates : StateMachineBuilder
 {
@@ -112,7 +112,7 @@ sealed class A14ShadowLordStates : StateMachineBuilder
     {
         CastStart(id, AID.EchoesOfAgony, delay);
         CastEnd(id + 1u, 8f);
-        ComponentCondition<EchoesOfAgony>(id + 2u, 1.1f, static comp => comp.NumFinishedStacks > 0, "Stack 1");
+        ComponentCondition<EchoesOfAgony>(id + 2u, 1.1f, static comp => comp.NumFinishedStacks > 0, "分摊 1");
         ComponentCondition<EchoesOfAgony>(id + 0x10u, numCasts == 7 ? 6.4f : 4.3f, comp => comp.NumFinishedStacks >= numCasts, $"Stack {numCasts}")
             .ExecOnExit<EchoesOfAgony>(static comp => comp.NumFinishedStacks = 0);
     }
@@ -214,9 +214,9 @@ sealed class A14ShadowLordStates : StateMachineBuilder
     private void BindingSigil(uint id, float delay)
     {
         Cast(id, AID.BindingSigil, delay, 12f);
-        ComponentCondition<BindingSigil>(id + 2u, 2.1f, static comp => comp.NumCasts > 0, "Puddles 1"); // 8 or 9
-        ComponentCondition<BindingSigil>(id + 3u, 2.5f, static comp => comp.NumCasts > 9, "Puddles 2"); // 16 or 17
-        ComponentCondition<BindingSigil>(id + 4u, 2.5f, static comp => comp.NumCasts > 17, "Puddles 3") // 25
+        ComponentCondition<BindingSigil>(id + 2u, 2.1f, static comp => comp.NumCasts > 0, "地面范围 1"); // 8 or 9
+        ComponentCondition<BindingSigil>(id + 3u, 2.5f, static comp => comp.NumCasts > 9, "地面范围 2"); // 16 or 17
+        ComponentCondition<BindingSigil>(id + 4u, 2.5f, static comp => comp.NumCasts > 17, "地面范围 3") // 25
             .ExecOnExit<BindingSigil>(static comp => comp.NumCasts = 0);
     }
 

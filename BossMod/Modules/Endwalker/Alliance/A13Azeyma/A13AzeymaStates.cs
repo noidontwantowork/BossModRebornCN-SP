@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Alliance.A13Azeyma;
+namespace BossMod.Endwalker.Alliance.A13Azeyma;
 
 public sealed class A13AzeymaStates : StateMachineBuilder
 {
@@ -117,9 +117,9 @@ public sealed class A13AzeymaStates : StateMachineBuilder
     {
         Cast(id, AID.NobleDawn, delay, 4f);
         ComponentCondition<Sunbeam>(id + 0x10u, 4.9f, static comp => comp.Casters.Count != 0);
-        ComponentCondition<Sunbeam>(id + 0x20u, 6f, static comp => comp.NumCasts != 0, "Puddles 1");
-        ComponentCondition<Sunbeam>(id + 0x21u, 2f, static comp => comp.NumCasts > 7, "Puddles 2");
-        ComponentCondition<Sunbeam>(id + 0x22u, 2f, static comp => comp.NumCasts > 14, "Puddles 3")
+        ComponentCondition<Sunbeam>(id + 0x20u, 6f, static comp => comp.NumCasts != 0, "地面范围 1");
+        ComponentCondition<Sunbeam>(id + 0x21u, 2f, static comp => comp.NumCasts > 7, "地面范围 2");
+        ComponentCondition<Sunbeam>(id + 0x22u, 2f, static comp => comp.NumCasts > 14, "地面范围 3")
             .ExecOnExit<Sunbeam>(static comp => comp.NumCasts = 0);
     }
 

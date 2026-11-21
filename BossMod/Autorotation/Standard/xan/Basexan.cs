@@ -1,4 +1,4 @@
-﻿using BossMod.Data;
+using BossMod.Data;
 using System.Diagnostics.CodeAnalysis;
 using static BossMod.AIHints;
 
@@ -88,7 +88,7 @@ public abstract class Basexan<AID, TraitID, TValues>(RotationModuleManager manag
         if (def.Category == ActionCategory.Ability && Player.FindStatus(1092) != null)
             return false;
 
-        return CanWeave(ReadyIn(aid), def.InstantAnimLock, extraGCDs, extraFixedDelay);
+        return CanWeave(ReadyIn(aid), def.TotalDuration, extraGCDs, extraFixedDelay);
     }
 
     protected AID NextGCD;
@@ -645,9 +645,9 @@ static class Extendxan
             .AddOption(Autorotation.Targeting.AutoTryPri, "Automatically select best target for AOE actions - if player has a target, ensure that target is hit");
 
         def.Define(SharedTrack.AOE).As<AOEStrategy>("AOE", uiPriority: 499)
-            .AddOption(AOEStrategy.AOE, "Use AOE rotation if beneficial")
-            .AddOption(AOEStrategy.ST, "Use single-target rotation")
-            .AddOption(AOEStrategy.ForceAOE, "Always use AOE rotation, even on one target")
+            .AddOption(AOEStrategy.AOE, "有收益时使用群体循环")
+            .AddOption(AOEStrategy.ST, "使用单体循环")
+            .AddOption(AOEStrategy.ForceAOE, "始终使用群体循环，即使只有一个目标")
             .AddOption(AOEStrategy.ForceST, "Use single-target rotation; do not use ANY actions that hit multiple targets");
 
         return def;
@@ -658,7 +658,7 @@ static class Extendxan
         return def.Define(track).As<OffensiveStrategy>(name, displayName, uiPriority: uiPriority, renderer: renderer ?? typeof(OffensiveStrategyRenderer))
             .AddOption(OffensiveStrategy.Automatic, "Use when optimal", minLevel: minLevel)
             .AddOption(OffensiveStrategy.Delay, "Don't use", minLevel: minLevel)
-            .AddOption(OffensiveStrategy.Force, "Use ASAP", minLevel: minLevel);
+            .AddOption(OffensiveStrategy.Force, "尽快使用", minLevel: minLevel);
     }
 
     public static AOEStrategy AOE(this StrategyValues strategy) => strategy.Option(SharedTrack.AOE).As<AOEStrategy>();

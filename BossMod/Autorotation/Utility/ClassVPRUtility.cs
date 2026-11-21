@@ -1,4 +1,4 @@
-﻿namespace BossMod.Autorotation;
+namespace BossMod.Autorotation;
 
 public sealed class ClassVPRUtility(RotationModuleManager manager, Actor player) : RoleMeleeUtility(manager, player)
 {
@@ -9,7 +9,7 @@ public sealed class ClassVPRUtility(RotationModuleManager manager, Actor player)
 
     public static RotationModuleDefinition Definition()
     {
-        var res = new RotationModuleDefinition("Utility: VPR", "Cooldown Planner support for Utility Actions.\nNOTE: This is NOT a rotation preset! All Utility modules are STRICTLY for cooldown-planning usage.", "Utility for planner", "Akechi", RotationModuleQuality.Excellent, BitMask.Build((int)Class.VPR), 100);
+        var res = new RotationModuleDefinition("Utility: VPR", "Cooldown Planner support for Utility Actions.\nNOTE: This is NOT a rotation preset! All Utility modules are STRICTLY for cooldown-planning usage.", "时间轴辅助", "Akechi", RotationModuleQuality.Excellent, BitMask.Build((int)Class.VPR), 100);
         DefineShared(res, IDLimitBreak3);
 
         res.Define(Track.Slither).As<DashStrategy>("Slither", "", 20)

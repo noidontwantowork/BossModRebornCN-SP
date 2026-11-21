@@ -284,11 +284,11 @@ sealed class MortalSlayer(BossModule module) : Components.GenericAOEs(module)
 
         // show bait order
         if (isDPS && _dpsGreenBaited < DPSOrder.Length)
-            hints.Add($"Order: {BuildRemainingOrder(DPSOrder, _dpsGreenBaited)}", false);
+            hints.Add($"顺序：{BuildRemainingOrder(DPSOrder, _dpsGreenBaited)}", false);
         else if (isHealer && _healerGreenBaited < HealerOrder.Length)
-            hints.Add($"Order: {BuildRemainingOrder(HealerOrder, _healerGreenBaited)}", false);
+            hints.Add($"顺序：{BuildRemainingOrder(HealerOrder, _healerGreenBaited)}", false);
         else if (isTank && _tankPurpleBaited < TankOrder.Length)
-            hints.Add($"Order: {BuildRemainingOrder(TankOrder, _tankPurpleBaited)}", false);
+            hints.Add($"顺序：{BuildRemainingOrder(TankOrder, _tankPurpleBaited)}", false);
     }
 
     private static string BuildRemainingOrder(PartyRolesConfig.Assignment[] order, int baited)

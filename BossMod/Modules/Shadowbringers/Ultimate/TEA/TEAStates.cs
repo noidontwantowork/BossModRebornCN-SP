@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Ultimate.TEA;
+namespace BossMod.Shadowbringers.Ultimate.TEA;
 
 sealed class TEAStates : StateMachineBuilder
 {
@@ -438,10 +438,10 @@ sealed class TEAStates : StateMachineBuilder
         ActorTargetable(id + 0x50u, _module.TrueHeart, true, 0.7f)
             .ActivateOnEnter<P3TrueHeart>();
 
-        ComponentCondition<P3Inception2>(id + 0x100u, 10.6f, static comp => comp.NumCasts >= 1, "Bait 1")
+        ComponentCondition<P3Inception2>(id + 0x100u, 10.6f, static comp => comp.NumCasts >= 1, "诱导 1")
             .DeactivateOnExit<P3Inception1>();
-        ComponentCondition<P3Inception2>(id + 0x101u, 2.2f, static comp => comp.NumCasts >= 2, "Bait 2");
-        ComponentCondition<P3Inception2>(id + 0x102u, 2.2f, static comp => comp.NumCasts >= 3, "Bait 3")
+        ComponentCondition<P3Inception2>(id + 0x101u, 2.2f, static comp => comp.NumCasts >= 2, "诱导 2");
+        ComponentCondition<P3Inception2>(id + 0x102u, 2.2f, static comp => comp.NumCasts >= 3, "诱导 3")
             .DeactivateOnExit<P3Tetrashatter>()
             .DeactivateOnExit<P3Inception2>();
 
@@ -588,7 +588,7 @@ sealed class TEAStates : StateMachineBuilder
             .ActivateOnEnter<P4FinalWordDebuffs>(); // debuffs appear ~0.8s after cast
         P4OrdainedMotionStillness(id + 0x10u, 3.1f)
             .ActivateOnEnter<P4FinalWordStillnessMotion>();
-        ComponentCondition<P4FinalWordDebuffs>(id + 0x20u, 3.5f, static comp => comp.Done, "Forced march");
+        ComponentCondition<P4FinalWordDebuffs>(id + 0x20u, 3.5f, static comp => comp.Done, "强制移动");
         P4OrdainedMotionStillness(id + 0x30u, 3.6f)
             .DeactivateOnExit<P4FinalWordDebuffs>() // forced movement resolve is ~1.4 after cast start
             .DeactivateOnExit<P4FinalWordStillnessMotion>();

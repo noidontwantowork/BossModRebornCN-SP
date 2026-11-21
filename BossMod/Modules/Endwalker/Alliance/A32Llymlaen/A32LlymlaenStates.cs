@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Alliance.A32Llymlaen;
+namespace BossMod.Endwalker.Alliance.A32Llymlaen;
 
 sealed class A32LlymlaenStates : StateMachineBuilder
 {
@@ -77,8 +77,8 @@ sealed class A32LlymlaenStates : StateMachineBuilder
     {
         Cast(id, AID.NavigatorsTrident, delay, 6.5f)
             .ActivateOnEnter<DireStraits>();
-        ComponentCondition<DireStraits>(id + 0x10u, 1.0f, static comp => comp.NumCasts > 0, "Side 1");
-        ComponentCondition<DireStraits>(id + 0x11u, 1.8f, static comp => comp.NumCasts > 1, "Side 2")
+        ComponentCondition<DireStraits>(id + 0x10u, 1.0f, static comp => comp.NumCasts > 0, "侧面攻击 1");
+        ComponentCondition<DireStraits>(id + 0x11u, 1.8f, static comp => comp.NumCasts > 1, "侧面攻击 2")
             .DeactivateOnExit<DireStraits>();
 
         ComponentCondition<NavigatorsTridentAOE>(id + 0x20u, 1.8f, static comp => comp.Casters.Count > 0)
@@ -206,8 +206,8 @@ sealed class A32LlymlaenStates : StateMachineBuilder
     {
         Cast(id, AID.NavigatorsTrident, delay, 6.5f)
             .ActivateOnEnter<DireStraits>();
-        ComponentCondition<DireStraits>(id + 0x10u, 1.0f, static comp => comp.NumCasts > 0, "Side 1");
-        ComponentCondition<DireStraits>(id + 0x11u, 1.8f, static comp => comp.NumCasts > 1, "Side 2")
+        ComponentCondition<DireStraits>(id + 0x10u, 1.0f, static comp => comp.NumCasts > 0, "侧面攻击 1");
+        ComponentCondition<DireStraits>(id + 0x11u, 1.8f, static comp => comp.NumCasts > 1, "侧面攻击 2")
             .DeactivateOnExit<DireStraits>();
 
         ComponentCondition<NavigatorsTridentAOE>(id + 0x20u, 1.8f, static comp => comp.Casters.Count > 0)
@@ -236,10 +236,10 @@ sealed class A32LlymlaenStates : StateMachineBuilder
             .DeactivateOnExit<SurgingWaveShockwave>();
 
         CastStart(id + 0x20u, AID.ToTheLast, 3.0f);
-        ComponentCondition<ToTheLast>(id + 0x30u, 6.0f, static comp => comp.NumCasts > 0, "Side 1")
+        ComponentCondition<ToTheLast>(id + 0x30u, 6.0f, static comp => comp.NumCasts > 0, "侧面攻击 1")
             .ActivateOnEnter<ToTheLast>();
-        ComponentCondition<ToTheLast>(id + 0x40u, 2.0f, static comp => comp.NumCasts > 1, "Side 2");
-        ComponentCondition<ToTheLast>(id + 0x50u, 2.0f, static comp => comp.NumCasts > 2, "Side 3")
+        ComponentCondition<ToTheLast>(id + 0x40u, 2.0f, static comp => comp.NumCasts > 1, "侧面攻击 2");
+        ComponentCondition<ToTheLast>(id + 0x50u, 2.0f, static comp => comp.NumCasts > 2, "侧面攻击 3")
             .DeactivateOnExit<ToTheLast>();
         CastStartMulti(id + 0x60u, [AID.LeftStrait, AID.RightStrait], 1.4f);
         var state2 = ComponentCondition<SurgingWaveCorridor>(id + 0x70u, 4.0f, static comp => comp.CorridorDir == default)

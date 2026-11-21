@@ -1,4 +1,4 @@
-﻿using BossMod.BLM;
+using BossMod.BLM;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -97,7 +97,7 @@ public sealed class AkechiBLM(RotationModuleManager manager, Actor player) : Ake
             .AddOption(CommonStrategy.Delay, "Delay Swiftcast for strategic reasons", 0, 0, ActionTargets.Self, 18)
             .AddAssociatedActions(AID.Swiftcast);
 
-        res.Define(Track.LeyLines).As<CommonStrategy>("LL", "Ley Lines", 197)
+        res.Define(Track.LeyLines).As<CommonStrategy>("LL", "黑魔纹", 197)
             .AddOption(CommonStrategy.Automatic, "Automatically use Ley Lines", 0, 0, ActionTargets.Self, 52)
             .AddOption(CommonStrategy.Force, "Force Ley Lines ASAP", 0, 20, ActionTargets.Self, 52)
             .AddOption(CommonStrategy.ForceWeave, "Force Ley Lines in next possible weave slot", 0, 20, ActionTargets.Self, 52)

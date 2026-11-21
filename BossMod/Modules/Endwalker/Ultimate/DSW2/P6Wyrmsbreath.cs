@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.DSW2;
+namespace BossMod.Endwalker.Ultimate.DSW2;
 
 // baited cones part of the mechanic
 abstract class P6Wyrmsbreath(BossModule module, bool allowIntersect) : Components.GenericBaitAway(module, (uint)AID.FlameBreath) // note: cast is arbitrary
@@ -29,7 +29,7 @@ abstract class P6Wyrmsbreath(BossModule module, bool allowIntersect) : Component
             if (ActiveBaitsOn(actor).Any(b => PlayersClippedBy(ref b).Any(p => p != partner)))
                 hints.Add("Bait away from raid!");
             if (ActiveBaitsNotOn(actor).Any(b => b.Target != partner && IsClippedBy(actor, ref b)))
-                hints.Add("GTFO from baited aoe!");
+                hints.Add("离开诱导出的范围！");
         }
     }
 

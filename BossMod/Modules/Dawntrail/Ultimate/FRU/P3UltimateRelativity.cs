@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Ultimate.FRU;
+namespace BossMod.Dawntrail.Ultimate.FRU;
 
 sealed class P3UltimateRelativity(BossModule module) : Components.CastCounter(module, default)
 {
@@ -347,7 +347,7 @@ sealed class P3UltimateRelativitySinboundMeltdownBait(BossModule module) : Compo
         }
 
         if (ActiveBaitsNotOn(actor).Any(b => IsClippedBy(actor, ref b)))
-            hints.Add("GTFO from baited aoe!");
+            hints.Add("离开诱导出的范围！");
     }
 
     public override void AddAIHints(int slot, Actor actor, PartyRolesConfig.Assignment assignment, AIHints hints) { } // handled by main component

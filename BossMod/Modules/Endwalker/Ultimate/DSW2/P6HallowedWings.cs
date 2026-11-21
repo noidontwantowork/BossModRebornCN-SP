@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.DSW2;
+namespace BossMod.Endwalker.Ultimate.DSW2;
 
 sealed class P6HallowedWings(BossModule module) : Components.GenericAOEs(module)
 {
@@ -89,7 +89,7 @@ abstract class P6HallowedPlume(BossModule module) : Components.GenericBaitAway(m
             else
             {
                 if (ActiveBaitsNotOn(actor).Any(b => IsClippedBy(actor, ref b)))
-                    hints.Add("GTFO from baited aoe!");
+                    hints.Add("离开诱导出的范围！");
             }
         }
     }

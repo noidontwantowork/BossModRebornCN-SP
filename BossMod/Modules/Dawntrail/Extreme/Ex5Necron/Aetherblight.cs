@@ -178,7 +178,7 @@ sealed class Aetherblight(BossModule module) : Components.GenericAOEs(module)
         var count = Hints.Count;
         if (count > 0)
         {
-            var sb = new StringBuilder("Order: ", 7 + 4 * (count - 1) + count * 5);
+            var sb = new StringBuilder("顺序：", 7 + 4 * (count - 1) + count * 5);
             var ord = CollectionsMarshal.AsSpan(Hints);
             for (var i = 0; i < count; ++i)
             {

@@ -160,7 +160,7 @@ sealed class FTB3MarbleDragonStates : StateMachineBuilder
             .ActivateOnEnter<ImitationBlizzardTowers>()
             .DeactivateOnExit<FrigidDive>();
         ComponentCondition<ImitationBlizzardTowers>(id + 0x20u, 4.1f, comp => comp.NumCasts != 0, "Towers 1 + cross AOE");
-        ComponentCondition<ImitationBlizzardTowers>(id + 0x30u, 4f, comp => comp.NumCasts == 6, "Towers 2")
+        ComponentCondition<ImitationBlizzardTowers>(id + 0x30u, 4f, comp => comp.NumCasts == 6, "踩塔 2")
             .DeactivateOnExit<ImitationBlizzard>()
             .DeactivateOnExit<BallOfIce>()
             .DeactivateOnExit<ImitationBlizzardTowers>();

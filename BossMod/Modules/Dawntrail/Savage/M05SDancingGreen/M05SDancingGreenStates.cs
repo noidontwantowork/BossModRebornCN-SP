@@ -115,7 +115,7 @@ sealed class M05SDancingGreenStates : StateMachineBuilder
             var offset = id + (uint)(0x10u * (i + 1));
             var time = i == 1 ? 0.3f : 2.4f;
             var pattern = (i & 1) == 0 ? "donut" : "circle";
-            var desc = i == 1 ? "Bait 1" : $"Bait {i} + {pattern} + cone repeat";
+            var desc = i == 1 ? "诱导 1" : $"Bait {i} + {pattern} + cone repeat";
             var casts = i;
 
             var cond = ComponentCondition<GetDownBait>(offset, time, comp => comp.NumCasts == casts, desc);
@@ -222,7 +222,7 @@ sealed class M05SDancingGreenStates : StateMachineBuilder
             var offset = id + (uint)(0x20u * (i + 1));
             var time = i == 1 ? 0.3f : 2.4f;
             var pattern = (i & 1) == 0 ? "donut" : "circle";
-            var desc = i == 1 ? "Bait 1" : $"Bait {i} + {pattern} + cone repeat";
+            var desc = i == 1 ? "诱导 1" : $"Bait {i} + {pattern} + cone repeat";
             var casts = i;
 
             var cond = ComponentCondition<GetDownBait>(offset, time, comp => comp.NumCasts == casts, desc);

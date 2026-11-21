@@ -10,7 +10,7 @@ public sealed class SGE(RotationModuleManager manager, Actor player) : Castxan<A
     {
         public Track<Targeting> Targeting;
         public Track<AOEStrategy> AOE;
-        [Track("Phlegma", Actions = [AID.Phlegma, AID.PhlegmaII, AID.PhlegmaIII])]
+        [Track("发炎", Actions = [AID.Phlegma, AID.PhlegmaII, AID.PhlegmaIII])]
         public Track<OffensiveStrategy> Buffs;
         public Track<KardiaStrategy> Kardia;
         public Track<DruocholeStrategy> Druochole;
@@ -38,7 +38,7 @@ public sealed class SGE(RotationModuleManager manager, Actor player) : Castxan<A
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("xan SGE", "Sage", "Standard rotation (xan)|Healers", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.SGE), 100).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("xan SGE", "贤者", "Standard rotation (xan)|Healers", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.SGE), 100).WithStrategies<Strategy>();
     }
 
     public int Gall;

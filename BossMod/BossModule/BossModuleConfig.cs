@@ -1,4 +1,4 @@
-using Dalamud.Bindings.ImGui;
+﻿using Dalamud.Bindings.ImGui;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -28,6 +28,9 @@ public sealed class BossModuleConfig : ConfigNode
 
     [PropertyDisplay("允许模块自动使用技能", tooltip: "示例：模块可以在击退发生前自动使用防击退技能")]
     public bool AllowAutomaticActions = true;
+
+    [PropertyDisplay("在任务搜索器中标记已支持的副本", tooltip: "在已有模块支持的副本（普通与高难任务）的等级要求旁显示「BMR」标签。\n颜色表示该副本可加载首领模块中的最低成熟度：红 = 开发中，蓝 = 已贡献，绿 = 已验证，金 = 支持AI。")]
+    public bool ShowDutyFinderIndicator = true;
 
     [PropertyDisplay("显示测试雷达和提示窗口", tooltip: "在不进行boss战时配置雷达和提示窗口非常有用", separator: true, depends: nameof(EnableRadar))]
     public bool ShowDemo = false;

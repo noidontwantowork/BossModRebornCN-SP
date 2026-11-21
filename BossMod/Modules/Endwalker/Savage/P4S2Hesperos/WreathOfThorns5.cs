@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P4S2Hesperos;
+namespace BossMod.Endwalker.Savage.P4S2Hesperos;
 
 // state related to act 5 (finale) wreath of thorns
 sealed class WreathOfThorns5(BossModule module) : BossComponent(module)
@@ -14,7 +14,7 @@ sealed class WreathOfThorns5(BossModule module) : BossComponent(module)
         var order = _playersOrder.IndexOf(actor.InstanceID);
         if (order >= 0)
         {
-            hints.Add($"Order: {order + 1}", false);
+            hints.Add($"顺序：{order + 1}", false);
 
             if (order >= _castsDone && order < _towersOrder.Count)
             {
@@ -30,7 +30,7 @@ sealed class WreathOfThorns5(BossModule module) : BossComponent(module)
 
     public override void AddGlobalHints(Actor actor, GlobalHints hints)
     {
-        hints.Add($"Order: {string.Join(" -> ", _playersOrder.Skip(_castsDone).Select(id => WorldState.Actors.Find(id)?.Name ?? "???"))}");
+        hints.Add($"顺序：{string.Join(" -> ", _playersOrder.Skip(_castsDone).Select(id => WorldState.Actors.Find(id)?.Name ?? "???"))}");
     }
 
     public override void DrawArenaForeground(int pcSlot, Actor pc)

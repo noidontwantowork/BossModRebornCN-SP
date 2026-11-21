@@ -30,11 +30,11 @@ public sealed class RDM(RotationModuleManager manager, Actor player) : Castxan<A
 
     public enum MeleeStrategy
     {
-        [PropertyDisplay("始终完成连击（目标移出范围时保持）")]
+        [PropertyDisplay("Use at full mana, if needed for movement, or during burst")]
         Automatic,
-        [PropertyDisplay("Do not use")]
+        [PropertyDisplay("不使用")]
         Delay,
-        [PropertyDisplay("目标超出范围时打断连击")]
+        [PropertyDisplay("Use ASAP, break combos if necessary")]
         Force
     }
 
@@ -79,7 +79,7 @@ public sealed class RDM(RotationModuleManager manager, Actor player) : Castxan<A
     private Enemy? BestLineTarget;
 
     private bool InRangedCombo
-        => Stacks == 3
+        => Stacks == 3 && Unlocked(AID.Verflare)
         || ComboLastMove is AID.Verflare or AID.Verholy && Unlocked(AID.Scorch)
         || ComboLastMove is AID.Scorch && Unlocked(AID.Resolution);
 
@@ -197,8 +197,9 @@ public sealed class RDM(RotationModuleManager manager, Actor player) : Castxan<A
         if (ComboLastMove is AID.Verflare or AID.Verholy)
             PushGCD(AID.Scorch, BestAOETarget, GCDPriority.Combo);
 
+        // verholy needs the L70 job quest, verflare is L68; until verholy is unlocked, verflare is the only finisher regardless of mana balance
         if (Stacks == 3)
-            PushGCD(BlackMana > WhiteMana ? AID.Verholy : AID.Verflare, BestAOETarget, GCDPriority.Combo);
+            PushGCD(BlackMana > WhiteMana && Unlocked(AID.Verholy) ? AID.Verholy : AID.Verflare, BestAOETarget, GCDPriority.Combo);
 
         if (ComboLastMove == AID.Zwerchhau && Unlocked(AID.Redoublement))
             PushGCD(AID.Redoublement, primaryTarget, GCDPriority.Combo);

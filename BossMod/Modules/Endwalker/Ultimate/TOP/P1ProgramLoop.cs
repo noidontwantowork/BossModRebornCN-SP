@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.TOP;
+namespace BossMod.Endwalker.Ultimate.TOP;
 
 sealed class P1ProgramLoop(BossModule module) : P1CommonAssignments(module)
 {
@@ -41,7 +41,7 @@ sealed class P1ProgramLoop(BossModule module) : P1CommonAssignments(module)
         else if (_tethers.Any())
         {
             if (!_tethers[slot])
-                hints.Add("Grab the tether!");
+                hints.Add("接走连线！");
             else if (Raid.WithoutSlot(false, true, true).InRadiusExcluding(actor, _tetherRadius).Any())
                 hints.Add("GTFO from raid!");
         }

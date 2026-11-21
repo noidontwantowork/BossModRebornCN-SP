@@ -1,4 +1,4 @@
-﻿using BossMod.WHM;
+using BossMod.WHM;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -10,12 +10,12 @@ public sealed class WHM(RotationModuleManager manager, Actor player) : Castxan<A
     {
         public Track<Targeting> Targeting;
         public Track<AOEStrategy> AOE;
-        [Track("Presence of Mind", Action = AID.PresenceOfMind)]
+        [Track("神速咏唱", Action = AID.PresenceOfMind)]
         public Track<OffensiveStrategy> Buffs;
         [Track(Action = AID.Assize)]
         public Track<AssizeStrategy> Assize;
 
-        [Track(InternalName = "Afflatus Misery")]
+        [Track(InternalName = "苦难之心")]
         public Track<MiseryStrategy> Misery;
 
         readonly Targeting IStrategyCommon.Targeting => Targeting.Value;
@@ -33,7 +33,7 @@ public sealed class WHM(RotationModuleManager manager, Actor player) : Castxan<A
     }
     public enum MiseryStrategy
     {
-        [Option("Use ASAP", Targets = ActionTargets.Hostile)]
+        [Option("尽快使用", Targets = ActionTargets.Hostile)]
         ASAP,
         [Option("Only use during raid buffs", Targets = ActionTargets.Hostile)]
         BuffedOnly,
@@ -43,7 +43,7 @@ public sealed class WHM(RotationModuleManager manager, Actor player) : Castxan<A
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("xan WHM", "White Mage", "Standard rotation (xan)|Healers", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.WHM, Class.CNJ), 100)
+        return new RotationModuleDefinition("xan WHM", "白魔法师", "Standard rotation (xan)|Healers", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.WHM, Class.CNJ), 100)
             .WithStrategies<Strategy>();
     }
 
@@ -86,7 +86,7 @@ public sealed class WHM(RotationModuleManager manager, Actor player) : Castxan<A
 
         if (CountdownRemaining > 0)
         {
-            if (CountdownRemaining < GetCastTime(AID.Stone))
+            if (CountdownRemaining < GetCastTime(AID.Stone) + ApplicationDelay.Get(AID.GlareIV))
                 PushGCD(AID.Stone, primaryTarget);
 
             return;
@@ -94,7 +94,11 @@ public sealed class WHM(RotationModuleManager manager, Actor player) : Castxan<A
 
         var approach = strategy.Assize.Value != AssizeStrategy.None && CanWeave(AID.Assize, 1);
 
-        GoalZoneCombined(strategy, approach ? 19.5f : 25, Hints.GoalAOECircle(8), AID.Holy, 3);
+        // TODO: breakpoints
+        // at 70, holy 1 is 140 per target and stone IV is 260
+        var minHolyTargets = Player.Level == 70 ? 2 : 3;
+
+        GoalZoneCombined(strategy, approach ? 19.5f : 25, Hints.GoalAOECircle(8), AID.Holy, minHolyTargets);
 
         if (!CanFitGCD(TargetDotLeft, 1))
             PushGCD(AID.Aero, BestDotTarget, GCDPriority.Filler, useOnDyingTarget: false);
@@ -116,7 +120,7 @@ public sealed class WHM(RotationModuleManager manager, Actor player) : Castxan<A
         if (SacredSight > 0)
             PushGCD(AID.GlareIV, BestRangedAOETarget);
 
-        if (NumHolyTargets > 2)
+        if (NumHolyTargets >= minHolyTargets)
             PushGCD(AID.Holy, Player);
 
         // TODO make a track for this

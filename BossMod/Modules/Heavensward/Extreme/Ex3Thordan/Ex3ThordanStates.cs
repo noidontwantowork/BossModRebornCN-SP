@@ -30,7 +30,7 @@ sealed class Ex3ThordanStates : StateMachineBuilder
         AscalonsMight(id + 0x90000u, 6.2f);
         HeavenlyHeel(id + 0xA0000u, 2.2f);
         AscalonsMight(id + 0xB0000u, 2.1f, true);
-        Targetable(id + 0xC0000u, false, 2f, "Boss disappears");
+        Targetable(id + 0xC0000u, false, 2f, "首领消失");
     }
 
     private void AddPhase(uint id)
@@ -270,7 +270,7 @@ sealed class Ex3ThordanStates : StateMachineBuilder
 
     private void LightOfAscalonUltimateEnd(uint id, float delay)
     {
-        ComponentCondition<BossReappear>(id, delay, static comp => comp.NumCasts > 0, "Boss reappears")
+        ComponentCondition<BossReappear>(id, delay, static comp => comp.NumCasts > 0, "首领再现")
             .ActivateOnEnter<BossReappear>()
             .ActivateOnEnter<LightOfAscalon>();
         ComponentCondition<LightOfAscalon>(id + 0x10u, 10.7f, static comp => comp.NumCasts > 0, "Short knockback 1")

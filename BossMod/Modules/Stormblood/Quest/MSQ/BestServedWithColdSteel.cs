@@ -1,4 +1,4 @@
-﻿namespace BossMod.Stormblood.Quest.MSQ.BestServedWithColdSteel;
+namespace BossMod.Stormblood.Quest.MSQ.BestServedWithColdSteel;
 
 public enum OID : uint
 {
@@ -152,16 +152,16 @@ class MagitekVanguardIPrototypeStates : StateMachineBuilder
 
     private void P1(uint id)
     {
-        Condition(id, 300, () => BossHPRatio < 0.9f, "Adds 1")
+        Condition(id, 300, () => BossHPRatio < 0.9f, "小怪 1")
             .ActivateOnEnter<CermetPile>()
             .ActivateOnEnter<Firebomb>()
             .ActivateOnEnter<AugmentedSuffering>()
             .ActivateOnEnter<OpenFire>()
             .ActivateOnEnter<AugmentedUprising>();
 
-        Condition(id + 2, 300, () => BossHPRatio < 0.75f, "Adds 2");
+        Condition(id + 2, 300, () => BossHPRatio < 0.75f, "小怪 2");
         Condition(id + 4, 300, () => BossHPRatio < 0.65f, "Turrets").ActivateOnEnter<MagitekTurret>();
-        Condition(id + 6, 300, () => BossHPRatio < 0.55f, "Adds 3");
+        Condition(id + 6, 300, () => BossHPRatio < 0.55f, "小怪 3");
         Condition(id + 8, 300, () => BossHPRatio < 0.4f, "Cutscene").ActivateOnEnter<MagitekSelfDetonate>();
         ComponentCondition<MagitekSelfDetonate>(id + 10, 18, m => m.NumCasts > 0);
         CastEnd(id + 12, 60, "Self-detonate").SetHint(StateMachine.StateHint.DowntimeStart);

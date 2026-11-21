@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Unreal.Un3Sophia;
+namespace BossMod.Endwalker.Unreal.Un3Sophia;
 
 sealed class Un3SophiaStates : StateMachineBuilder
 {
@@ -205,7 +205,7 @@ sealed class Un3SophiaStates : StateMachineBuilder
             .DeactivateOnExit<ScalesOfWisdom>()
             .SetHint(StateMachine.StateHint.Raidwide);
 
-        Targetable(id + 0x4000u, true, 5.5f, "Boss reappears")
+        Targetable(id + 0x4000u, true, 5.5f, "首领再现")
             .DeactivateOnExit<RingOfPain>(); // voidzone from add phase should disappear by now
     }
 

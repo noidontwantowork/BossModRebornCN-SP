@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.TOP;
+namespace BossMod.Endwalker.Ultimate.TOP;
 
 sealed class P3OversampledWaveCannon(BossModule module) : BossComponent(module)
 {
@@ -18,7 +18,7 @@ sealed class P3OversampledWaveCannon(BossModule module) : BossComponent(module)
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (_playerOrder[slot] != 0)
-            hints.Add($"Order: {(IsMonitor(slot) != default ? "M" : "N")}{_playerOrder[slot]}", false);
+            hints.Add($"顺序：{(IsMonitor(slot) != default ? "M" : "N")}{_playerOrder[slot]}", false);
 
         var numHitBy = AOEs(slot).Count(a => !a.source && _shape.Check(actor.Position, a.origin, a.rot));
         if (numHitBy != 1)

@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Extreme.Ex4Barbariccia;
+namespace BossMod.Endwalker.Extreme.Ex4Barbariccia;
 
 sealed class Ex4BarbaricciaStates : StateMachineBuilder
 {
@@ -205,7 +205,7 @@ sealed class Ex4BarbaricciaStates : StateMachineBuilder
             .ActivateOnEnter<BlowAwayRaidwide>()
             .DeactivateOnExit<BlowAwayRaidwide>()
             .SetHint(StateMachine.StateHint.Raidwide);
-        ComponentCondition<BlowAwayPuddle>(id + 1u, 1.7f, static comp => comp.ActiveCasters.Length != 0, "Bait 1")
+        ComponentCondition<BlowAwayPuddle>(id + 1u, 1.7f, static comp => comp.ActiveCasters.Length != 0, "诱导 1")
             .ActivateOnEnter<BlowAwayPuddle>();
         ComponentCondition<BrutalRush>(id + 2u, 0.7f, static comp => comp.HavePendingRushes)
             .ActivateOnEnter<BrutalRush>();
@@ -246,7 +246,7 @@ sealed class Ex4BarbaricciaStates : StateMachineBuilder
             .ActivateOnEnter<BlowAwayRaidwide>()
             .DeactivateOnExit<BlowAwayRaidwide>()
             .SetHint(StateMachine.StateHint.Raidwide);
-        ComponentCondition<BlowAwayPuddle>(id + 1u, 1.7f, static comp => comp.ActiveCasters.Length != 0, "Bait 1")
+        ComponentCondition<BlowAwayPuddle>(id + 1u, 1.7f, static comp => comp.ActiveCasters.Length != 0, "诱导 1")
             .ActivateOnEnter<BlowAwayPuddle>();
         // +2.0s: puddles 2 bait
         // +4.0s: puddles 1 finish + 3 bait

@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P12S2PallasAthena;
+namespace BossMod.Endwalker.Savage.P12S2PallasAthena;
 
 sealed class P12S2PallasAthenaStates : StateMachineBuilder
 {
@@ -183,7 +183,7 @@ sealed class P12S2PallasAthenaStates : StateMachineBuilder
             .SetHint(StateMachine.StateHint.Raidwide);
         ComponentCondition<ClassicalConcepts>(id + 0x10u, 5.0f, static comp => comp.NumPlayerTethers > 0, "Player tethers");
         ComponentCondition<ClassicalConcepts>(id + 0x20u, 7.8f, static comp => comp.NumShapeTethers > 0, "Shape tethers");
-        ComponentCondition<ClassicalConcepts>(id + 0x30u, 3.0f, static comp => comp.NumShapeTethers == 0, "Tethers resolve")
+        ComponentCondition<ClassicalConcepts>(id + 0x30u, 3.0f, static comp => comp.NumShapeTethers == 0, "连线结算")
             .SetHint(StateMachine.StateHint.Raidwide); // note: actual damage effects are randomly staggered over ~1s after tethers disappear
 
         ComponentCondition<Implode>(id + 0x100u, 2.8f, static comp => comp.Casters.Count > 0)
@@ -206,7 +206,7 @@ sealed class P12S2PallasAthenaStates : StateMachineBuilder
         ComponentCondition<ClassicalConcepts>(id + 0x20u, 2.6f, static comp => comp.NumShapeTethers > 0, "Shape tethers");
         CastStart(id + 0x30u, AID.PalladianRay, 1.6f)
             .ActivateOnEnter<PalladianRayBait>();
-        ComponentCondition<ClassicalConcepts>(id + 0x40u, 1.4f, static comp => comp.NumShapeTethers == 0, "Tethers resolve")
+        ComponentCondition<ClassicalConcepts>(id + 0x40u, 1.4f, static comp => comp.NumShapeTethers == 0, "连线结算")
             .ActivateOnEnter<Implode>() // note: starts ~2.2s after palladian ray cast end
             .DeactivateOnExit<ClassicalConcepts>()
             .SetHint(StateMachine.StateHint.Raidwide); // note: actual damage effects are randomly staggered over ~1s after tethers disappear
@@ -258,8 +258,8 @@ sealed class P12S2PallasAthenaStates : StateMachineBuilder
             .ActivateOnEnter<Pangenesis>() // statuses appear 0.7s after cast end
             .SetHint(StateMachine.StateHint.Raidwide);
         Cast(id + 0x10u, AID.Pantheos, 4.1f, 4);
-        ComponentCondition<Pangenesis>(id + 0x20u, 5.8f, static comp => comp.NumCasts >= 2, "Towers 1");
-        ComponentCondition<Pangenesis>(id + 0x30u, 5.0f, static comp => comp.NumCasts >= 6, "Towers 2");
+        ComponentCondition<Pangenesis>(id + 0x20u, 5.8f, static comp => comp.NumCasts >= 2, "踩塔 1");
+        ComponentCondition<Pangenesis>(id + 0x30u, 5.0f, static comp => comp.NumCasts >= 6, "踩塔 2");
         ComponentCondition<Pangenesis>(id + 0x40u, 5.0f, static comp => comp.NumCasts >= 10, "Towers 3")
             .DeactivateOnExit<Pangenesis>();
 

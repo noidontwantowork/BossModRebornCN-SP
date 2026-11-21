@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.TOP;
+namespace BossMod.Endwalker.Ultimate.TOP;
 
 // common assignments for multiple mechanics in the fight
 abstract class CommonAssignments(BossModule module) : BossComponent(module)
@@ -16,7 +16,7 @@ abstract class CommonAssignments(BossModule module) : BossComponent(module)
     {
         var ps = PlayerStates[slot];
         if (ps.Order != 0)
-            hints.Add($"Order: {ps.Order}, group: {ps.Group}", false);
+            hints.Add($"顺序：{ps.Order}, group: {ps.Group}", false);
     }
 
     public override PlayerPriority CalcPriority(int pcSlot, Actor pc, int playerSlot, Actor player, ref uint customColor)

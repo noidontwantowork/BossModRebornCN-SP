@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS2StygimolochWarrior;
+namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS2StygimolochWarrior;
 
 sealed class DRS2StygimolochWarriorStates : StateMachineBuilder
 {
@@ -151,7 +151,7 @@ sealed class DRS2StygimolochWarriorStates : StateMachineBuilder
 
         CastStart(id + 0x120u, AID.ForcefulStrike, 2.7f);
         ComponentCondition<FocusedTremorLarge>(id + 0x130u, 5.2f, static comp => comp.NumCasts >= 1, "Tile 1");
-        ComponentCondition<Coerce>(id + 0x131u, 1.6f, static comp => comp.NumActiveForcedMarches > 0, "Forced march");
+        ComponentCondition<Coerce>(id + 0x131u, 1.6f, static comp => comp.NumActiveForcedMarches > 0, "强制移动");
         ComponentCondition<FocusedTremorLarge>(id + 0x132u, 0.4f, static comp => comp.NumCasts >= 2, "Tile 2");
         ComponentCondition<FocusedTremorLarge>(id + 0x133u, 2.0f, static comp => comp.NumCasts >= 3, "Tile 3");
         ComponentCondition<FocusedTremorLarge>(id + 0x134u, 2.0f, static comp => comp.NumCasts >= 4, "Tile 4")

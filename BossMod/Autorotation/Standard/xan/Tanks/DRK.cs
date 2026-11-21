@@ -1,4 +1,4 @@
-﻿using BossMod.DRK;
+using BossMod.DRK;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -48,9 +48,9 @@ public sealed class DRK(RotationModuleManager manager, Actor player) : Attackxan
         Automatic,
         [Option("Automatic usage, but save 3000 MP for TBN", MinLevel = 70, Targets = ActionTargets.Hostile)]
         AutomaticTBN,
-        [Option("Do not use")]
+        [Option("不使用")]
         Delay,
-        [Option("Use ASAP", Targets = ActionTargets.Hostile)]
+        [Option("尽快使用", Targets = ActionTargets.Hostile)]
         Force,
         [Option("Use ASAP, but save 3000 MP for TBN", MinLevel = 70, Targets = ActionTargets.Hostile)]
         ForceTBN
@@ -62,9 +62,9 @@ public sealed class DRK(RotationModuleManager manager, Actor player) : Attackxan
         Automatic,
         [Option("Use during burst, only if multiple targets will be hit")]
         BurstMulti,
-        [Option("Do not use")]
+        [Option("不使用")]
         Delay,
-        [Option("Use ASAP")]
+        [Option("尽快使用")]
         Force,
         [Option("Use ASAP, if multiple targets will be hit")]
         AnyMulti,
@@ -90,7 +90,7 @@ public sealed class DRK(RotationModuleManager manager, Actor player) : Attackxan
         AutomaticMax,
         [Option("Don't use")]
         Delay,
-        [Option("Use ASAP")]
+        [Option("尽快使用")]
         Force,
         [Option("Use one charge ASAP")]
         ForceMax

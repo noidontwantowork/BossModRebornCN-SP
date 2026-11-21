@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.DSW2;
+namespace BossMod.Endwalker.Ultimate.DSW2;
 
 sealed class P3Geirskogul(BossModule module) : Components.SimpleAOEs(module, (uint)AID.Geirskogul, new AOEShapeRect(62f, 4f))
 {
@@ -101,7 +101,7 @@ sealed class P3DiveFromGrace(BossModule module) : Components.CastTowers(module, 
     {
         var state = _playerStates[slot];
         if (state.JumpOrder > 0)
-            hints.Add($"Order: {state.JumpOrder}", false);
+            hints.Add($"顺序：{state.JumpOrder}", false);
         if (_haveDirections)
             hints.Add($"Spot: {state.AssignedSpot switch
             {

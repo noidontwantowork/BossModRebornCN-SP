@@ -1,4 +1,4 @@
-﻿namespace BossMod.Autorotation.xan;
+namespace BossMod.Autorotation.xan;
 
 public sealed class DeepDungeonAI(RotationModuleManager manager, Actor player) : AIBase<DeepDungeonAI.Strategy>(manager, player)
 {
@@ -13,7 +13,7 @@ public sealed class DeepDungeonAI(RotationModuleManager manager, Actor player) :
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("Deep Dungeon AI", "Utilities for deep dungeon - potion/pomander user", "AI (xan)", "xan", RotationModuleQuality.Basic, new BitMask(~0ul), 100, CanUseWhileRoleplaying: true).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("Deep Dungeon AI", "Utilities for deep dungeon - potion/pomander user", "AI（xan）", "xan", RotationModuleQuality.Basic, new BitMask(~0ul), 100, CanUseWhileRoleplaying: true).WithStrategies<Strategy>();
     }
 
     enum OID : uint

@@ -1,9 +1,9 @@
 {
-  "Author": "The Combat Reborn Team",
+  "Author": "The Combat Reborn Team / NiGuangOwO(本地化&适配) / KanoNoUta(斗兽奇弈支持) / COXOIDA(博兹雅支持)",
   "Name": "BossMod Reborn",
   "InternalName": "BossModReborn",
   "RepoUrl": "https://github.com/FFXIV-CombatReborn/BossmodReborn",
-  "Description": "A bunch of utilities to simplify boss mechanics",
+  "Description": "结合上游原版、国服本地化版、斗兽版、博兹雅版等BMR的合并构建，保留国服本地化与全部独有功能（AEAssist 联动、AOE 广播 IPC、PalacePal陷阱刷新等），并额外包含「斗兽奇弈（驯兽师）」和「南方博兹雅战线 / 扎杜诺尔高原」的相关副本支持，从而同时兼容AutoDuty、BOCCHI（新月岛）、Pawprint（斗兽奇弈）、Newfolder3（深层迷宫）、OmniToolbox（博兹雅）等插件的自动化副本功能。",
   "ApplicableVersion": "any",
   "Tags": [
     "combat",
@@ -22,11 +22,12 @@
   "LoadPriority": 0,
   "IsTestingExclusive": false,
   "IconUrl": "https://raw.githubusercontent.com/FFXIV-CombatReborn/RebornAssets/main/IconAssets/BMR_Icon.png",
-  "Punchline": "Don't fail at raid mechanics anymore",
+  "Punchline": "国服本地化 + 斗兽奇弈（驯兽师）支持 + 博兹雅支持",
   "AcceptsFeedback": true,
   "ImageUrls": [
     "https://raw.githubusercontent.com/FFXIV-CombatReborn/BossmodReborn/master/Data/image1.png",
     "https://raw.githubusercontent.com/FFXIV-CombatReborn/BossmodReborn/master/Data/image2.png",
     "https://raw.githubusercontent.com/FFXIV-CombatReborn/BossmodReborn/master/Data/image3.png"
-  ]
+  ],
+  "AssemblyVersion": "7.5.8.6"
 }

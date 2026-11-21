@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.VariantCriterion.C03AAI.C033Statice;
+namespace BossMod.Endwalker.VariantCriterion.C03AAI.C033Statice;
 
 sealed class TrickReload(BossModule module) : BossComponent(module)
 {
@@ -9,9 +9,9 @@ sealed class TrickReload(BossModule module) : BossComponent(module)
     public override void AddGlobalHints(Actor actor, GlobalHints hints)
     {
         if (SafeSlice > 0)
-            hints.Add($"Order: {(FirstStack ? "stack" : "spread")} -> {SafeSlice} -> {(FirstStack ? "spread" : "stack")}");
+            hints.Add($"顺序：{(FirstStack ? "stack" : "spread")} -> {SafeSlice} -> {(FirstStack ? "spread" : "stack")}");
         else if (NumLoads > 0)
-            hints.Add($"Order: {(FirstStack ? "stack" : "spread")} -> ???");
+            hints.Add($"顺序：{(FirstStack ? "stack" : "spread")} -> ???");
     }
 
     public override void OnEventCast(Actor caster, ActorCastEvent spell)

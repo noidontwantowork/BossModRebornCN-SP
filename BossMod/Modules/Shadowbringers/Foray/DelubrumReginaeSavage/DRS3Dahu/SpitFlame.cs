@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS3Dahu;
+namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS3Dahu;
 
 sealed class SpitFlame(BossModule module) : Components.UniformStackSpread(module, default, 4f, raidwideOnResolve: false)
 {
@@ -16,7 +16,7 @@ sealed class SpitFlame(BossModule module) : Components.UniformStackSpread(module
         base.AddHints(slot, actor, hints);
         if (Array.IndexOf(_targets, actor) is var order && order >= 0)
         {
-            hints.Add($"Order: {order + 1}", false);
+            hints.Add($"顺序：{order + 1}", false);
             if (!_adds.Any(add => add.Position.InCircle(actor.Position, SpreadRadius)))
                 hints.Add("Hit at least one add!");
         }

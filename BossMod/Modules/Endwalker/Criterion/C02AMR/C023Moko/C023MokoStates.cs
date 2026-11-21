@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.VariantCriterion.C02AMR.C023Moko;
+namespace BossMod.Endwalker.VariantCriterion.C02AMR.C023Moko;
 
 abstract class C023MokoStates : StateMachineBuilder
 {
@@ -123,7 +123,7 @@ abstract class C023MokoStates : StateMachineBuilder
             .ActivateOnEnter<IaiGiriResolve>()
             .ActivateOnEnter<Clearout>() // PATEs 1.0s after cast end
             .SetHint(StateMachine.StateHint.Raidwide);
-        Targetable(id + 0x20u, false, 3.1f, "Boss disappears"); // around here we get second statuses
+        Targetable(id + 0x20u, false, 3.1f, "首领消失"); // around here we get second statuses
         CastMulti(id + 0x30u, [AID.FarEdge, AID.NearEdge], 0.1f, 6f)
             .ActivateOnEnter<AccursedEdge>();
         ComponentCondition<AccursedEdge>(id + 0x32u, 0.1f, static comp => comp.NumCasts > 0, "Jump/bait 1") // also first clearout
@@ -149,7 +149,7 @@ abstract class C023MokoStates : StateMachineBuilder
             .DeactivateOnExit<Clearout>() // TODO: last aoe ~1.2s before?..
             .DeactivateOnExit<IaiGiriResolve>();
 
-        Targetable(id + 0x200u, true, 2.2f, "Boss reappears");
+        Targetable(id + 0x200u, true, 2.2f, "首领再现");
     }
 
     private void SoldiersOfDeath(uint id, float delay)

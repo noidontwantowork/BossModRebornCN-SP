@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Alliance.A14Naldthal;
+namespace BossMod.Endwalker.Alliance.A14Naldthal;
 
 public sealed class A14NaldthalStates : StateMachineBuilder
 {
@@ -207,7 +207,7 @@ public sealed class A14NaldthalStates : StateMachineBuilder
     private void SoulMeasure(uint id, float delay)
     {
         Cast(id, AID.SoulsMeasure, delay, 6f);
-        Targetable(id + 0x10u, false, 1.1f, "Boss disappears");
+        Targetable(id + 0x10u, false, 1.1f, "首领消失");
         ComponentCondition<SoulVessel>(id + 0x20u, 20.6f, static comp => comp.ActiveActorsCount != 0, "Adds appear")
             .SetHint(StateMachine.StateHint.DowntimeEnd);
         ComponentCondition<SoulVessel>(id + 0x30u, 100, static comp => comp.ActiveActorsCount == 0, "Adds enrage")
@@ -218,6 +218,6 @@ public sealed class A14NaldthalStates : StateMachineBuilder
         Cast(id + 0x100u, AID.Balance, 5.2f, 12.5f, "Balance check");
         ComponentCondition<TippedScales>(id + 0x110u, 38.2f, static comp => comp.NumCasts > 0, "Raidwide")
             .DeactivateOnExit<TippedScales>();
-        Targetable(id + 0x120, true, 8.1f, "Boss reappears");
+        Targetable(id + 0x120, true, 8.1f, "首领再现");
     }
 }

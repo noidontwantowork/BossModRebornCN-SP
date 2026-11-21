@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P1SErichthonios;
+namespace BossMod.Endwalker.Savage.P1SErichthonios;
 
 // we have two cube patterns (symmetrical and asymmetrical) and two explosion orders, which gives us three movement patterns (symmetrical, asymmetrical top-bottom and asymmetrical bottom-top)
 // each pattern has four distinct kinds of squares that have identical cubes (N, S, E/W and intercardinals); one of the intercardinals should do special movement to swap with N for asymmetrical patterns
@@ -88,7 +88,7 @@ sealed class Intemperance(BossModule module) : BossComponent(module)
 
     public override void AddGlobalHints(Actor actor, GlobalHints hints)
     {
-        hints.Add($"Order: {_curState}, pattern: {_pattern}.");
+        hints.Add($"顺序：{_curState}, pattern: {_pattern}.");
     }
 
     public override void DrawArenaBackground(int pcSlot, Actor pc)

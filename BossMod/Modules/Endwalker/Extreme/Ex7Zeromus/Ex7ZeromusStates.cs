@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Extreme.Ex7Zeromus;
+namespace BossMod.Endwalker.Extreme.Ex7Zeromus;
 
 sealed class Ex7ZeromusStates : StateMachineBuilder
 {
@@ -157,7 +157,7 @@ sealed class Ex7ZeromusStates : StateMachineBuilder
     private void VisceralWhirlChainsBombs(uint id, float delay)
     {
         CastStartMulti(id, [AID.VisceralWhirlR, AID.VisceralWhirlL], delay);
-        ComponentCondition<BondsOfDarkness>(id + 1u, 1.9f, static comp => comp.NumTethers > 0, "Chains appear")
+        ComponentCondition<BondsOfDarkness>(id + 1u, 1.9f, static comp => comp.NumTethers > 0, "锁链出现")
             .ActivateOnEnter<VisceralWhirl>()
             .ActivateOnEnter<BondsOfDarkness>(); // tethers have ~5s to be broken
         // +3.1s: acceleration bomb icons
@@ -246,9 +246,9 @@ sealed class Ex7ZeromusStates : StateMachineBuilder
             .DeactivateOnExit<MeteorImpactProximity>();
         Cast(id + 0x10u, AID.MeteorImpact, 0.9f, 11f);
         // +0.9s: first set bound
-        ComponentCondition<MeteorImpactCharge>(id + 0x20u, 2.7f, static comp => comp.NumCasts >= 4, "Charges 1");
+        ComponentCondition<MeteorImpactCharge>(id + 0x20u, 2.7f, static comp => comp.NumCasts >= 4, "冲锋 1");
         // +5.4s: second set bound
-        ComponentCondition<MeteorImpactCharge>(id + 0x30u, 7.0f, static comp => comp.NumCasts >= 8, "Charges 2")
+        ComponentCondition<MeteorImpactCharge>(id + 0x30u, 7.0f, static comp => comp.NumCasts >= 8, "冲锋 2")
             .DeactivateOnExit<MeteorImpactCharge>();
         ComponentCondition<MeteorImpactExplosion>(id + 0x40u, 2.1f, static comp => comp.Casters.Count > 0)
             .ActivateOnEnter<MeteorImpactExplosion>();

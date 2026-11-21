@@ -1,4 +1,4 @@
-﻿using BossMod.MNK;
+using BossMod.MNK;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -51,7 +51,7 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
         public Track<PotionStrategy> Pot;
         [Track(UiPriority = 49)]
         public Track<EngageStrategy> Engage;
-        [Track("True North", MinLevel = 50, UiPriority = 48, Action = AID.TrueNorth, OGCDPriority = OGCDPriority.TrueNorth)]
+        [Track("真北", MinLevel = 50, UiPriority = 48, Action = AID.TrueNorth, OGCDPriority = OGCDPriority.TrueNorth)]
         public Track<OffensiveStrategy> TrueNorth;
 
         readonly Targeting IStrategyCommon.Targeting => Targeting.Value;
@@ -64,7 +64,7 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
         Manual,
         [Option("Use ~4 GCDs before next buff window")]
         PreBuffs,
-        [Option("Use ASAP")]
+        [Option("尽快使用")]
         Now
     }
     public enum MeditationStrategy
@@ -73,9 +73,9 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
         Safe,
         [Option("Use out of combat, or if no enemies are in melee range")]
         Greedy,
-        [Option("Use ASAP")]
+        [Option("尽快使用")]
         Force,
-        [Option("Do not use")]
+        [Option("不使用")]
         Delay
     }
 
@@ -85,7 +85,7 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
         Automatic,
         [Option("Don't use")]
         Delay,
-        [Option("Use ASAP")]
+        [Option("尽快使用")]
         Force,
         [Option("Use ASAP, as long as a GCD has been used first (for early opener)")]
         ForceGCD
@@ -96,16 +96,16 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
         Automatic,
         [Option("Hold until a ranged attack is needed", Targets = ActionTargets.Hostile)]
         Ranged,
-        [Option("Use ASAP", Targets = ActionTargets.Hostile)]
+        [Option("尽快使用", Targets = ActionTargets.Hostile)]
         Force,
-        [Option("Do not use")]
+        [Option("不使用")]
         Delay
     }
     public enum WRStrategy
     {
         [Option("Hold until a ranged attack is needed", Targets = ActionTargets.Hostile)]
         Automatic,
-        [Option("Use ASAP", Targets = ActionTargets.Hostile)]
+        [Option("尽快使用", Targets = ActionTargets.Hostile)]
         Force,
         [Option("Use as soon as multiple targets can be hit", Targets = ActionTargets.Hostile)]
         Multi,
@@ -127,7 +127,7 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
         Force,
         [Option("Use ASAP (late weave)")]
         ForceMidWeave,
-        [Option("Do not use")]
+        [Option("不使用")]
         Delay,
     }
     public enum PBStrategy
@@ -140,9 +140,9 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
         ForceMinus3,
         [Option("Use ASAP unless under the effect of Form Shift")]
         ForceNoShift,
-        [Option("Use ASAP", MinLevel = 50)]
+        [Option("尽快使用", MinLevel = 50, Effect = 20)]
         Force,
-        [Option("Do not use", MinLevel = 50)]
+        [Option("不使用", MinLevel = 50)]
         Delay,
         [Option("Downtime prep: Solar", MinLevel = 60, Effect = 39)]
         DowntimeSolar,
@@ -151,16 +151,16 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
     }
     public enum TCStrategy
     {
-        [Option("Do not use")]
+        [Option("不使用")]
         None,
         [Option("Use when outside melee range", Targets = ActionTargets.Hostile, OGCDPriority = OGCDPriority.TrueNorth)]
         GapClose,
-        [Option("Use to cancel knockback", Targets = ActionTargets.Party | ActionTargets.Hostile, OGCDPriority = OGCDPriority.PerfectBalance)]
+        [Option("用于抵消击退", Targets = ActionTargets.Party | ActionTargets.Hostile, OGCDPriority = OGCDPriority.PerfectBalance)]
         Knockback
     }
     public enum BlitzStrategy
     {
-        [Option("Use ASAP")]
+        [Option("尽快使用")]
         Automatic,
         [Option("Hold until Riddle of Fire is active")]
         RoF,
@@ -168,14 +168,14 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
         Multi,
         [Option("Hold until RoF and multiple targets")]
         MultiRoF,
-        [Option("Do not use")]
+        [Option("不使用")]
         Delay
     }
     public enum EngageStrategy
     {
         [Option("Thunderclap to target")]
         TC,
-        [Option("Sprint into melee range")]
+        [Option("冲刺进入近战距离")]
         Sprint,
         [Option("Precast Dragon Kick from melee range")]
         FacepullDK,
@@ -320,7 +320,7 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
         var gauge = World.Client.GetGauge<MonkGauge>();
 
         Chakra = gauge.Chakra;
-        BeastChakra = gauge.BeastChakra;
+        BeastChakra = [gauge.BeastChakra1, gauge.BeastChakra2, gauge.BeastChakra3];
         BlitzLeft = gauge.BlitzTimeRemaining / 1000f;
         Nadi = gauge.Nadi;
 
@@ -445,7 +445,9 @@ public sealed class MNK(RotationModuleManager manager, Actor player) : Attackxan
 
         UpdatePositionals(primaryTarget, ref pos);
 
-        GoalZoneCombined(strategy, 3, Hints.GoalAOECircle(5), AID.ArmOfTheDestroyer, AOEBreakpoint, maximumActionRange: 20);
+        var isAoeBlitz = BeastCount == 3 && !currentBlitzIsTargeted;
+
+        GoalZoneCombined(strategy, 3, Hints.GoalAOECircle(5), AID.ArmOfTheDestroyer, isAoeBlitz ? 2 : AOEBreakpoint, maximumActionRange: 20);
 
         OGCD(strategy, primaryTarget);
     }

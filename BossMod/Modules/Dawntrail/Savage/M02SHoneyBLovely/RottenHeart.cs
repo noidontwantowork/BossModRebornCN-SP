@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Savage.M02SHoneyBLovely;
+namespace BossMod.Dawntrail.Savage.M02SHoneyBLovely;
 
 sealed class RottenHeart(BossModule module) : Components.CastCounter(module, (uint)AID.RottenHeartAOE);
 
@@ -10,7 +10,7 @@ sealed class RottenHeartBigBurst(BossModule module) : Components.CastCounter(mod
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (_order[slot] > NumCasts)
-            hints.Add($"Order: {_order[slot]}", ResolveImminent(slot));
+            hints.Add($"顺序：{_order[slot]}", ResolveImminent(slot));
     }
 
     public override PlayerPriority CalcPriority(int pcSlot, Actor pc, int playerSlot, Actor player, ref uint customColor)

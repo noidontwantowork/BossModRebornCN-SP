@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Alliance.A13ArkAngels;
+namespace BossMod.Dawntrail.Alliance.A13ArkAngels;
 
 sealed class A13ArkAngelsStates : StateMachineBuilder
 {
@@ -123,9 +123,9 @@ sealed class A13ArkAngelsStates : StateMachineBuilder
     private void Dragonfall(uint id, float delay)
     {
         ActorCast(id, _module.BossGK, AID.Dragonfall, delay, 9, true);
-        ComponentCondition<Dragonfall>(id + 2u, 0.3f, static comp => comp.NumCasts > 0, "Stack 1");
+        ComponentCondition<Dragonfall>(id + 2u, 0.3f, static comp => comp.NumCasts > 0, "分摊 1");
         ComponentCondition<Dragonfall>(id + 3u, 2.4f, static comp => comp.NumCasts > 1, "Stack 2");
-        ComponentCondition<Dragonfall>(id + 4u, 2.4f, static comp => comp.NumCasts > 2, "Stack 3")
+        ComponentCondition<Dragonfall>(id + 4u, 2.4f, static comp => comp.NumCasts > 2, "分摊 3")
             .ExecOnExit<Dragonfall>(static comp => comp.NumCasts = 0);
     }
 
@@ -214,7 +214,7 @@ sealed class A13ArkAngelsStates : StateMachineBuilder
     {
         ActorCastStart(id, _module.BossEV, AID.ArroganceIncarnate, delay, true);
         ActorCastEnd(id + 1u, _module.BossEV, 5f, true);
-        ComponentCondition<ArroganceIncarnate>(id + 2u, 0.7f, static comp => comp.NumFinishedStacks > 0, "Stack 1");
+        ComponentCondition<ArroganceIncarnate>(id + 2u, 0.7f, static comp => comp.NumFinishedStacks > 0, "分摊 1");
         ComponentCondition<ArroganceIncarnate>(id + 0x10u, 4.3f, static comp => comp.NumFinishedStacks >= 5, "Stack 5")
             .ExecOnExit<ArroganceIncarnate>(static comp => comp.NumFinishedStacks = 0);
     }

@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P9SKokytos;
+namespace BossMod.Endwalker.Savage.P9SKokytos;
 
 sealed class P9SKokytosStates : StateMachineBuilder
 {
@@ -221,7 +221,7 @@ sealed class P9SKokytosStates : StateMachineBuilder
         CastEnd(id + 0x101u, 5f);
         Cast(id + 0x110u, AID.Thunderbolt, 2.1f, 3f);
         ComponentCondition<Thunderbolt>(id + 0x120u, 1.0f, static comp => comp.NumCasts > 0, "Proteans 1");
-        ComponentCondition<BeastlyBile>(id + 0x121u, 0.9f, static comp => comp.NumCasts >= 1, "Stack 1");
+        ComponentCondition<BeastlyBile>(id + 0x121u, 0.9f, static comp => comp.NumCasts >= 1, "分摊 1");
         // +0.8s: burst 1 should start
         Cast(id + 0x130u, AID.Thunderbolt, 1.3f, 3f);
         ComponentCondition<Thunderbolt>(id + 0x140u, 1.0f, static comp => comp.NumCasts > 4, "Proteans 2")

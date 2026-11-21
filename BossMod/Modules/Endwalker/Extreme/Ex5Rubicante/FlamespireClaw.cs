@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Extreme.Ex5Rubicante;
+namespace BossMod.Endwalker.Extreme.Ex5Rubicante;
 
 sealed class FlamespireClaw(BossModule module) : Components.GenericBaitAway(module, (uint)AID.FlamespireClawAOE)
 {
@@ -14,7 +14,7 @@ sealed class FlamespireClaw(BossModule module) : Components.GenericBaitAway(modu
         var order = _order[slot];
         if (order != 0 && NumCasts < 8)
         {
-            hints.Add($"Order: {order}", false);
+            hints.Add($"顺序：{order}", false);
             var shouldBeTethered = order switch
             {
                 1 => NumCasts is 1 or 2,

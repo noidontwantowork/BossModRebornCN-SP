@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.VariantCriterion.C02AMR.C022Gorai;
+namespace BossMod.Endwalker.VariantCriterion.C02AMR.C022Gorai;
 
 abstract class C022GoraiStates : StateMachineBuilder
 {
@@ -134,7 +134,7 @@ abstract class C022GoraiStates : StateMachineBuilder
             .ActivateOnEnter<SFightingSpirits>(_savage);
         ComponentCondition<FightingSpirits>(id + 2u, 1.2f, static comp => comp.NumCasts > 0, "Knockback")
             .DeactivateOnExit<FightingSpirits>();
-        Targetable(id + 0x10u, false, 2.7f, "Boss disappears");
+        Targetable(id + 0x10u, false, 2.7f, "首领消失");
         ComponentCondition<WorldlyPursuitBait>(id + 0x20u, 0.7f, static comp => comp.NumCasts > 0, "Jump 1");
         ComponentCondition<WorldlyPursuitBait>(id + 0x30u, 3.1f, static comp => comp.NumCasts > 1, "Jump 2");
         ComponentCondition<WorldlyPursuitBait>(id + 0x40u, 3.1f, static comp => comp.NumCasts > 2, "Jump 3");
@@ -143,7 +143,7 @@ abstract class C022GoraiStates : StateMachineBuilder
         ComponentCondition<WorldlyPursuitLast>(id + 0x60u, 3.1f, static comp => comp.NumCasts > 0, "Jump 5")
             .ActivateOnEnter<WorldlyPursuitLast>()
             .DeactivateOnExit<WorldlyPursuitLast>();
-        Targetable(id + 0x70u, true, 2.5f, "Boss reappears");
+        Targetable(id + 0x70u, true, 2.5f, "首领再现");
     }
 
     private void MalformedReincarnation(uint id, float delay)
@@ -160,8 +160,8 @@ abstract class C022GoraiStates : StateMachineBuilder
         CastEnd(id + 0x31u, 3f)
             .ActivateOnEnter<NFlickeringFlame>(!_savage)
             .ActivateOnEnter<SFlickeringFlame>(_savage);
-        ComponentCondition<MalformedPrayer2>(id + 0x40u, 2.0f, static comp => comp.NumCasts > 0, "Towers 1", 0);
-        ComponentCondition<MalformedPrayer2>(id + 0x50u, 2.5f, static comp => comp.NumCasts > 4, "Towers 2", 0);
+        ComponentCondition<MalformedPrayer2>(id + 0x40u, 2.0f, static comp => comp.NumCasts > 0, "踩塔 1", 0);
+        ComponentCondition<MalformedPrayer2>(id + 0x50u, 2.5f, static comp => comp.NumCasts > 4, "踩塔 2", 0);
         ComponentCondition<MalformedPrayer2>(id + 0x60u, 2.0f, static comp => comp.NumCasts > 8, "Towers 3", 0)
             .DeactivateOnExit<MalformedPrayer2>();
         ComponentCondition<FlickeringFlame>(id + 0x70u, 0.5f, static comp => comp.NumCasts >= 8, "Criss-cross 1");

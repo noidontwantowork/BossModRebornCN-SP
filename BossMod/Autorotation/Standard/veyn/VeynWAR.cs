@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
+using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 
 namespace BossMod.Autorotation;
 
@@ -21,7 +21,7 @@ public sealed class VeynWAR(RotationModuleManager manager, Actor player) : Rotat
         var res = new RotationModuleDefinition("Veyn WAR", "Standard rotation module", "Standard rotation (veyn)", "veyn", RotationModuleQuality.Good, BitMask.Build((int)Class.WAR, (int)Class.MRD), 100);
 
         res.Define(Track.AOE).As<AOEStrategy>("AOE", uiPriority: 90)
-            .AddOption(AOEStrategy.SingleTarget, "Use single-target rotation")
+            .AddOption(AOEStrategy.SingleTarget, "使用单体循环")
             .AddOption(AOEStrategy.ForceAOE, "Use aoe rotation")
             .AddOption(AOEStrategy.Auto, "Use aoe rotation if 3+ targets would be hit, otherwise use single-target rotation; break combo if necessary")
             .AddOption(AOEStrategy.AutoFinishCombo, "Use aoe rotation if 3+ targets would be hit, otherwise use single-target rotation; finish combo route before switching");

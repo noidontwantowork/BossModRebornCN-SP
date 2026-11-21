@@ -1,4 +1,4 @@
-﻿using BossMod.Data;
+using BossMod.Data;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 
 namespace BossMod.Autorotation.xan;
@@ -136,7 +136,7 @@ public class PhantomAI(RotationModuleManager manager, Actor player) : AIBase<Pha
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("Phantom Job AI", "Basic phantom job action automation", "AI (xan)", "xan", RotationModuleQuality.WIP, new(~0ul), MaxLevel: 100).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("Phantom Job AI", "Basic phantom job action automation", "AI（xan）", "xan", RotationModuleQuality.WIP, new(~0ul), MaxLevel: 100).WithStrategies<Strategy>();
     }
 
     public static readonly uint[] UndeadMobs = [

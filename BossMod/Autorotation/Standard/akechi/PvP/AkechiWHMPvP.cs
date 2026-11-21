@@ -1,4 +1,4 @@
-﻿using BossMod.WHM;
+using BossMod.WHM;
 using static BossMod.AIHints;
 
 namespace BossMod.Autorotation.akechi;
@@ -70,7 +70,7 @@ public sealed class AkechiWHMPvP(RotationModuleManager manager, Actor player) : 
             .AddOption(CommonStrategy.Allow, "Use Miracle of Nature when available")
             .AddOption(CommonStrategy.Forbid, "Do not use Miracle of Nature");
 
-        res.Define(Track.AfflatusMisery).As<CommonStrategy>("Afflatus Misery", "", 300)
+        res.Define(Track.AfflatusMisery).As<CommonStrategy>("苦难之心", "", 300)
             .AddOption(CommonStrategy.Allow, "Use Afflatus Misery when available")
             .AddOption(CommonStrategy.Forbid, "Do not use Afflatus Misery");
 

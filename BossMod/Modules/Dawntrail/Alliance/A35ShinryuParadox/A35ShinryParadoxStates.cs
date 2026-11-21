@@ -111,7 +111,7 @@ sealed class A35ShinryuParadoxStates : StateMachineBuilder
 
     void P2(uint id, float delay)
     {
-        ActorTargetable(id, _module.BossP2M, true, delay, "Boss reappears")
+        ActorTargetable(id, _module.BossP2M, true, delay, "首领再现")
             .DeactivateOnEnter<FloorAOEs>()
             .DeactivateOnExit<P2ArenaChange>()
             .DeactivateOnEnter<StarflareP1>()
@@ -132,8 +132,8 @@ sealed class A35ShinryuParadoxStates : StateMachineBuilder
 
     void CelestialTrail(uint id, float delay)
     {
-        ComponentCondition<CelestialTrail>(id, delay, static c => c.NumCasts >= 8, "Towers 1");
-        ComponentCondition<CelestialTrail>(id + 0x10u, 19.3f, static c => c.NumCasts >= 16, "Towers 2")
+        ComponentCondition<CelestialTrail>(id, delay, static c => c.NumCasts >= 8, "踩塔 1");
+        ComponentCondition<CelestialTrail>(id + 0x10u, 19.3f, static c => c.NumCasts >= 16, "踩塔 2")
             .DeactivateOnExit<CelestialTrail>();
     }
 
@@ -180,7 +180,7 @@ sealed class A35ShinryuParadoxStates : StateMachineBuilder
     void SuperNova(uint id, float delay)
     {
         ActorCastStart(id, _module.BossP2M, AID.SuperNovaVisual, delay, true);
-        ComponentCondition<SuperNova>(id + 0x10u, 6.2f, static s => s.NumCasts > 0, "Stack 1");
-        ComponentCondition<SuperNova>(id + 0x20u, 1.9f, static s => s.NumCasts >= 3, "Stack 3");
+        ComponentCondition<SuperNova>(id + 0x10u, 6.2f, static s => s.NumCasts > 0, "分摊 1");
+        ComponentCondition<SuperNova>(id + 0x20u, 1.9f, static s => s.NumCasts >= 3, "分摊 3");
     }
 }

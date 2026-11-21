@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Unreal.Un2Sephirot;
+namespace BossMod.Endwalker.Unreal.Un2Sephirot;
 
 sealed class Un2SephirotStates : StateMachineBuilder
 {
@@ -144,7 +144,7 @@ sealed class Un2SephirotStates : StateMachineBuilder
             .DeactivateOnExit<P3GevurahChesed>();
         ComponentCondition<P3FiendishWail>(id + 0x10u, 1.6f, static comp => comp.Active)
             .ActivateOnEnter<P3FiendishWail>();
-        ComponentCondition<P3FiendishWail>(id + 0x11u, 4f, static comp => !comp.Active, "Towers 1")
+        ComponentCondition<P3FiendishWail>(id + 0x11u, 4f, static comp => !comp.Active, "踩塔 1")
             .ActivateOnEnter<EinSof>()
             .DeactivateOnExit<P3FiendishWail>();
 
@@ -153,7 +153,7 @@ sealed class Un2SephirotStates : StateMachineBuilder
         ComponentCondition<P3FiendishWail>(id + 0x40u, 14.6f, static comp => comp.Active)
             .ActivateOnEnter<P3FiendishWail>()
             .DeactivateOnExit<EinSof>();
-        ComponentCondition<P3FiendishWail>(id + 0x41u, 4f, static comp => !comp.Active, "Towers 2")
+        ComponentCondition<P3FiendishWail>(id + 0x41u, 4f, static comp => !comp.Active, "踩塔 2")
             .DeactivateOnExit<P3FiendishWail>();
 
         ActorCastMulti(id + 0x50u, _module.BossP3, [AID.GevurahChesed, AID.ChesedGevurah], 2.2f, 5f, true)

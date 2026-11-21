@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.DSW2;
+namespace BossMod.Endwalker.Ultimate.DSW2;
 
 sealed class DSW2States : StateMachineBuilder
 {
@@ -192,7 +192,7 @@ sealed class DSW2States : StateMachineBuilder
             .DeactivateOnExit<P2SanctityOfTheWard2HeavensStakeCircles>()
             .DeactivateOnExit<P2SanctityOfTheWard2HeavensStakeDonut>()
             .DeactivateOnExit<P2SanctityOfTheWard2HiemalStorm>();
-        ComponentCondition<P2SanctityOfTheWard2Towers1>(id + 0x110u, 4.2f, static comp => comp.NumCasts > 0, "Towers 1")
+        ComponentCondition<P2SanctityOfTheWard2Towers1>(id + 0x110u, 4.2f, static comp => comp.NumCasts > 0, "踩塔 1")
             .ActivateOnEnter<P2SanctityOfTheWard2VoidzoneFire>()
             .ActivateOnEnter<P2SanctityOfTheWard2VoidzoneIce>()
             .ActivateOnEnter<P2SanctityOfTheWard2Towers2>();
@@ -201,7 +201,7 @@ sealed class DSW2States : StateMachineBuilder
             .DeactivateOnExit<P2SanctityOfTheWard2Knockback>()
             .DeactivateOnExit<P2SanctityOfTheWard2VoidzoneFire>()
             .DeactivateOnExit<P2SanctityOfTheWard2VoidzoneIce>();
-        ComponentCondition<P2SanctityOfTheWard2Towers2>(id + 0x130u, 3f, static comp => comp.NumCasts > 0, "Towers 2")
+        ComponentCondition<P2SanctityOfTheWard2Towers2>(id + 0x130u, 3f, static comp => comp.NumCasts > 0, "踩塔 2")
             .DeactivateOnExit<P2SanctityOfTheWard2Towers1>() // TODO: reconsider...
             .DeactivateOnExit<P2SanctityOfTheWard2Towers2>();
 
@@ -247,12 +247,12 @@ sealed class DSW2States : StateMachineBuilder
             .SetHint(StateMachine.StateHint.Raidwide);
         // TODO: consider adding a state 0.3s later when stack happens; first jumps happen +/- 0.1s around it
 
-        ComponentCondition<P3GnashAndLash>(id + 0x20u, 3.7f, static comp => comp.NumCasts >= 1, "In/out 1");
+        ComponentCondition<P3GnashAndLash>(id + 0x20u, 3.7f, static comp => comp.NumCasts >= 1, "钢铁／月环 1");
         ComponentCondition<P3GnashAndLash>(id + 0x30u, 3.1f, static comp => comp.NumCasts >= 2, "Towers 1 + In/out 2"); // note: towers happen ~0.1s earlier
         ComponentCondition<P3Geirskogul>(id + 0x40u, 2.5f, static comp => comp.Casters.Count > 0);
         ComponentCondition<P3DiveFromGrace>(id + 0x50u, 0.8f, static comp => comp.NumJumps > 3, "Jump 2");
         ActorCastStartMulti(id + 0x58u, _module.BossP3, [AID.GnashAndLash, AID.LashAndGnash], 3.8f, true);
-        ComponentCondition<P3DiveFromGrace>(id + 0x60u, 2.8f, static comp => comp.NumCasts > 3, "Towers 2");
+        ComponentCondition<P3DiveFromGrace>(id + 0x60u, 2.8f, static comp => comp.NumCasts > 3, "踩塔 2");
         ComponentCondition<P3Geirskogul>(id + 0x70u, 2.6f, static comp => comp.Casters.Count > 0);
         ComponentCondition<P3DiveFromGrace>(id + 0x80u, 1.8f, static comp => comp.NumJumps > 5, "Stack + Jump 3");
         ActorCastEnd(id + 0x88u, _module.BossP3, 0.4f, true)
@@ -411,7 +411,7 @@ sealed class DSW2States : StateMachineBuilder
             .DeactivateOnExit<P5Cauterize>() // these casts resolve ~0.2s before donut
             .DeactivateOnExit<P5WrathOfTheHeavensEmptyDimension>();
 
-        ActorTargetable(id + 0x300u, _module.BossP5, true, 1.0f, "Boss reappears")
+        ActorTargetable(id + 0x300u, _module.BossP5, true, 1.0f, "首领再现")
             .SetHint(StateMachine.StateHint.DowntimeEnd);
         P5AncientQuaga(id + 0x1000u, 0.1f)
             .DeactivateOnExit<P5WrathOfTheHeavensChainLightning>() // lightings resolve right after donuts
@@ -479,7 +479,7 @@ sealed class DSW2States : StateMachineBuilder
     {
         Timeout(id, 0f)
             .SetHint(StateMachine.StateHint.DowntimeStart);
-        ActorTargetable(id + 1u, _module.BossP5, false, 6.6f, "Boss disappears");
+        ActorTargetable(id + 1u, _module.BossP5, false, 6.6f, "首领消失");
         ActorTargetable(id + 2u, _module.NidhoggP6, true, 10.4f, "Dragons appear")
             .SetHint(StateMachine.StateHint.DowntimeEnd);
     }
@@ -670,7 +670,7 @@ sealed class DSW2States : StateMachineBuilder
         ActorCast(id, _module.BossP7, AID.AkhMornsEdge, delay, 6f, true)
             .ActivateOnEnter<P7AkhMornsEdge>()
             .ActivateOnEnter<P7FlamesIceOfAscalon>();
-        ComponentCondition<P7AkhMornsEdge>(id + 0x10u, 0.7f, static comp => comp.NumCasts >= 1, "Towers 1");
+        ComponentCondition<P7AkhMornsEdge>(id + 0x10u, 0.7f, static comp => comp.NumCasts >= 1, "踩塔 1");
         ComponentCondition<P7FlamesIceOfAscalon>(id + 0x11u, 0.1f, static comp => comp.NumCasts > 0, "In/out")
             .DeactivateOnExit<P7FlamesIceOfAscalon>();
         ComponentCondition<P7AkhMornsEdge>(id + 0x20u, 2.1f, static comp => comp.NumCasts >= 2);

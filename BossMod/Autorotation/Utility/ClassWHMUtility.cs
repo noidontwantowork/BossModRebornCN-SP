@@ -11,7 +11,7 @@ public sealed class ClassWHMUtility(RotationModuleManager manager, Actor player)
 
     public static RotationModuleDefinition Definition()
     {
-        var res = new RotationModuleDefinition("Utility: WHM", "Cooldown Planner support for Utility Actions.\nNOTE: This is NOT a rotation preset! All Utility modules are STRICTLY for cooldown-planning usage.", "Utility for planner", "TrueP", RotationModuleQuality.WIP, BitMask.Build((int)Class.WHM), 100);
+        var res = new RotationModuleDefinition("Utility: WHM", "Cooldown Planner support for Utility Actions.\nNOTE: This is NOT a rotation preset! All Utility modules are STRICTLY for cooldown-planning usage.", "时间轴辅助", "TrueP", RotationModuleQuality.WIP, BitMask.Build((int)Class.WHM), 100);
         DefineShared(res, IDLimitBreak3);
 
         DefineSimpleConfig(res, Track.PresenceOfMind, "PresenceOfMind", "PoM", 220, WHM.AID.PresenceOfMind, 15);

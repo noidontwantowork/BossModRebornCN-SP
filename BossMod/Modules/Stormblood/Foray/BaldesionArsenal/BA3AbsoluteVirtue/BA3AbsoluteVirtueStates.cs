@@ -132,6 +132,6 @@ sealed class BA3AbsoluteVirtueStates : StateMachineBuilder
 
     private void CallWyvern(uint id, float delay)
     {
-        Cast(id, AID.CallWyvern, delay, 3f, "Adds spawn");
+        Cast(id, AID.CallWyvern, delay, 3f, "小怪出现");
     }
 }

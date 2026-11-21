@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Savage.M02SHoneyBLovely;
+namespace BossMod.Dawntrail.Savage.M02SHoneyBLovely;
 
 sealed class HoneyBLiveBeat1(BossModule module) : Components.CastCounter(module, (uint)AID.HoneyBLiveBeat1AOE);
 sealed class HoneyBLiveBeat2(BossModule module) : Components.CastCounter(module, (uint)AID.HoneyBLiveBeat2AOE);
@@ -137,7 +137,7 @@ sealed class HoneyBLiveBeat3BigBurst(BossModule module) : Components.UniformStac
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (Order[slot] != 0)
-            hints.Add($"Order: {Order[slot]}", false);
+            hints.Add($"顺序：{Order[slot]}", false);
         base.AddHints(slot, actor, hints);
     }
 

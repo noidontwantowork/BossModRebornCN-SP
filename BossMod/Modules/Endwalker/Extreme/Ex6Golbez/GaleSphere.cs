@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Extreme.Ex6Golbez;
+namespace BossMod.Endwalker.Extreme.Ex6Golbez;
 
 sealed class GaleSphere(BossModule module) : Components.GenericAOEs(module)
 {
@@ -29,7 +29,7 @@ sealed class GaleSphere(BossModule module) : Components.GenericAOEs(module)
     public override void AddGlobalHints(Actor actor, GlobalHints hints)
     {
         if (_sides.Count > NumCasts)
-            hints.Add($"Order: {string.Join(" -> ", _sides.Skip(NumCasts))}");
+            hints.Add($"顺序：{string.Join(" -> ", _sides.Skip(NumCasts))}");
     }
 
     // note: PATE 11D5 happens 1.5s before all casts start, but we don't really care

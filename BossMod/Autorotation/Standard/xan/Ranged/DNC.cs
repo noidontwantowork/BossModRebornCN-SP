@@ -1,4 +1,4 @@
-﻿using BossMod.DNC;
+using BossMod.DNC;
 using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 using static BossMod.AIHints;
 
@@ -13,7 +13,7 @@ public sealed class DNC(RotationModuleManager manager, Actor player) : Attackxan
         [Track("Tech Step", Actions = [AID.TechnicalStep, AID.SingleTechnicalFinish, AID.DoubleTechnicalFinish, AID.TripleTechnicalFinish, AID.QuadrupleTechnicalFinish, AID.SingleTechnicalFinish2, AID.DoubleTechnicalFinish2, AID.TripleTechnicalFinish2, AID.QuadrupleTechnicalFinish2], MinLevel = 70)]
         public Track<OffensiveStrategy> Buffs;
 
-        [Track("Dance Partner", Action = AID.ClosedPosition, MinLevel = 60)]
+        [Track("舞伴", Action = AID.ClosedPosition, MinLevel = 60)]
         public Track<PartnerStrategy> Partner;
 
         readonly Targeting IStrategyCommon.Targeting => Targeting.Value;
@@ -22,7 +22,7 @@ public sealed class DNC(RotationModuleManager manager, Actor player) : Attackxan
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("xan DNC", "Dancer", "Standard rotation (xan)|Ranged", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.DNC), 100).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("xan DNC", "舞者", "Standard rotation (xan)|Ranged", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.DNC), 100).WithStrategies<Strategy>();
     }
 
     public enum PartnerStrategy

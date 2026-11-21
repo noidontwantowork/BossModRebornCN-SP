@@ -488,7 +488,7 @@ class NA03TetherIntercept(BossModule module) : BossComponent(module)
     {
         if (!Active)
             return;
-        hints.Add("Grab the tether!");
+        hints.Add("接走连线！");
     }
 
     public override void DrawArenaForeground(int pcSlot, Actor pc)

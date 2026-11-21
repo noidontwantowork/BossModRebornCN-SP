@@ -1,4 +1,4 @@
-﻿namespace BossMod.Stormblood.Extreme.Ex6Byakko;
+namespace BossMod.Stormblood.Extreme.Ex6Byakko;
 
 sealed class VoiceOfThunder(BossModule module) : BossComponent(module)
 {
@@ -24,7 +24,7 @@ sealed class VoiceOfThunder(BossModule module) : BossComponent(module)
         var orbs = GetOrbs(Module);
         var count = orbs.Count;
         if (count != 0)
-            hints.Add("Soak the orbs!");
+            hints.Add("去踩球！");
     }
 
     public override void AddAIHints(int slot, Actor actor, PartyRolesConfig.Assignment assignment, AIHints hints)

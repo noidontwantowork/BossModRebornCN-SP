@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS5Phantom;
+namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS5Phantom;
 
 sealed class DRS5PhantomStates : StateMachineBuilder
 {
@@ -60,7 +60,7 @@ sealed class DRS5PhantomStates : StateMachineBuilder
     private void SummonMaledictionOfRuin(uint id, float delay)
     {
         Cast(id, AID.Summon, delay, 3f);
-        Targetable(id + 0x10u, false, 1.0f, "Boss disappears");
+        Targetable(id + 0x10u, false, 1.0f, "首领消失");
         ComponentCondition<BloodyWraith>(id + 0x20u, 3f, static comp => comp.ActiveActorsCount != 0, "Adds appear") // 2x bloody + 1x misty
             .ActivateOnEnter<BloodyWraith>()
             .ActivateOnEnter<MistyWraith>()

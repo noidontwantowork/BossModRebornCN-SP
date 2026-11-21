@@ -1,10 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Authors>The Combat Reborn Team / NiGuangOwO / KanoNoUta</Authors>
+    <Authors>The Combat Reborn Team / NiGuangOwO(本地化&amp;适配) / KanoNoUta(斗兽奇弈支持) / COXOIDA(博兹雅支持)</Authors>
     <Company>The Combat Reborn Team</Company>
-    <Version>7.5.8.2</Version>
-    <AssemblyVersion>7.5.8.2</AssemblyVersion>
-    <Description>国服本地化版与斗兽版的合并构建，保留国服中文化与全部独有功能，并包含「斗兽奇弈（驯兽师 / Beastmaster）」的相关副本支持。</Description>
+    <Version>7.5.8.6</Version>
+    <AssemblyVersion>7.5.8.6</AssemblyVersion>
+    <Description>结合上游原版、国服本地化版、斗兽版、博兹雅版等BMR的合并构建，保留国服本地化与全部独有功能，并额外包含「斗兽奇弈（驯兽师）」和「南方博兹雅战线 / 扎杜诺尔高原」的相关副本支持。</Description>
     <Copyright></Copyright>
     <PackageProjectUrl></PackageProjectUrl>
   </PropertyGroup>

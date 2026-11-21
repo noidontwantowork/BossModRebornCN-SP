@@ -1,4 +1,4 @@
-﻿namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS8Queen;
+namespace BossMod.Shadowbringers.Foray.DelubrumReginae.DRS8Queen;
 
 sealed class DRS8QueenStates : StateMachineBuilder
 {
@@ -224,7 +224,7 @@ sealed class DRS8QueenStates : StateMachineBuilder
             .DeactivateOnExit<HeavensWrathAOE>()
             .DeactivateOnExit<HeavensWrathKnockback>();
         ActorCastStart(id + 0x33u, _module.Warrior, AID.AboveBoard, 0.5f);
-        Targetable(id + 0x34u, false, 1.8f, "Boss disappears");
+        Targetable(id + 0x34u, false, 1.8f, "首领消失");
         ActorCastEnd(id + 0x35u, _module.Soldier, 0.9f, false, "Move/stay")
             .DeactivateOnExit<FieryIcyPortent>();
         ActorCastEnd(id + 0x36u, _module.Soldier, 3.3f);
@@ -234,7 +234,7 @@ sealed class DRS8QueenStates : StateMachineBuilder
         ComponentCondition<AboveBoard>(id + 0x42u, 4.2f, static comp => comp.CurState == AboveBoard.State.LongExplosionsDone, "Bombs 2")
             .DeactivateOnExit<AboveBoard>();
 
-        Targetable(id + 0x50u, true, 3.0f, "Boss reappears");
+        Targetable(id + 0x50u, true, 3.0f, "首领再现");
     }
 
     private void RelentlessPlay5(uint id, float delay)

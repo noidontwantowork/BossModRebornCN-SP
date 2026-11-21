@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Ultimate.FRU;
+namespace BossMod.Dawntrail.Ultimate.FRU;
 
 sealed class FRUStates : StateMachineBuilder
 {
@@ -104,7 +104,7 @@ sealed class FRUStates : StateMachineBuilder
 
     private void P1UtopianSky(uint id, float delay)
     {
-        ActorCastMulti(id, _module.BossP1, [AID.UtopianSkyStack, AID.UtopianSkySpread], delay, 4, true, "Boss disappears")
+        ActorCastMulti(id, _module.BossP1, [AID.UtopianSkyStack, AID.UtopianSkySpread], delay, 4, true, "首领消失")
             .ActivateOnEnter<P1UtopianSkySpreadStack>()
             .SetHint(StateMachine.StateHint.DowntimeStart);
         ComponentCondition<P1UtopianSkyBlastingZone>(id + 0x10u, 5.2f, static comp => comp.AOEs.Count > 0)
@@ -174,7 +174,7 @@ sealed class FRUStates : StateMachineBuilder
         ComponentCondition<P1BoundOfFaith>(id + 0x30u, 4, static comp => !comp.Active, "Stacks") // note: won't happen if both targets die, but that's a wipe anyway
             .DeactivateOnExit<P1BoundOfFaithAIStack>()
             .DeactivateOnExit<P1BoundOfFaith>();
-        ActorTargetable(id + 0x100u, _module.BossP1, true, 1.4f, "Boss reappears")
+        ActorTargetable(id + 0x100u, _module.BossP1, true, 1.4f, "首领再现")
             .SetHint(StateMachine.StateHint.DowntimeEnd);
     }
 
@@ -188,8 +188,8 @@ sealed class FRUStates : StateMachineBuilder
     {
         ActorCastMulti(id, _module.BossP1, [AID.FallOfFaithFire, AID.FallOfFaithLightning], delay, 9, true)
             .ActivateOnEnter<P1FallOfFaith>();
-        ComponentCondition<P1FallOfFaith>(id + 0x10u, 4.1f, static comp => comp.NumCasts >= 1, "Baits 1");
-        ComponentCondition<P1FallOfFaith>(id + 0x20u, 3.1f, static comp => comp.NumCasts >= 2, "Baits 2");
+        ComponentCondition<P1FallOfFaith>(id + 0x10u, 4.1f, static comp => comp.NumCasts >= 1, "诱导 1");
+        ComponentCondition<P1FallOfFaith>(id + 0x20u, 3.1f, static comp => comp.NumCasts >= 2, "诱导 2");
         ComponentCondition<P1FallOfFaith>(id + 0x30u, 2.5f, static comp => comp.NumCasts >= 3, "Baits 3");
         ComponentCondition<P1FallOfFaith>(id + 0x40u, 2.5f, static comp => comp.NumCasts >= 4, "Baits 4")
             .DeactivateOnExit<P1FallOfFaith>();
@@ -237,7 +237,7 @@ sealed class FRUStates : StateMachineBuilder
         ActorCast(id, _module.BossP2, AID.MirrorImage, delay, 3f, true);
         ActorCast(id + 0x10u, _module.BossP2, AID.DiamondDust, 2.1f, 5f, true, "Raidwide")
             .SetHint(StateMachine.StateHint.Raidwide);
-        ActorTargetable(id + 0x20u, _module.BossP2, false, 3.1f, "Boss disappears")
+        ActorTargetable(id + 0x20u, _module.BossP2, false, 3.1f, "首领消失")
             .ActivateOnEnter<P2AxeKick>()
             .ActivateOnEnter<P2ScytheKick>()
             .ActivateOnEnter<P2IcicleImpact>()
@@ -285,7 +285,7 @@ sealed class FRUStates : StateMachineBuilder
         ComponentCondition<P2TwinStillnessSilence>(id + 0x92u, 2.1f, static comp => comp.NumCasts > 1, "Back/front")
             .DeactivateOnExit<P2TwinStillnessSilence>()
             .DeactivateOnExit<P2SinboundHolyVoidzone>();
-        ActorTargetable(id + 0xA0u, _module.BossP2, true, 3.6f, "Boss reappears")
+        ActorTargetable(id + 0xA0u, _module.BossP2, true, 3.6f, "首领再现")
             .SetHint(StateMachine.StateHint.DowntimeEnd);
     }
 
@@ -325,13 +325,13 @@ sealed class FRUStates : StateMachineBuilder
     {
         ActorCast(id, _module.BossP2, AID.LightRampant, delay, 5f, true, "Raidwide (light rampant)")
             .SetHint(StateMachine.StateHint.Raidwide);
-        ActorTargetable(id + 0x10u, _module.BossP2, false, 3.1f, "Boss disappears")
+        ActorTargetable(id + 0x10u, _module.BossP2, false, 3.1f, "首领消失")
             .ActivateOnEnter<P2LightRampant>()
             .ActivateOnEnter<P2LuminousHammer>()
             .ActivateOnEnter<P2BrightHunger1>()
             .ActivateOnEnter<P2LightRampantAITowers>()
             .SetHint(StateMachine.StateHint.DowntimeStart);
-        ComponentCondition<P2LuminousHammer>(id + 0x20u, 4.8f, static comp => comp.NumCasts > 0, "Puddle bait");
+        ComponentCondition<P2LuminousHammer>(id + 0x20u, 4.8f, static comp => comp.NumCasts > 0, "诱导地面范围");
         ComponentCondition<P2BrightHunger1>(id + 0x30u, 3.3f, static comp => comp.NumCasts > 0, "Towers")
             .ActivateOnEnter<P2SinboundHolyVoidzone>()
             .DeactivateOnExit<P2LightRampantAITowers>()
@@ -346,10 +346,10 @@ sealed class FRUStates : StateMachineBuilder
             .ActivateOnEnter<P2LightRampantAIStackResolve>()
             .DeactivateOnExit<P2LightRampantAIStackResolve>()
             .DeactivateOnExit<P2PowerfulLight>();
-        ComponentCondition<P2HolyLightBurst>(id + 0x50u, 2.4f, static comp => comp.NumCasts > 0, "Orbs 1")
+        ComponentCondition<P2HolyLightBurst>(id + 0x50u, 2.4f, static comp => comp.NumCasts > 0, "宝珠 1")
             .ActivateOnEnter<P2LightRampantAIOrbs>()
             .ActivateOnEnter<P2BrightHunger2>();
-        ComponentCondition<P2HolyLightBurst>(id + 0x60u, 3, static comp => comp.NumCasts > 3, "Orbs 2")
+        ComponentCondition<P2HolyLightBurst>(id + 0x60u, 3, static comp => comp.NumCasts > 3, "宝珠 2")
             .DeactivateOnExit<P2LightRampantAIOrbs>()
             .DeactivateOnExit<P2HolyLightBurst>()
             .DeactivateOnExit<P2LightRampant>(); // tethers resolve right after first orbs
@@ -362,7 +362,7 @@ sealed class FRUStates : StateMachineBuilder
         ActorCastEnd(id + 0x72u, _module.BossP2, 3.1f, true);
         ComponentCondition<P2Banish>(id + 0x73u, 0.1f, static comp => !comp.Active, "Spread/Stack")
             .DeactivateOnExit<P2Banish>();
-        ActorTargetable(id + 0x80u, _module.BossP2, true, 3, "Boss reappears")
+        ActorTargetable(id + 0x80u, _module.BossP2, true, 3, "首领再现")
             .SetHint(StateMachine.StateHint.DowntimeEnd);
 
         ActorCast(id + 0x1000u, _module.BossP2, AID.HouseOfLightBoss, 0.1f, 5f, true)
@@ -474,7 +474,7 @@ sealed class FRUStates : StateMachineBuilder
             .ExecOnExit<P3ApocalypseDarkWater>(static comp => comp.ShowOrder(1));
         ActorCast(id + 0x20u, _module.BossP3, AID.Apocalypse, 2.6f, 4, true);
         ActorCastStart(id + 0x30u, _module.BossP3, AID.SpiritTaker, 2.2f, true);
-        ComponentCondition<P3ApocalypseDarkWater>(id + 0x31u, 1.3f, static comp => comp.Stacks.Count == 0, "Stack 1")
+        ComponentCondition<P3ApocalypseDarkWater>(id + 0x31u, 1.3f, static comp => comp.Stacks.Count == 0, "分摊 1")
             .DeactivateOnExit<P3ApocalypseAIWater1>();
         ActorCastEnd(id + 0x32u, _module.BossP3, 1.7f, true)
             .ActivateOnEnter<P3ApocalypseSpiritTaker>();
@@ -508,7 +508,7 @@ sealed class FRUStates : StateMachineBuilder
         ComponentCondition<P3DarkestDanceKnockback>(id + 0x57u, 2.8f, static comp => comp.NumCasts > 0, "Knockback")
             .ActivateOnEnter<P3ApocalypseAIWater3>()
             .DeactivateOnExit<P3DarkestDanceKnockback>();
-        ComponentCondition<P3ApocalypseDarkWater>(id + 0x60u, 4.1f, static comp => comp.Stacks.Count == 0, "Stack 3")
+        ComponentCondition<P3ApocalypseDarkWater>(id + 0x60u, 4.1f, static comp => comp.Stacks.Count == 0, "分摊 3")
             .DeactivateOnExit<P3ApocalypseAIWater3>()
             .DeactivateOnExit<P3ApocalypseDarkWater>();
 
@@ -518,7 +518,7 @@ sealed class FRUStates : StateMachineBuilder
     private void P3Enrage(uint id, float delay)
     {
         ActorCast(id, _module.BossP3, AID.MemorysEnd, delay, 10f, true, "Enrage");
-        ActorTargetable(id + 0x10u, _module.BossP3, false, 3.5f, "Boss disappears")
+        ActorTargetable(id + 0x10u, _module.BossP3, false, 3.5f, "首领消失")
             .SetHint(StateMachine.StateHint.DowntimeStart);
     }
 

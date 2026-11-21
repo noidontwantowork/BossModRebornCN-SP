@@ -19,7 +19,7 @@ sealed class MustardBomb(BossModule module) : Components.UniformStackSpread(modu
                 var wantTether = actor.Role == Role.Tank;
                 var hasTether = _bombTargets[slot];
                 if (wantTether != hasTether)
-                    hints.Add(wantTether ? "Grab tether!" : "Pass tether!");
+                    hints.Add(wantTether ? "Grab tether!" : "传出连线！");
                 break;
             case Mechanic.Nisi:
                 var wantNisi = !_forbidden[slot];

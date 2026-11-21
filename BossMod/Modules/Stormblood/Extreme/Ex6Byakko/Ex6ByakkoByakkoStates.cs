@@ -1,4 +1,4 @@
-﻿namespace BossMod.Stormblood.Extreme.Ex6Byakko;
+namespace BossMod.Stormblood.Extreme.Ex6Byakko;
 
 sealed class Ex6ByakkoStates : StateMachineBuilder
 {
@@ -114,7 +114,7 @@ sealed class Ex6ByakkoStates : StateMachineBuilder
     {
         ActorTargetable(id, _module.Hakutei, true, delay, "Tiger appears")
             .ActivateOnEnter<AratamaPuddleBait>(); // icons appear ~2s before tiger
-        ComponentCondition<AratamaPuddleBait>(id + 0x10, 3.1f, static comp => comp.NumFinishedSpreads > 0, "Puddle baits start")
+        ComponentCondition<AratamaPuddleBait>(id + 0x10, 3.1f, static comp => comp.NumFinishedSpreads > 0, "开始诱导地面范围")
             .ActivateOnEnter<AratamaPuddleVoidzone>();
         StormPulse(id + 0x20u, 4f)
             .ActivateOnEnter<SteelClaw>()
@@ -147,7 +147,7 @@ sealed class Ex6ByakkoStates : StateMachineBuilder
 
     private void Intermission(uint id, float delay)
     {
-        ActorTargetable(id, _module.Boss, false, delay, "Boss disappears");
+        ActorTargetable(id, _module.Boss, false, delay, "首领消失");
         ActorCast(id + 0x10u, _module.Hakutei, AID.RoarOfThunder, 4.4f, 20f, true, "Add enrage") // note: pretty large variance here
             .ActivateOnEnter<VoiceOfThunder>()
             .DeactivateOnExit<VoiceOfThunder>()
@@ -173,7 +173,7 @@ sealed class Ex6ByakkoStates : StateMachineBuilder
             .ActivateOnEnter<FellSwoop>()
             .DeactivateOnExit<FellSwoop>()
             .SetHint(StateMachine.StateHint.Raidwide);
-        ActorTargetable(id + 0x30u, _module.Boss, true, 7.9f, "Boss reappears")
+        ActorTargetable(id + 0x30u, _module.Boss, true, 7.9f, "首领再现")
             .SetHint(StateMachine.StateHint.DowntimeEnd);
     }
 
@@ -236,7 +236,7 @@ sealed class Ex6ByakkoStates : StateMachineBuilder
         ActorTargetable(id, _module.Hakutei, true, delay, "Tiger appears")
             .ActivateOnEnter<AratamaPuddleBait>(); // icons appear ~2s before tiger
 
-        ComponentCondition<AratamaPuddleBait>(id + 0x10u, 3.1f, static comp => comp.NumFinishedSpreads > 0, "Puddle baits start")
+        ComponentCondition<AratamaPuddleBait>(id + 0x10u, 3.1f, static comp => comp.NumFinishedSpreads > 0, "开始诱导地面范围")
             .ActivateOnEnter<AratamaPuddleVoidzone>();
         ActorTargetable(id + 0x20u, _module.Hakutei, false, 6f, "Tiger disappears");
 

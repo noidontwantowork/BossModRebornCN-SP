@@ -1,4 +1,4 @@
-﻿using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
+using FFXIVClientStructs.FFXIV.Client.Game.Gauge;
 
 namespace BossMod.Autorotation.xan;
 
@@ -33,7 +33,7 @@ public sealed class TankAI(RotationModuleManager manager, Actor player) : AIBase
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("Tank AI", "Utilities for tank AI - stance, provoke, interrupt, ranged attack", "AI (xan)", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.PLD, Class.GLA, Class.WAR, Class.MRD, Class.DRK, Class.GNB), 100).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("Tank AI", "Utilities for tank AI - stance, provoke, interrupt, ranged attack", "AI（xan）", "xan", RotationModuleQuality.Basic, BitMask.Build(Class.PLD, Class.GLA, Class.WAR, Class.MRD, Class.DRK, Class.GNB), 100).WithStrategies<Strategy>();
     }
 
     public record struct Buff(ActionID ID, float Duration, float ApplicationDelay = 0, Func<RotationModule, bool>? CanUse = null)

@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Alliance.A24Menphina;
+namespace BossMod.Endwalker.Alliance.A24Menphina;
 
 sealed class A24MenphinaStates : StateMachineBuilder
 {
@@ -229,7 +229,7 @@ sealed class A24MenphinaStates : StateMachineBuilder
 
     private void SelenainMysteria(uint id, float delay)
     {
-        Cast(id, AID.SelenainMysteria, delay, 3f, "Boss disappears")
+        Cast(id, AID.SelenainMysteria, delay, 3f, "首领消失")
             .SetHint(StateMachine.StateHint.DowntimeStart);
         ComponentCondition<CeremonialPillar>(id + 0x10u, 4.5f, static comp => comp.ActiveActorsCount != 0, "Adds appear")
             .ActivateOnEnter<CeremonialPillar>()
@@ -245,6 +245,6 @@ sealed class A24MenphinaStates : StateMachineBuilder
             .ActivateOnEnter<RiseOfTheTwinMoons>()
             .DeactivateOnExit<RiseOfTheTwinMoons>()
             .SetHint(StateMachine.StateHint.Raidwide);
-        Targetable(id + 0x120u, true, 3.3f, "Boss reappears");
+        Targetable(id + 0x120u, true, 3.3f, "首领再现");
     }
 }

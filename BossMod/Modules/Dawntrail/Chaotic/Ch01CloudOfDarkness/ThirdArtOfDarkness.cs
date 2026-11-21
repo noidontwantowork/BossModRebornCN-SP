@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Chaotic.Ch01CloudOfDarkness;
+namespace BossMod.Dawntrail.Chaotic.Ch01CloudOfDarkness;
 
 sealed class ThirdArtOfDarknessCleave(BossModule module) : Components.GenericAOEs(module)
 {
@@ -62,7 +62,7 @@ sealed class ThirdArtOfDarknessCleave(BossModule module) : Components.GenericAOE
                         order += " > ";
                     order += m.mechanic.ToString();
                 }
-                hints.Add($"Order: {order}", false);
+                hints.Add($"顺序：{order}", false);
             }
         }
 

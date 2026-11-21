@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.VariantCriterion.C02AMR.C022Gorai;
+namespace BossMod.Endwalker.VariantCriterion.C02AMR.C022Gorai;
 
 abstract class FightingSpirits(BossModule module, uint aid) : Components.SimpleKnockbacks(module, aid, 16f);
 sealed class NFightingSpirits(BossModule module) : FightingSpirits(module, (uint)AID.NFightingSpiritsAOE);
@@ -13,7 +13,7 @@ sealed class WorldlyPursuitBait(BossModule module) : Components.GenericBaitAway(
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (_order[slot] >= 0)
-            hints.Add($"Order: {_order[slot] + 1}", false);
+            hints.Add($"顺序：{_order[slot] + 1}", false);
         base.AddHints(slot, actor, hints);
     }
 

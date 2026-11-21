@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Ultimate.TOP;
+namespace BossMod.Endwalker.Ultimate.TOP;
 
 // note: this is all very tied to LPDU strat
 sealed class P5Sigma(BossModule module) : BossComponent(module)
@@ -23,7 +23,7 @@ sealed class P5Sigma(BossModule module) : BossComponent(module)
     {
         var ps = Players[slot];
         if (ps.Order > 0)
-            hints.Add($"Order: {ps.Order}", false);
+            hints.Add($"顺序：{ps.Order}", false);
     }
 
     public override void AddGlobalHints(Actor actor, GlobalHints hints)

@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Alliance.A33Oschon;
+namespace BossMod.Endwalker.Alliance.A33Oschon;
 
 sealed class A33OschonStates : StateMachineBuilder
 {
@@ -90,7 +90,7 @@ sealed class A33OschonStates : StateMachineBuilder
         ActorCastStart(id, _module.BossP1, AID.FlintedFoehnP1, delay, true)
             .ActivateOnEnter<P1FlintedFoehn>();
         ActorCastEnd(id + 1u, _module.BossP1, 4.5f, true);
-        ComponentCondition<P1FlintedFoehn>(id + 0x10u, 0.6f, static comp => comp.NumCasts > 0, "Stack 1");
+        ComponentCondition<P1FlintedFoehn>(id + 0x10u, 0.6f, static comp => comp.NumCasts > 0, "分摊 1");
         ComponentCondition<P1FlintedFoehn>(id + 0x20u, 5.3f, static comp => comp.NumCasts > 5, "Stack 6")
             .DeactivateOnExit<P1FlintedFoehn>();
     }
@@ -129,7 +129,7 @@ sealed class A33OschonStates : StateMachineBuilder
 
     private void P2LoftyPeaks(uint id, float delay)
     {
-        ActorCast(id, _module.BossP1, AID.LoftyPeaks, delay, 5f, true, "Boss disappears")
+        ActorCast(id, _module.BossP1, AID.LoftyPeaks, delay, 5f, true, "首领消失")
             .SetHint(StateMachine.StateHint.DowntimeStart);
         ComponentCondition<P2MovingMountains>(id + 0x10u, 1.1f, static comp => comp.NumCasts > 0, "Raidwide 1")
             .ActivateOnEnter<P2MovingMountains>()
@@ -173,7 +173,7 @@ sealed class A33OschonStates : StateMachineBuilder
         ActorCastStart(id, _module.BossP2, AID.FlintedFoehnP2, delay, true)
             .ActivateOnEnter<P2FlintedFoehn>();
         ActorCastEnd(id + 1u, _module.BossP2, 4.5f, true);
-        ComponentCondition<P2FlintedFoehn>(id + 0x10u, 0.6f, static comp => comp.NumCasts > 0, "Stack 1");
+        ComponentCondition<P2FlintedFoehn>(id + 0x10u, 0.6f, static comp => comp.NumCasts > 0, "分摊 1");
         ComponentCondition<P2FlintedFoehn>(id + 0x20u, 5.3f, static comp => comp.NumCasts > 5, "Stack 6")
             .DeactivateOnExit<P2FlintedFoehn>();
     }
@@ -203,14 +203,14 @@ sealed class A33OschonStates : StateMachineBuilder
 
         ComponentCondition<P2DownhillArrowTrailDownhill>(id + 0x20u, 5.7f, static comp => comp.Casters.Count > 0)
             .ActivateOnEnter<P2DownhillArrowTrailDownhill>();
-        ComponentCondition<P2DownhillArrowTrailDownhill>(id + 0x21u, 3f, static comp => comp.NumCasts > 0, "Puddles 1");
+        ComponentCondition<P2DownhillArrowTrailDownhill>(id + 0x21u, 3f, static comp => comp.NumCasts > 0, "地面范围 1");
 
         ComponentCondition<P2DownhillArrowTrailDownhill>(id + 0x30u, 1f, static comp => comp.Casters.Count > 0);
-        ComponentCondition<P2DownhillArrowTrailDownhill>(id + 0x31u, 3f, static comp => comp.NumCasts > 3, "Puddles 2");
+        ComponentCondition<P2DownhillArrowTrailDownhill>(id + 0x31u, 3f, static comp => comp.NumCasts > 3, "地面范围 2");
 
         ComponentCondition<P2DownhillArrowTrailDownhill>(id + 0x40u, 1f, static comp => comp.Casters.Count > 0);
         ActorCastStartMulti(id + 0x41u, _module.BossP2, [AID.PitonPullNW, AID.PitonPullNE], 2.1f, true);
-        ComponentCondition<P2DownhillArrowTrailDownhill>(id + 0x42u, 0.9f, static comp => comp.NumCasts > 6, "Puddles 3")
+        ComponentCondition<P2DownhillArrowTrailDownhill>(id + 0x42u, 0.9f, static comp => comp.NumCasts > 6, "地面范围 3")
             .ActivateOnEnter<P2PitonPull>()
             .DeactivateOnExit<P2DownhillArrowTrailDownhill>();
         ComponentCondition<P2ArrowTrail>(id + 0x43u, 0.8f, static comp => comp.NumCasts >= 64, "Exaflares resolve")

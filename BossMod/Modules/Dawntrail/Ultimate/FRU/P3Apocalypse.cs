@@ -1,4 +1,4 @@
-﻿namespace BossMod.Dawntrail.Ultimate.FRU;
+namespace BossMod.Dawntrail.Ultimate.FRU;
 
 sealed class P3Apocalypse(BossModule module) : Components.GenericAOEs(module)
 {
@@ -287,7 +287,7 @@ sealed class P3ApocalypseDarkWater(BossModule module) : Components.UniformStackS
         if (state.AssignedGroup > 0)
             hints.Add($"Group: {state.AssignedGroup}", false);
         if (state.Order > 0)
-            hints.Add($"Order: {state.Order}", false);
+            hints.Add($"顺序：{state.Order}", false);
     }
 
     public override void AddGlobalHints(Actor actor, GlobalHints hints)

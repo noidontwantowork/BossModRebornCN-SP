@@ -1,4 +1,4 @@
-﻿namespace BossMod.Autorotation.xan;
+namespace BossMod.Autorotation.xan;
 
 public sealed class BozjaAI(RotationModuleManager manager, Actor player) : AIBase<BozjaAI.Strategy>(manager, player)
 {
@@ -10,7 +10,7 @@ public sealed class BozjaAI(RotationModuleManager manager, Actor player) : AIBas
 
     public static RotationModuleDefinition Definition()
     {
-        return new RotationModuleDefinition("Bozja AI", "Bozja utilities", "AI (xan)", "xan", RotationModuleQuality.WIP, new(~0ul), MaxLevel: 80).WithStrategies<Strategy>();
+        return new RotationModuleDefinition("Bozja AI", "Bozja utilities", "AI（xan）", "xan", RotationModuleQuality.WIP, new(~0ul), MaxLevel: 80).WithStrategies<Strategy>();
     }
 
     public override void Execute(in Strategy strategy, Actor? primaryTarget, float estimatedAnimLockDelay, bool isMoving)

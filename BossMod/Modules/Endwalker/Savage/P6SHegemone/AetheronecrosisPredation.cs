@@ -1,4 +1,4 @@
-﻿namespace BossMod.Endwalker.Savage.P6SHegemone;
+namespace BossMod.Endwalker.Savage.P6SHegemone;
 
 // TODO: improve...
 sealed class AetheronecrosisPredation(BossModule module) : BossComponent(module)
@@ -14,7 +14,7 @@ sealed class AetheronecrosisPredation(BossModule module) : BossComponent(module)
     public override void AddHints(int slot, Actor actor, TextHints hints)
     {
         if (_orders[slot] > 0)
-            hints.Add($"Order: {_orders[slot]}, side: {(_vulnSnake[slot] ? "wing" : _vulnWing[slot] ? "snake" : "???")}", false);
+            hints.Add($"顺序：{_orders[slot]}, side: {(_vulnSnake[slot] ? "wing" : _vulnWing[slot] ? "snake" : "???")}", false);
     }
 
     public override void OnStatusGain(Actor actor, ref ActorStatus status)
